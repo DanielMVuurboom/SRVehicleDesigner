@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ChassisList>
+<ArrayOfChassis>
   <Chassis>
     <ChassisGroup>Bikes</ChassisGroup>
     <Name>Scooter</Name>
@@ -27,4 +27,4 @@
     </SeatingList>
     <DesignPoints>30</DesignPoints>
   </Chassis>
-</ChassisList>
+</ArrayOfChassis>
