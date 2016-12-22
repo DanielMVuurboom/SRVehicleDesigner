@@ -32,7 +32,7 @@ namespace SRVehicleDesigner
     }
 
     [DataContract(Namespace = "")]
-    public enum EntryPointType {[EnumMember]Door, [EnumMember]DoubleDoor, [EnumMember]DoubleGate, [EnumMember]DoubleTrunkDoor, [EnumMember]Open, [EnumMember]Ramp, [EnumMember]RooftopHatch, [EnumMember]TrunkDoor }
+    public enum EntryPointType {[EnumMember]Door, [EnumMember]DoubleDoor, [EnumMember]DoubleGate, [EnumMember]DoubleTrunkDoor, [EnumMember]Open, [EnumMember]Ramp, [EnumMember]RoofHatch, [EnumMember]TrunkDoor }
 
     [DataContract(Namespace = "")]
     public class EntryPoint
@@ -47,7 +47,7 @@ namespace SRVehicleDesigner
     public enum TakeOffProfile {[EnumMember]NotApplicable }
 
     [DataContract(Namespace = "")]
-    public enum Accessory {[EnumMember]RemoteControlInterface, [EnumMember]RiggerAdaptation }
+    public enum Accessory {[EnumMember]RemoteControlInterface, [EnumMember]RiggerAdaptation, [EnumMember]LivingAmenitiesBasic }
 
     [DataContract(Namespace = "")]
     public class Chassis

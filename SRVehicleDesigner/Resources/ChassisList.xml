@@ -26,8 +26,8 @@
         <EntryPointCount>1</EntryPointCount>
       </EntryPoint>
     </EntryPointList>
-    <DesignPoints>30</DesignPoints>
     <TakeOffProfile>NotApplicable</TakeOffProfile>
+    <DesignPoints>30</DesignPoints>
     <Accessories></Accessories>
   </Chassis>
   <Chassis>
@@ -56,8 +56,8 @@
         <EntryPointCount>1</EntryPointCount>
       </EntryPoint>
     </EntryPointList>
-    <DesignPoints>10</DesignPoints>
     <TakeOffProfile>NotApplicable</TakeOffProfile>
+    <DesignPoints>10</DesignPoints>
     <Accessories></Accessories>
   </Chassis>
   <Chassis>
@@ -86,8 +86,8 @@
         <EntryPointCount>1</EntryPointCount>
       </EntryPoint>
     </EntryPointList>
-    <DesignPoints>15</DesignPoints>
     <TakeOffProfile>NotApplicable</TakeOffProfile>
+    <DesignPoints>15</DesignPoints>
     <Accessories></Accessories>
   </Chassis>
   <Chassis>
@@ -116,8 +116,8 @@
         <EntryPointCount>1</EntryPointCount>
       </EntryPoint>
     </EntryPointList>
-    <DesignPoints>15</DesignPoints>
     <TakeOffProfile>NotApplicable</TakeOffProfile>
+    <DesignPoints>15</DesignPoints>
     <Accessories></Accessories>
   </Chassis>
   <Chassis>
@@ -146,21 +146,359 @@
         <EntryPointCount>1</EntryPointCount>
       </EntryPoint>
     </EntryPointList>
-    <DesignPoints>445</DesignPoints>
     <TakeOffProfile>NotApplicable</TakeOffProfile>
+    <DesignPoints>445</DesignPoints>
     <Accessories></Accessories>
   </Chassis>
   <Chassis>
     <ChassisGroup>Cars</ChassisGroup>
-    <Name>Commuter</Name>
+    <Name>Sedan</Name>
     <Handling>
       <Road>4</Road>
       <OffRoad>8</OffRoad>
     </Handling>
     <Body>3</Body>
     <Armor>0</Armor>
-    <StartingCargoFactor>1</StartingCargoFactor>
-    <MaxCargoFactor>16</MaxCargoFactor>
+    <StartingCargoFactor>6</StartingCargoFactor>
+    <MaxCargoFactor>30</MaxCargoFactor>
+    <AutoNav>0</AutoNav>
+    <Pilot>0</Pilot>
+    <Sensor>0</Sensor>
+    <SeatingList>
+      <Seating>
+        <SeatingType>Bucket</SeatingType>
+        <SeatingCount>4</SeatingCount>
+      </Seating>
+    </SeatingList>
+    <EntryPointList>
+      <EntryPoint>
+        <EntryPointType>Door</EntryPointType>
+        <EntryPointCount>2</EntryPointCount>
+      </EntryPoint>
+      <EntryPoint>
+        <EntryPointType>TrunkDoor</EntryPointType>
+        <EntryPointCount>1</EntryPointCount>
+      </EntryPoint>
+    </EntryPointList>
+    <TakeOffProfile>NotApplicable</TakeOffProfile>
+    <DesignPoints>50</DesignPoints>
+    <Accessories></Accessories>
+  </Chassis>
+  <Chassis>
+    <ChassisGroup>Cars</ChassisGroup>
+    <Name>Sports Car</Name>
+    <Handling>
+      <Road>4</Road>
+      <OffRoad>8</OffRoad>
+    </Handling>
+    <Body>3</Body>
+    <Armor>0</Armor>
+    <StartingCargoFactor>3</StartingCargoFactor>
+    <MaxCargoFactor>18</MaxCargoFactor>
+    <AutoNav>0</AutoNav>
+    <Pilot>0</Pilot>
+    <Sensor>0</Sensor>
+    <SeatingList>
+      <Seating>
+        <SeatingType>Bucket</SeatingType>
+        <SeatingCount>2</SeatingCount>
+      </Seating>
+    </SeatingList>
+    <EntryPointList>
+      <EntryPoint>
+        <EntryPointType>Door</EntryPointType>
+        <EntryPointCount>2</EntryPointCount>
+      </EntryPoint>
+      <EntryPoint>
+        <EntryPointType>TrunkDoor</EntryPointType>
+        <EntryPointCount>1</EntryPointCount>
+      </EntryPoint>
+    </EntryPointList>
+    <TakeOffProfile>NotApplicable</TakeOffProfile>
+    <DesignPoints>110</DesignPoints>
+    <Accessories></Accessories>
+  </Chassis>
+  <Chassis>
+    <ChassisGroup>Cars</ChassisGroup>
+    <Name>Limousine</Name>
+    <Handling>
+      <Road>4</Road>
+      <OffRoad>8</OffRoad>
+    </Handling>
+    <Body>4</Body>
+    <Armor>0</Armor>
+    <StartingCargoFactor>6</StartingCargoFactor>
+    <MaxCargoFactor>250</MaxCargoFactor>
+    <AutoNav>2</AutoNav>
+    <Pilot>0</Pilot>
+    <Sensor>0</Sensor>
+    <SeatingList>
+      <Seating>
+        <SeatingType>Bucket</SeatingType>
+        <SeatingCount>4</SeatingCount>
+      </Seating>
+      <Seating>
+        <SeatingType>Bench</SeatingType>
+        <SeatingCount>2</SeatingCount>
+      </Seating>
+    </SeatingList>
+    <EntryPointList>
+      <EntryPoint>
+        <EntryPointType>Door</EntryPointType>
+        <EntryPointCount>4</EntryPointCount>
+      </EntryPoint>
+      <EntryPoint>
+        <EntryPointType>TrunkDoor</EntryPointType>
+        <EntryPointCount>1</EntryPointCount>
+      </EntryPoint>
+    </EntryPointList>
+    <TakeOffProfile>NotApplicable</TakeOffProfile>
+    <DesignPoints>625</DesignPoints>
+    <Accessories></Accessories>
+  </Chassis>
+  <Chassis>
+    <ChassisGroup>Cars</ChassisGroup>
+    <Name>Pickup</Name>
+    <Handling>
+      <Road>4</Road>
+      <OffRoad>6</OffRoad>
+    </Handling>
+    <Body>4</Body>
+    <Armor>0</Armor>
+    <StartingCargoFactor>18</StartingCargoFactor>
+    <MaxCargoFactor>42</MaxCargoFactor>
+    <AutoNav>0</AutoNav>
+    <Pilot>0</Pilot>
+    <Sensor>0</Sensor>
+    <SeatingList>
+      <Seating>
+        <SeatingType>Bucket</SeatingType>
+        <SeatingCount>2</SeatingCount>
+      </Seating>
+    </SeatingList>
+    <EntryPointList>
+      <EntryPoint>
+        <EntryPointType>Door</EntryPointType>
+        <EntryPointCount>2</EntryPointCount>
+      </EntryPoint>
+      <EntryPoint>
+        <EntryPointType>TrunkDoor</EntryPointType>
+        <EntryPointCount>1</EntryPointCount>
+      </EntryPoint>
+    </EntryPointList>
+    <TakeOffProfile>NotApplicable</TakeOffProfile>
+    <DesignPoints>60</DesignPoints>
+    <Accessories></Accessories>
+  </Chassis>
+  <Chassis>
+    <ChassisGroup>Cars</ChassisGroup>
+    <Name>Van</Name>
+    <Handling>
+      <Road>4</Road>
+      <OffRoad>10</OffRoad>
+    </Handling>
+    <Body>4</Body>
+    <Armor>0</Armor>
+    <StartingCargoFactor>48</StartingCargoFactor>
+    <MaxCargoFactor>250</MaxCargoFactor>
+    <AutoNav>0</AutoNav>
+    <Pilot>0</Pilot>
+    <Sensor>0</Sensor>
+    <SeatingList>
+      <Seating>
+        <SeatingType>Bucket</SeatingType>
+        <SeatingCount>2</SeatingCount>
+      </Seating>
+    </SeatingList>
+    <EntryPointList>
+      <EntryPoint>
+        <EntryPointType>Door</EntryPointType>
+        <EntryPointCount>2</EntryPointCount>
+      </EntryPoint>
+      <EntryPoint>
+        <EntryPointType>DoubleDoor</EntryPointType>
+        <EntryPointCount>1</EntryPointCount>
+      </EntryPoint>
+      <EntryPoint>
+        <EntryPointType>DoubleGate</EntryPointType>
+        <EntryPointCount>1</EntryPointCount>
+      </EntryPoint>
+    </EntryPointList>
+    <TakeOffProfile>NotApplicable</TakeOffProfile>
+    <DesignPoints>60</DesignPoints>
+    <Accessories></Accessories>
+  </Chassis>
+  <Chassis>
+    <ChassisGroup>Cars</ChassisGroup>
+    <Name>RV</Name>
+    <Handling>
+      <Road>4</Road>
+      <OffRoad>4</OffRoad>
+    </Handling>
+    <Body>4</Body>
+    <Armor>0</Armor>
+    <StartingCargoFactor>48</StartingCargoFactor>
+    <MaxCargoFactor>250</MaxCargoFactor>
+    <AutoNav>0</AutoNav>
+    <Pilot>0</Pilot>
+    <Sensor>0</Sensor>
+    <SeatingList>
+      <Seating>
+        <SeatingType>Bucket</SeatingType>
+        <SeatingCount>2</SeatingCount>
+      </Seating>
+    </SeatingList>
+    <EntryPointList>
+      <EntryPoint>
+        <EntryPointType>Door</EntryPointType>
+        <EntryPointCount>3</EntryPointCount>
+      </EntryPoint>
+    </EntryPointList>
+    <TakeOffProfile>NotApplicable</TakeOffProfile>
+    <DesignPoints>250</DesignPoints>
+    <Accessories>
+      <Accessory>LivingAmenitiesBasic</Accessory>
+    </Accessories>
+  </Chassis>
+  <Chassis>
+    <ChassisGroup>Cars</ChassisGroup>
+    <Name>Sand Buggy</Name>
+    <Handling>
+      <Road>4</Road>
+      <OffRoad>4</OffRoad>
+    </Handling>
+    <Body>3</Body>
+    <Armor>0</Armor>
+    <StartingCargoFactor>4</StartingCargoFactor>
+    <MaxCargoFactor>15</MaxCargoFactor>
+    <AutoNav>0</AutoNav>
+    <Pilot>0</Pilot>
+    <Sensor>0</Sensor>
+    <SeatingList>
+      <Seating>
+        <SeatingType>Bucket</SeatingType>
+        <SeatingCount>4</SeatingCount>
+      </Seating>
+    </SeatingList>
+    <EntryPointList>
+      <EntryPoint>
+        <EntryPointType>Open</EntryPointType>
+        <EntryPointCount>1</EntryPointCount>
+      </EntryPoint>
+    </EntryPointList>
+    <TakeOffProfile>NotApplicable</TakeOffProfile>
+    <DesignPoints>20</DesignPoints>
+    <Accessories></Accessories>
+  </Chassis>
+  <Chassis>
+    <ChassisGroup>Cars</ChassisGroup>
+    <Name>Medium Transport</Name>
+    <Handling>
+      <Road>5</Road>
+      <OffRoad>12</OffRoad>
+    </Handling>
+    <Body>5</Body>
+    <Armor>0</Armor>
+    <StartingCargoFactor>80</StartingCargoFactor>
+    <MaxCargoFactor>400</MaxCargoFactor>
+    <AutoNav>0</AutoNav>
+    <Pilot>0</Pilot>
+    <Sensor>0</Sensor>
+    <SeatingList>
+      <Seating>
+        <SeatingType>Bucket</SeatingType>
+        <SeatingCount>2</SeatingCount>
+      </Seating>
+    </SeatingList>
+    <EntryPointList>
+      <EntryPoint>
+        <EntryPointType>Door</EntryPointType>
+        <EntryPointCount>2</EntryPointCount>
+      </EntryPoint>
+      <EntryPoint>
+        <EntryPointType>DoubleTrunkDoor</EntryPointType>
+        <EntryPointCount>1</EntryPointCount>
+      </EntryPoint>
+    </EntryPointList>
+    <TakeOffProfile>NotApplicable</TakeOffProfile>
+    <DesignPoints>300</DesignPoints>
+    <Accessories></Accessories>
+  </Chassis>
+  <Chassis>
+    <ChassisGroup>Cars</ChassisGroup>
+    <Name>Heavy Transport</Name>
+    <Handling>
+      <Road>5</Road>
+      <OffRoad>12</OffRoad>
+    </Handling>
+    <Body>6</Body>
+    <Armor>0</Armor>
+    <StartingCargoFactor>120</StartingCargoFactor>
+    <MaxCargoFactor>800</MaxCargoFactor>
+    <AutoNav>0</AutoNav>
+    <Pilot>0</Pilot>
+    <Sensor>0</Sensor>
+    <SeatingList>
+      <Seating>
+        <SeatingType>Bucket</SeatingType>
+        <SeatingCount>2</SeatingCount>
+      </Seating>
+    </SeatingList>
+    <EntryPointList>
+      <EntryPoint>
+        <EntryPointType>Door</EntryPointType>
+        <EntryPointCount>2</EntryPointCount>
+      </EntryPoint>
+      <EntryPoint>
+        <EntryPointType>DoubleTrunkDoor</EntryPointType>
+        <EntryPointCount>1</EntryPointCount>
+      </EntryPoint>
+    </EntryPointList>
+    <TakeOffProfile>NotApplicable</TakeOffProfile>
+    <DesignPoints>385</DesignPoints>
+    <Accessories></Accessories>
+  </Chassis>
+  <Chassis>
+    <ChassisGroup>Cars</ChassisGroup>
+    <Name>Tractor</Name>
+    <Handling>
+      <Road>5</Road>
+      <OffRoad>12</OffRoad>
+    </Handling>
+    <Body>5</Body>
+    <Armor>0</Armor>
+    <StartingCargoFactor>6</StartingCargoFactor>
+    <MaxCargoFactor>52</MaxCargoFactor>
+    <AutoNav>2</AutoNav>
+    <Pilot>0</Pilot>
+    <Sensor>0</Sensor>
+    <SeatingList>
+      <Seating>
+        <SeatingType>Bucket</SeatingType>
+        <SeatingCount>2</SeatingCount>
+      </Seating>
+    </SeatingList>
+    <EntryPointList>
+      <EntryPoint>
+        <EntryPointType>Door</EntryPointType>
+        <EntryPointCount>2</EntryPointCount>
+      </EntryPoint>
+    </EntryPointList>
+    <TakeOffProfile>NotApplicable</TakeOffProfile>
+    <DesignPoints>175</DesignPoints>
+    <Accessories></Accessories>
+  </Chassis>
+  <Chassis>
+    <ChassisGroup>Cars</ChassisGroup>
+    <Name>Tracked APC</Name>
+    <Handling>
+      <Road>5</Road>
+      <OffRoad>5</OffRoad>
+    </Handling>
+    <Body>7</Body>
+    <Armor>6</Armor>
+    <StartingCargoFactor>18</StartingCargoFactor>
+    <MaxCargoFactor>98</MaxCargoFactor>
     <AutoNav>0</AutoNav>
     <Pilot>0</Pilot>
     <Sensor>0</Sensor>
@@ -172,12 +510,154 @@
     </SeatingList>
     <EntryPointList>
       <EntryPoint>
-        <EntryPointType>Door</EntryPointType>
+        <EntryPointType>RoofHatch</EntryPointType>
+        <EntryPointCount>1</EntryPointCount>
+      </EntryPoint>
+      <EntryPoint>
+        <EntryPointType>Ramp</EntryPointType>
         <EntryPointCount>1</EntryPointCount>
       </EntryPoint>
     </EntryPointList>
-    <DesignPoints>30</DesignPoints>
     <TakeOffProfile>NotApplicable</TakeOffProfile>
+    <DesignPoints>750</DesignPoints>
     <Accessories></Accessories>
+  </Chassis>
+  <Chassis>
+    <ChassisGroup>Cars</ChassisGroup>
+    <Name>Wheeled APC</Name>
+    <Handling>
+      <Road>4</Road>
+      <OffRoad>6</OffRoad>
+    </Handling>
+    <Body>7</Body>
+    <Armor>6</Armor>
+    <StartingCargoFactor>18</StartingCargoFactor>
+    <MaxCargoFactor>98</MaxCargoFactor>
+    <AutoNav>0</AutoNav>
+    <Pilot>0</Pilot>
+    <Sensor>0</Sensor>
+    <SeatingList>
+      <Seating>
+        <SeatingType>Bucket</SeatingType>
+        <SeatingCount>1</SeatingCount>
+      </Seating>
+    </SeatingList>
+    <EntryPointList>
+      <EntryPoint>
+        <EntryPointType>RoofHatch</EntryPointType>
+        <EntryPointCount>1</EntryPointCount>
+      </EntryPoint>
+      <EntryPoint>
+        <EntryPointType>Ramp</EntryPointType>
+        <EntryPointCount>1</EntryPointCount>
+      </EntryPoint>
+    </EntryPointList>
+    <TakeOffProfile>NotApplicable</TakeOffProfile>
+    <DesignPoints>750</DesignPoints>
+    <Accessories></Accessories>
+  </Chassis>
+  <Chassis>
+    <ChassisGroup>Cars</ChassisGroup>
+    <Name>Micro Crawler</Name>
+    <Handling>
+      <Road>4</Road>
+      <OffRoad>4</OffRoad>
+    </Handling>
+    <Body>0</Body>
+    <Armor>0</Armor>
+    <StartingCargoFactor>0</StartingCargoFactor>
+    <MaxCargoFactor>0</MaxCargoFactor>
+    <AutoNav>0</AutoNav>
+    <Pilot>1</Pilot>
+    <Sensor>1</Sensor>
+    <SeatingList>
+    </SeatingList>
+    <EntryPointList>
+    </EntryPointList>
+    <SetupTime>0</SetupTime>
+    <TakeOffProfile>NotApplicable</TakeOffProfile>
+    <DesignPoints>220</DesignPoints>
+    <Accessories>
+      <Accessory>RemoteControlInterface</Accessory>
+      <Accessory>RiggerAdaptation</Accessory>
+    </Accessories>
+  </Chassis>
+  <Chassis>
+    <ChassisGroup>Cars</ChassisGroup>
+    <Name>Small Crawler</Name>
+    <Handling>
+      <Road>4</Road>
+      <OffRoad>4</OffRoad>
+    </Handling>
+    <Body>1</Body>
+    <Armor>0</Armor>
+    <StartingCargoFactor>0</StartingCargoFactor>
+    <MaxCargoFactor>6</MaxCargoFactor>
+    <AutoNav>0</AutoNav>
+    <Pilot>1</Pilot>
+    <Sensor>1</Sensor>
+    <SeatingList>
+    </SeatingList>
+    <EntryPointList>
+    </EntryPointList>
+    <SetupTime>3</SetupTime>
+    <TakeOffProfile>NotApplicable</TakeOffProfile>
+    <DesignPoints>115</DesignPoints>
+    <Accessories>
+      <Accessory>RemoteControlInterface</Accessory>
+      <Accessory>RiggerAdaptation</Accessory>
+    </Accessories>
+  </Chassis>
+  <Chassis>
+    <ChassisGroup>Cars</ChassisGroup>
+    <Name>Large Crawler</Name>
+    <Handling>
+      <Road>4</Road>
+      <OffRoad>4</OffRoad>
+    </Handling>
+    <Body>2</Body>
+    <Armor>0</Armor>
+    <StartingCargoFactor>2</StartingCargoFactor>
+    <MaxCargoFactor>12</MaxCargoFactor>
+    <AutoNav>0</AutoNav>
+    <Pilot>1</Pilot>
+    <Sensor>1</Sensor>
+    <SeatingList>
+    </SeatingList>
+    <EntryPointList>
+    </EntryPointList>
+    <SetupTime>5</SetupTime>
+    <TakeOffProfile>NotApplicable</TakeOffProfile>
+    <DesignPoints>215</DesignPoints>
+    <Accessories>
+      <Accessory>RemoteControlInterface</Accessory>
+      <Accessory>RiggerAdaptation</Accessory>
+    </Accessories>
+  </Chassis>
+  <Chassis>
+    <ChassisGroup>Cars</ChassisGroup>
+    <Name>Remote Patrol Vehicle</Name>
+    <Handling>
+      <Road>3</Road>
+      <OffRoad>6</OffRoad>
+    </Handling>
+    <Body>2</Body>
+    <Armor>0</Armor>
+    <StartingCargoFactor>1</StartingCargoFactor>
+    <MaxCargoFactor>6</MaxCargoFactor>
+    <AutoNav>0</AutoNav>
+    <Pilot>2</Pilot>
+    <Sensor>1</Sensor>
+    <SeatingList>
+    </SeatingList>
+    <EntryPointList>
+    </EntryPointList>
+    <SetupTime>0</SetupTime>
+    <TakeOffProfile>NotApplicable</TakeOffProfile>
+    <DesignPoints>215</DesignPoints>
+    <Accessories>
+      <Accessory>RemoteControlInterface</Accessory>
+      <Accessory>RiggerAdaptation</Accessory>
+    </Accessories>
   </Chassis>
 </ArrayOfChassis>
