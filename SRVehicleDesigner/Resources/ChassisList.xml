@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ChassisList>
+  <Chassis>
+    <ChassisGroup>Bikes</ChassisGroup>
+    <Name>Scooter</Name>
+    <Handling>
+      <Road>3</Road>
+      <OffRoad>6</OffRoad>
+    </Handling>
+    <Body>2</Body>
+    <Armor>0</Armor>
+    <StartingCargoFactor>0</StartingCargoFactor>
+    <MaxCargoFactor>1</MaxCargoFactor>
+    <AutoNav>0</AutoNav>
+    <Sensor>0</Sensor>
+    <SeatingList>
+      <Seating>
+        <SeatingType>Bucket</SeatingType>
+        <SeatingCount>1</SeatingCount>
+      </Seating>
+      <EntryPointList>
+        <EntryPoint>
+          <EntryPointType>Open</EntryPointType>
+          <EntryPointCount>0</EntryPointCount>
+        </EntryPoint>
+      </EntryPointList>
+    </SeatingList>
+    <DesignPoints>30</DesignPoints>
+  </Chassis>
+</ChassisList>
