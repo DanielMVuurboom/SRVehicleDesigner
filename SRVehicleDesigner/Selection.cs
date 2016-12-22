@@ -18,13 +18,12 @@ namespace SRVehicleDesigner
         {
             InitializeComponent();
             _dataStore = DataStore.LoadData();
-            chassisGroupListBox.DataSource = _dataStore.ChassisGroupList;
+            chassisGroupBox.DataSource = _dataStore.ChassisGroupList;
         }
 
-        private void chassisGroupListBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void chassisGroupBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //TODO: Fix startup selection
-            chassisListBox.DataSource = _dataStore.ChassisList.Where(c => c.ChassisGroup == (ChassisGroup)chassisGroupListBox.SelectedItem).ToList();
+            chassisBox.DataSource = _dataStore.ChassisList.Where(c => c.ChassisGroup == (ChassisGroup)chassisGroupBox.SelectedItem).ToList();
         }
     }
 }

@@ -8,77 +8,87 @@ using System.Runtime.Serialization;
 namespace SRVehicleDesigner
 {
     [DataContract(Namespace = "")]
-    public enum ChassisGroup { Bikes }
+    public enum ChassisGroup {[EnumMember]Bikes, [EnumMember]Cars }
 
     [DataContract(Namespace = "")]
     public class Handling
     {
+        [DataMember(Order = 0)]
         public int Road { get; set; }
+        [DataMember(Order = 1)]
         public int OffRoad { get; set; }
     }
 
     [DataContract(Namespace = "")]
-    public enum SeatingType { Bench, Bucket, Ejection }
+    public enum SeatingType {[EnumMember]Bench, [EnumMember]Bucket, [EnumMember]Ejection }
 
     [DataContract(Namespace = "")]
     public class Seating
     {
-        [EnumMember]
+        [DataMember(Order = 0)]
         public SeatingType SeatingType;
-        [DataMember]
+        [DataMember(Order = 1)]
         public int SeatingCount { get; set; }
     }
 
     [DataContract(Namespace = "")]
-    public enum EntryPointType { Door, DoubleDoor, DoubleGate, DoubleTrunkDoor, Open, Ramp, RooftopHatch, TrunkDoor }
+    public enum EntryPointType {[EnumMember]Door, [EnumMember]DoubleDoor, [EnumMember]DoubleGate, [EnumMember]DoubleTrunkDoor, [EnumMember]Open, [EnumMember]Ramp, [EnumMember]RooftopHatch, [EnumMember]TrunkDoor }
 
     [DataContract(Namespace = "")]
     public class EntryPoint
     {
-        [EnumMember]
+        [DataMember(Order = 0)]
         public EntryPointType EntryPointType;
-        [DataMember]
+        [DataMember(Order = 1)]
         public int EntryPointCount { get; set; }
     }
 
     [DataContract(Namespace = "")]
-    public enum TakeOffProfile { NotApplicable }
+    public enum TakeOffProfile {[EnumMember]NotApplicable }
 
     [DataContract(Namespace = "")]
-    public enum Accessory { RemoteControlInterface, RiggerAdaptation }
+    public enum Accessory {[EnumMember]RemoteControlInterface, [EnumMember]RiggerAdaptation }
 
     [DataContract(Namespace = "")]
     public class Chassis
     {
-        [EnumMember]
+        [DataMember(Order = 0)]
         public ChassisGroup ChassisGroup;
-        [DataMember]
+        [DataMember(Order = 1)]
         public string Name { get; set; }
-        [DataMember]
+        [DataMember(Order = 2)]
         public Handling Handling { get; set; }
-        [DataMember]
+        [DataMember(Order = 3)]
         public int Body { get; set; }
-        [DataMember]
+        [DataMember(Order = 4)]
         public int Armor { get; set; }
-        [DataMember]
+        [DataMember(Order = 5)]
         public int StartingCargoFactor { get; set; }
-        [DataMember]
+        [DataMember(Order = 6)]
         public int MaxCargoFactor { get; set; }
-        [DataMember]
+        [DataMember(Order = 7)]
         public int AutoNav { get; set; }
-        [DataMember]
+        [DataMember(Order = 8)]
+        public int Pilot { get; set; }
+        [DataMember(Order = 9)]
         public int Sensor { get; set; }
-        [DataMember]
+        [DataMember(Order = 10)]
         public List<Seating> SeatingList { get; set; }
-        [DataMember]
+        [DataMember(Order = 11)]
         public List<EntryPoint> EntryPointList { get; set; }
-        [DataMember]
+        [DataMember(Order = 12)]
         public int SetupTime { get; set; }
-        [EnumMember]
+        [DataMember(Order = 13)]
         public TakeOffProfile TakeOffProfile;
-        [DataMember]
+        [DataMember(Order = 14)]
         public int DesignPoints { get; set; }
-        [DataMember]
+        [DataMember(Order = 15)]
         public List<Accessory> Accessories { get; set; }
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
+
 }

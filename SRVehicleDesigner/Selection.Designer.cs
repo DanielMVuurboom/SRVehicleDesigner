@@ -28,20 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.chassisGroupListBox = new System.Windows.Forms.ListBox();
             this.chassisGroupLabel = new System.Windows.Forms.Label();
             this.chassisLabel = new System.Windows.Forms.Label();
-            this.chassisListBox = new System.Windows.Forms.ListBox();
+            this.chassisGroupBox = new System.Windows.Forms.ComboBox();
+            this.chassisBox = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
-            // 
-            // chassisGroupListBox
-            // 
-            this.chassisGroupListBox.FormattingEnabled = true;
-            this.chassisGroupListBox.Location = new System.Drawing.Point(118, 12);
-            this.chassisGroupListBox.Name = "chassisGroupListBox";
-            this.chassisGroupListBox.Size = new System.Drawing.Size(120, 17);
-            this.chassisGroupListBox.TabIndex = 0;
-            this.chassisGroupListBox.SelectedIndexChanged += new System.EventHandler(this.chassisGroupListBox_SelectedIndexChanged);
             // 
             // chassisGroupLabel
             // 
@@ -57,29 +48,39 @@
             // 
             this.chassisLabel.AutoSize = true;
             this.chassisLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chassisLabel.Location = new System.Drawing.Point(24, 36);
+            this.chassisLabel.Location = new System.Drawing.Point(24, 40);
             this.chassisLabel.Name = "chassisLabel";
             this.chassisLabel.Size = new System.Drawing.Size(50, 13);
             this.chassisLabel.TabIndex = 3;
             this.chassisLabel.Text = "Chassis";
             // 
-            // chassisListBox
+            // chassisGroupBox
             // 
-            this.chassisListBox.FormattingEnabled = true;
-            this.chassisListBox.Location = new System.Drawing.Point(118, 36);
-            this.chassisListBox.Name = "chassisListBox";
-            this.chassisListBox.Size = new System.Drawing.Size(120, 17);
-            this.chassisListBox.TabIndex = 4;
+            this.chassisGroupBox.FormattingEnabled = true;
+            this.chassisGroupBox.Location = new System.Drawing.Point(119, 12);
+            this.chassisGroupBox.Name = "chassisGroupBox";
+            this.chassisGroupBox.Size = new System.Drawing.Size(121, 21);
+            this.chassisGroupBox.TabIndex = 4;
+            this.chassisGroupBox.SelectedIndexChanged += new System.EventHandler(this.chassisGroupBox_SelectedIndexChanged);
+            // 
+            // chassisBox
+            // 
+            this.chassisBox.DisplayMember = "Name";
+            this.chassisBox.FormattingEnabled = true;
+            this.chassisBox.Location = new System.Drawing.Point(119, 40);
+            this.chassisBox.Name = "chassisBox";
+            this.chassisBox.Size = new System.Drawing.Size(121, 21);
+            this.chassisBox.TabIndex = 5;
             // 
             // Selection
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 261);
-            this.Controls.Add(this.chassisListBox);
+            this.Controls.Add(this.chassisBox);
+            this.Controls.Add(this.chassisGroupBox);
             this.Controls.Add(this.chassisLabel);
             this.Controls.Add(this.chassisGroupLabel);
-            this.Controls.Add(this.chassisGroupListBox);
             this.Name = "Selection";
             this.Text = "Selection";
             this.ResumeLayout(false);
@@ -88,11 +89,10 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.ListBox chassisGroupListBox;
         private System.Windows.Forms.Label chassisGroupLabel;
         private System.Windows.Forms.Label chassisLabel;
-        private System.Windows.Forms.ListBox chassisListBox;
+        private System.Windows.Forms.ComboBox chassisGroupBox;
+        private System.Windows.Forms.ComboBox chassisBox;
     }
 }
 
