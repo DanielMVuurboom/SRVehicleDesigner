@@ -14,10 +14,15 @@ namespace SRVehicleDesigner
         public List<Chassis> ChassisList { get; private set; }
         public List<ChassisGroup> ChassisGroupList { get { return ChassisList.Select(c => c.ChassisGroup).Distinct().ToList(); } }
         public List<PowerPlant> PowerPlantList { get; private set; }
+        public List<bool> BooleanList { get; private set; }
 
         public static DataStore LoadData()
         {
             var dataStore = new DataStore();
+
+            dataStore.BooleanList = new List<bool>();
+            dataStore.BooleanList.Add(false);
+            dataStore.BooleanList.Add(true);
 
             dataStore.ChassisList = LoadXmlFile<Chassis>("Resources\\ChassisList.xml");
             dataStore.PowerPlantList = LoadXmlFile<PowerPlant>("Resources\\PowerPlantList.xml");

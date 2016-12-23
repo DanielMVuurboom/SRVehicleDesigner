@@ -19,7 +19,9 @@ namespace SRVehicleDesigner
             InitializeComponent();
             _dataStore = DataStore.LoadData();
             chassisGroupBox.DataSource = _dataStore.ChassisGroupList;
+            droneBox.DataSource = _dataStore.BooleanList;
         }
+
 
         private void chassisGroupBox_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -34,6 +36,11 @@ namespace SRVehicleDesigner
                     acr => acr.AllowedChassisGroup == chassis.ChassisGroup && 
                     (acr.AllowedChassisNameList.Contains(chassis.Name) || acr.AllowedChassisNameList.Contains("All"))
             )).ToList();
+        }
+
+        private void newVehicleButton_Click(object sender, EventArgs e)
+        {
+            var vehicle = new Vehicle((Chassis)chassisBox.SelectedItem, (PowerPlant)powerPlantBox.SelectedItem, (bool)droneBox.SelectedItem);
         }
     }
 }

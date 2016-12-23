@@ -34,6 +34,9 @@
             this.chassisBox = new System.Windows.Forms.ComboBox();
             this.powerPlantBox = new System.Windows.Forms.ComboBox();
             this.powerPlantLabel = new System.Windows.Forms.Label();
+            this.droneBox = new System.Windows.Forms.ComboBox();
+            this.droneLabel = new System.Windows.Forms.Label();
+            this.newVehicleButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // chassisGroupLabel
@@ -94,11 +97,43 @@
             this.powerPlantLabel.TabIndex = 8;
             this.powerPlantLabel.Text = "Power Plant";
             // 
+            // droneBox
+            // 
+            this.droneBox.FormattingEnabled = true;
+            this.droneBox.Location = new System.Drawing.Point(119, 96);
+            this.droneBox.Name = "droneBox";
+            this.droneBox.Size = new System.Drawing.Size(121, 21);
+            this.droneBox.TabIndex = 9;
+            // 
+            // droneLabel
+            // 
+            this.droneLabel.AutoSize = true;
+            this.droneLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.droneLabel.Location = new System.Drawing.Point(24, 96);
+            this.droneLabel.Name = "droneLabel";
+            this.droneLabel.Size = new System.Drawing.Size(41, 13);
+            this.droneLabel.TabIndex = 10;
+            this.droneLabel.Text = "Drone";
+            // 
+            // newVehicleButton
+            // 
+            this.newVehicleButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.newVehicleButton.Location = new System.Drawing.Point(119, 224);
+            this.newVehicleButton.Name = "newVehicleButton";
+            this.newVehicleButton.Size = new System.Drawing.Size(121, 23);
+            this.newVehicleButton.TabIndex = 11;
+            this.newVehicleButton.Text = "Create Vehicle";
+            this.newVehicleButton.UseVisualStyleBackColor = true;
+            this.newVehicleButton.Click += new System.EventHandler(this.newVehicleButton_Click);
+            // 
             // Selection
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.ClientSize = new System.Drawing.Size(271, 261);
+            this.Controls.Add(this.newVehicleButton);
+            this.Controls.Add(this.droneLabel);
+            this.Controls.Add(this.droneBox);
             this.Controls.Add(this.powerPlantLabel);
             this.Controls.Add(this.powerPlantBox);
             this.Controls.Add(this.chassisBox);
@@ -119,6 +154,9 @@
         private System.Windows.Forms.ComboBox chassisBox;
         private System.Windows.Forms.ComboBox powerPlantBox;
         private System.Windows.Forms.Label powerPlantLabel;
+        private System.Windows.Forms.ComboBox droneBox;
+        private System.Windows.Forms.Label droneLabel;
+        private System.Windows.Forms.Button newVehicleButton;
     }
 }
 

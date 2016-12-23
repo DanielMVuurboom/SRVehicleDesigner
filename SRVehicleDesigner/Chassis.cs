@@ -11,15 +11,6 @@ namespace SRVehicleDesigner
     public enum ChassisGroup {[EnumMember]Bikes, [EnumMember]Cars }
 
     [DataContract(Namespace = "")]
-    public class Handling
-    {
-        [DataMember(Order = 0)]
-        public int Road { get; private set; }
-        [DataMember(Order = 1)]
-        public int OffRoad { get; private set; }
-    }
-
-    [DataContract(Namespace = "")]
     public enum SeatingType {[EnumMember]Bench, [EnumMember]Bucket, [EnumMember]Ejection }
 
     [DataContract(Namespace = "")]
@@ -57,33 +48,35 @@ namespace SRVehicleDesigner
         [DataMember(Order = 1)]
         public string Name { get; private set; }
         [DataMember(Order = 2)]
-        public Handling Handling { get; private set; }
+        public int RoadHandling { get; private set; }
         [DataMember(Order = 3)]
-        public int Body { get; private set; }
+        public int OffRoadHandling { get; private set; }
         [DataMember(Order = 4)]
-        public int Armor { get; private set; }
+        public int Body { get; private set; }
         [DataMember(Order = 5)]
-        public int StartingCargoFactor { get; private set; }
+        public int Armor { get; private set; }
         [DataMember(Order = 6)]
-        public int MaxCargoFactor { get; private set; }
+        public int CargoFactorBase { get; private set; }
         [DataMember(Order = 7)]
-        public int AutoNav { get; private set; }
+        public int CargoFactorMax { get; private set; }
         [DataMember(Order = 8)]
-        public int Pilot { get; private set; }
+        public int AutoNav { get; private set; }
         [DataMember(Order = 9)]
-        public int Sensor { get; private set; }
+        public int Pilot { get; private set; }
         [DataMember(Order = 10)]
-        public List<Seating> SeatingList { get; private set; }
+        public int Sensor { get; private set; }
         [DataMember(Order = 11)]
-        public List<EntryPoint> EntryPointList { get; private set; }
+        public List<Seating> SeatingList { get; private set; }
         [DataMember(Order = 12)]
-        public int SetupTime { get; private set; }
+        public List<EntryPoint> EntryPointList { get; private set; }
         [DataMember(Order = 13)]
-        public TakeOffProfile TakeOffProfile;
+        public int SetupTime { get; private set; }
         [DataMember(Order = 14)]
-        public int DesignPoints { get; private set; }
+        public TakeOffProfile TakeOffProfile;
         [DataMember(Order = 15)]
-        public List<Accessory> Accessories { get; private set; }
+        public int DesignPoints { get; private set; }
+        [DataMember(Order = 16)]
+        public List<Accessory> AccessoryList { get; private set; }
 
         public override string ToString()
         {
