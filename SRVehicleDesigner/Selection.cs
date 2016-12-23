@@ -25,5 +25,15 @@ namespace SRVehicleDesigner
         {
             chassisBox.DataSource = _dataStore.ChassisList.Where(c => c.ChassisGroup == (ChassisGroup)chassisGroupBox.SelectedItem).ToList();
         }
+
+        private void chassisBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var chassis = (Chassis)chassisBox.SelectedItem;
+            powerPlantBox.DataSource = _dataStore.PowerPlantList.Where(
+                pp => pp.AllowedChassisRuleList.Any(
+                    acr => acr.AllowedChassisGroup == chassis.ChassisGroup && 
+                    (acr.AllowedChassisNameList.Contains(chassis.Name) || acr.AllowedChassisNameList.Contains("All"))
+            )).ToList();
+        }
     }
 }

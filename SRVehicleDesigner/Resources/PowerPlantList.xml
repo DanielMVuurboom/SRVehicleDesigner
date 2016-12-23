@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ArrayOfPowerPlant>
+  <PowerPlant>
+    <Type>Electric</Type>
+    <AllowedChassisRuleList>
+      <AllowedChassisRule>
+        <AllowedChassisGroup>Bikes</AllowedChassisGroup>
+        <AllowedChassisNameList>
+          <AllowedChassisName>All</AllowedChassisName>
+        </AllowedChassisNameList>
+      </AllowedChassisRule>
+    </AllowedChassisRuleList>
+    <SpeedBase>60</SpeedBase>
+    <SpeedMax>90</SpeedMax>
+    <AccelBase>3</AccelBase>
+    <AccelMax>6</AccelMax>
+    <LoadBase>15</LoadBase>
+    <LoadMax>40</LoadMax>
+    <Sig>5</Sig>
+    <EconomyBase>0.5</EconomyBase>
+    <EconomyMax>2</EconomyMax>
+    <EconomyUnit>km/PF</EconomyUnit>
+    <FuelSizeBase>75</FuelSizeBase>
+    <FuelSizeUnit>PF</FuelSizeUnit>
+    <DesignPoints>5</DesignPoints>
+  </PowerPlant>
+</ArrayOfPowerPlant>

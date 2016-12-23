@@ -32,6 +32,8 @@
             this.chassisLabel = new System.Windows.Forms.Label();
             this.chassisGroupBox = new System.Windows.Forms.ComboBox();
             this.chassisBox = new System.Windows.Forms.ComboBox();
+            this.powerPlantBox = new System.Windows.Forms.ComboBox();
+            this.powerPlantLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // chassisGroupLabel
@@ -71,12 +73,34 @@
             this.chassisBox.Name = "chassisBox";
             this.chassisBox.Size = new System.Drawing.Size(121, 21);
             this.chassisBox.TabIndex = 5;
+            this.chassisBox.SelectedIndexChanged += new System.EventHandler(this.chassisBox_SelectedIndexChanged);
+            // 
+            // powerPlantBox
+            // 
+            this.powerPlantBox.DisplayMember = "Type";
+            this.powerPlantBox.FormattingEnabled = true;
+            this.powerPlantBox.Location = new System.Drawing.Point(119, 68);
+            this.powerPlantBox.Name = "powerPlantBox";
+            this.powerPlantBox.Size = new System.Drawing.Size(121, 21);
+            this.powerPlantBox.TabIndex = 6;
+            // 
+            // powerPlantLabel
+            // 
+            this.powerPlantLabel.AutoSize = true;
+            this.powerPlantLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.powerPlantLabel.Location = new System.Drawing.Point(24, 68);
+            this.powerPlantLabel.Name = "powerPlantLabel";
+            this.powerPlantLabel.Size = new System.Drawing.Size(75, 13);
+            this.powerPlantLabel.TabIndex = 8;
+            this.powerPlantLabel.Text = "Power Plant";
             // 
             // Selection
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Controls.Add(this.powerPlantLabel);
+            this.Controls.Add(this.powerPlantBox);
             this.Controls.Add(this.chassisBox);
             this.Controls.Add(this.chassisGroupBox);
             this.Controls.Add(this.chassisLabel);
@@ -93,6 +117,8 @@
         private System.Windows.Forms.Label chassisLabel;
         private System.Windows.Forms.ComboBox chassisGroupBox;
         private System.Windows.Forms.ComboBox chassisBox;
+        private System.Windows.Forms.ComboBox powerPlantBox;
+        private System.Windows.Forms.Label powerPlantLabel;
     }
 }
 

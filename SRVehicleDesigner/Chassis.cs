@@ -14,9 +14,9 @@ namespace SRVehicleDesigner
     public class Handling
     {
         [DataMember(Order = 0)]
-        public int Road { get; set; }
+        public int Road { get; private set; }
         [DataMember(Order = 1)]
-        public int OffRoad { get; set; }
+        public int OffRoad { get; private set; }
     }
 
     [DataContract(Namespace = "")]
@@ -28,7 +28,7 @@ namespace SRVehicleDesigner
         [DataMember(Order = 0)]
         public SeatingType SeatingType;
         [DataMember(Order = 1)]
-        public int SeatingCount { get; set; }
+        public int SeatingCount { get; private set; }
     }
 
     [DataContract(Namespace = "")]
@@ -40,7 +40,7 @@ namespace SRVehicleDesigner
         [DataMember(Order = 0)]
         public EntryPointType EntryPointType;
         [DataMember(Order = 1)]
-        public int EntryPointCount { get; set; }
+        public int EntryPointCount { get; private set; }
     }
 
     [DataContract(Namespace = "")]
@@ -55,35 +55,35 @@ namespace SRVehicleDesigner
         [DataMember(Order = 0)]
         public ChassisGroup ChassisGroup;
         [DataMember(Order = 1)]
-        public string Name { get; set; }
+        public string Name { get; private set; }
         [DataMember(Order = 2)]
-        public Handling Handling { get; set; }
+        public Handling Handling { get; private set; }
         [DataMember(Order = 3)]
-        public int Body { get; set; }
+        public int Body { get; private set; }
         [DataMember(Order = 4)]
-        public int Armor { get; set; }
+        public int Armor { get; private set; }
         [DataMember(Order = 5)]
-        public int StartingCargoFactor { get; set; }
+        public int StartingCargoFactor { get; private set; }
         [DataMember(Order = 6)]
-        public int MaxCargoFactor { get; set; }
+        public int MaxCargoFactor { get; private set; }
         [DataMember(Order = 7)]
-        public int AutoNav { get; set; }
+        public int AutoNav { get; private set; }
         [DataMember(Order = 8)]
-        public int Pilot { get; set; }
+        public int Pilot { get; private set; }
         [DataMember(Order = 9)]
-        public int Sensor { get; set; }
+        public int Sensor { get; private set; }
         [DataMember(Order = 10)]
-        public List<Seating> SeatingList { get; set; }
+        public List<Seating> SeatingList { get; private set; }
         [DataMember(Order = 11)]
-        public List<EntryPoint> EntryPointList { get; set; }
+        public List<EntryPoint> EntryPointList { get; private set; }
         [DataMember(Order = 12)]
-        public int SetupTime { get; set; }
+        public int SetupTime { get; private set; }
         [DataMember(Order = 13)]
         public TakeOffProfile TakeOffProfile;
         [DataMember(Order = 14)]
-        public int DesignPoints { get; set; }
+        public int DesignPoints { get; private set; }
         [DataMember(Order = 15)]
-        public List<Accessory> Accessories { get; set; }
+        public List<Accessory> Accessories { get; private set; }
 
         public override string ToString()
         {
