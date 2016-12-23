@@ -8,12 +8,12 @@ namespace SRVehicleDesigner
 {
     public class Vehicle
     {
-        private Chassis _baseChassis;
-        private PowerPlant _basePowerPlant;
+        public Chassis BaseChassis { get; private set; }
+        public PowerPlant BasePowerPlant { get; private set; }
 
-        public ChassisGroup ChassisGroup => _baseChassis.ChassisGroup;
-        public string Chassis => _baseChassis.Name;
-        public string PowerPlant => _basePowerPlant.Type;
+        public ChassisGroup ChassisGroup => BaseChassis.ChassisGroup;
+        public string Chassis => BaseChassis.Name;
+        public string PowerPlant => BasePowerPlant.Type;
         public bool Drone { get; private set; }
         public string Name { get; set; }
 
@@ -27,9 +27,9 @@ namespace SRVehicleDesigner
         public int Speed { get; private set; }
         public int Accel { get; private set; }
         public double Economy { get; private set; }
-        public string EconomyUnit => _basePowerPlant.EconomyUnit;
+        public string EconomyUnit => BasePowerPlant.EconomyUnit;
         public int FuelSize { get; private set; }
-        public string FuelSizeUnit => _basePowerPlant.FuelSizeUnit;
+        public string FuelSizeUnit => BasePowerPlant.FuelSizeUnit;
 
         public int AutoNav { get; private set; }
         public int Pilot { get; private set; }
@@ -37,7 +37,7 @@ namespace SRVehicleDesigner
         public int Sig { get; private set; }
 
         public int SetupTime { get; private set; }
-        public TakeOffProfile TakeOffProfile => _baseChassis.TakeOffProfile;
+        public TakeOffProfile TakeOffProfile => BaseChassis.TakeOffProfile;
 
         public List<Seating> SeatingList { get; private set; }
         public List<EntryPoint> EntryPointList { get; private set; }
@@ -49,36 +49,36 @@ namespace SRVehicleDesigner
 
         public Vehicle(Chassis chassis, PowerPlant powerPlant, bool drone)
         {
-            _baseChassis = chassis;
-            _basePowerPlant = powerPlant;
+            BaseChassis = chassis;
+            BasePowerPlant = powerPlant;
             Drone = drone;
 
             Name = "Unnamed " + Chassis;
 
-            Body = _baseChassis.Body;
-            Armor = _baseChassis.Armor;
-            CargoFactor = _baseChassis.CargoFactorBase;
-            Load = _basePowerPlant.LoadBase;
+            Body = BaseChassis.Body;
+            Armor = BaseChassis.Armor;
+            CargoFactor = BaseChassis.CargoFactorBase;
+            Load = BasePowerPlant.LoadBase;
 
-            RoadHandling = _baseChassis.RoadHandling;
-            OffRoadHandling = _baseChassis.OffRoadHandling;
-            Speed = _basePowerPlant.SpeedBase;
-            Accel = _basePowerPlant.AccelBase;
-            Economy = _basePowerPlant.EconomyBase;
-            FuelSize = _basePowerPlant.FuelSizeBase;
+            RoadHandling = BaseChassis.RoadHandling;
+            OffRoadHandling = BaseChassis.OffRoadHandling;
+            Speed = BasePowerPlant.SpeedBase;
+            Accel = BasePowerPlant.AccelBase;
+            Economy = BasePowerPlant.EconomyBase;
+            FuelSize = BasePowerPlant.FuelSizeBase;
 
-            AutoNav = _baseChassis.AutoNav;
-            Pilot = _baseChassis.Pilot;
-            Sensor = _baseChassis.Sensor;
-            Sig = _basePowerPlant.Sig;
+            AutoNav = BaseChassis.AutoNav;
+            Pilot = BaseChassis.Pilot;
+            Sensor = BaseChassis.Sensor;
+            Sig = BasePowerPlant.Sig;
 
-            SetupTime = _baseChassis.SetupTime;
+            SetupTime = BaseChassis.SetupTime;
 
-            SeatingList = new List<Seating>(_baseChassis.SeatingList);
-            EntryPointList = new List<EntryPoint>(_baseChassis.EntryPointList);
-            AccessoryList = new List<Accessory>(_baseChassis.AccessoryList);
+            SeatingList = new List<Seating>(BaseChassis.SeatingList);
+            EntryPointList = new List<EntryPoint>(BaseChassis.EntryPointList);
+            AccessoryList = new List<Accessory>(BaseChassis.AccessoryList);
 
-            DesignPoints = _baseChassis.DesignPoints + _basePowerPlant.DesignPoints;
+            DesignPoints = BaseChassis.DesignPoints + BasePowerPlant.DesignPoints;
             DesignMultiplier = CalculateDesignMultiplier();
         }
 
