@@ -48,25 +48,25 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BLL\Handling.cs" />
-    <Compile Include="Chassis.cs" />
-    <Compile Include="DataStore.cs" />
-    <Compile Include="Modification.cs">
+    <Compile Include="DAL\Chassis.cs" />
+    <Compile Include="DAL\DataStore.cs" />
+    <Compile Include="View\Modification.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Modification.Designer.cs">
+    <Compile Include="View\Modification.Designer.cs">
       <DependentUpon>Modification.cs</DependentUpon>
     </Compile>
-    <Compile Include="PowerPlant.cs" />
-    <Compile Include="Selection.cs">
+    <Compile Include="DAL\PowerPlant.cs" />
+    <Compile Include="View\Selection.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Selection.Designer.cs">
+    <Compile Include="View\Selection.Designer.cs">
       <DependentUpon>Selection.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Vehicle.cs" />
-    <EmbeddedResource Include="Modification.resx">
+    <Compile Include="DAL\Vehicle.cs" />
+    <EmbeddedResource Include="View\Modification.resx">
       <DependentUpon>Modification.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -79,7 +79,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Selection.resx">
+    <EmbeddedResource Include="View\Selection.resx">
       <DependentUpon>Selection.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\DataSources\DataStore.datasource" />
