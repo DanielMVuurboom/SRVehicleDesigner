@@ -49,6 +49,12 @@
   <ItemGroup>
     <Compile Include="Chassis.cs" />
     <Compile Include="DataStore.cs" />
+    <Compile Include="Modification.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modification.Designer.cs">
+      <DependentUpon>Modification.cs</DependentUpon>
+    </Compile>
     <Compile Include="PowerPlant.cs" />
     <Compile Include="Selection.cs">
       <SubType>Form</SubType>
