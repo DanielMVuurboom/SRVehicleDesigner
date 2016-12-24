@@ -77,7 +77,7 @@
             // 
             // fuelSizeBox
             // 
-            this.fuelSizeBox.Location = new System.Drawing.Point(520, 33);
+            this.fuelSizeBox.Location = new System.Drawing.Point(520, 36);
             this.fuelSizeBox.Name = "fuelSizeBox";
             this.fuelSizeBox.Size = new System.Drawing.Size(77, 20);
             this.fuelSizeBox.TabIndex = 12;
@@ -88,7 +88,7 @@
             // 
             this.fuelSizeLabel.AutoSize = true;
             this.fuelSizeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fuelSizeLabel.Location = new System.Drawing.Point(517, 17);
+            this.fuelSizeLabel.Location = new System.Drawing.Point(517, 20);
             this.fuelSizeLabel.Name = "fuelSizeLabel";
             this.fuelSizeLabel.Size = new System.Drawing.Size(27, 13);
             this.fuelSizeLabel.TabIndex = 11;
@@ -96,7 +96,7 @@
             // 
             // economyBox
             // 
-            this.economyBox.Location = new System.Drawing.Point(416, 33);
+            this.economyBox.Location = new System.Drawing.Point(416, 36);
             this.economyBox.Name = "economyBox";
             this.economyBox.Size = new System.Drawing.Size(77, 20);
             this.economyBox.TabIndex = 10;
@@ -107,7 +107,7 @@
             // 
             this.economyLabel.AutoSize = true;
             this.economyLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.economyLabel.Location = new System.Drawing.Point(413, 17);
+            this.economyLabel.Location = new System.Drawing.Point(413, 20);
             this.economyLabel.Name = "economyLabel";
             this.economyLabel.Size = new System.Drawing.Size(51, 13);
             this.economyLabel.TabIndex = 9;
@@ -115,7 +115,7 @@
             // 
             // accelBox
             // 
-            this.accelBox.Location = new System.Drawing.Point(314, 33);
+            this.accelBox.Location = new System.Drawing.Point(314, 36);
             this.accelBox.Name = "accelBox";
             this.accelBox.Size = new System.Drawing.Size(77, 20);
             this.accelBox.TabIndex = 8;
@@ -126,7 +126,7 @@
             // 
             this.accelLabel.AutoSize = true;
             this.accelLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.accelLabel.Location = new System.Drawing.Point(311, 17);
+            this.accelLabel.Location = new System.Drawing.Point(311, 20);
             this.accelLabel.Name = "accelLabel";
             this.accelLabel.Size = new System.Drawing.Size(34, 13);
             this.accelLabel.TabIndex = 7;
@@ -134,7 +134,7 @@
             // 
             // speedBox
             // 
-            this.speedBox.Location = new System.Drawing.Point(212, 33);
+            this.speedBox.Location = new System.Drawing.Point(212, 36);
             this.speedBox.Name = "speedBox";
             this.speedBox.Size = new System.Drawing.Size(77, 20);
             this.speedBox.TabIndex = 5;
@@ -145,7 +145,7 @@
             // 
             this.speedLabel.AutoSize = true;
             this.speedLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.speedLabel.Location = new System.Drawing.Point(209, 17);
+            this.speedLabel.Location = new System.Drawing.Point(209, 20);
             this.speedLabel.Name = "speedLabel";
             this.speedLabel.Size = new System.Drawing.Size(38, 13);
             this.speedLabel.TabIndex = 4;
@@ -155,7 +155,7 @@
             // 
             this.handlingOffRoadLabel.AutoSize = true;
             this.handlingOffRoadLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.handlingOffRoadLabel.Location = new System.Drawing.Point(105, 16);
+            this.handlingOffRoadLabel.Location = new System.Drawing.Point(105, 19);
             this.handlingOffRoadLabel.Name = "handlingOffRoadLabel";
             this.handlingOffRoadLabel.Size = new System.Drawing.Size(50, 13);
             this.handlingOffRoadLabel.TabIndex = 6;
@@ -164,7 +164,7 @@
             // handlingOffRoadBox
             // 
             this.handlingOffRoadBox.FormattingEnabled = true;
-            this.handlingOffRoadBox.Location = new System.Drawing.Point(108, 32);
+            this.handlingOffRoadBox.Location = new System.Drawing.Point(108, 35);
             this.handlingOffRoadBox.Name = "handlingOffRoadBox";
             this.handlingOffRoadBox.Size = new System.Drawing.Size(77, 21);
             this.handlingOffRoadBox.TabIndex = 5;
@@ -174,7 +174,7 @@
             // 
             this.handlingRoadLabel.AutoSize = true;
             this.handlingRoadLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.handlingRoadLabel.Location = new System.Drawing.Point(3, 16);
+            this.handlingRoadLabel.Location = new System.Drawing.Point(3, 19);
             this.handlingRoadLabel.Name = "handlingRoadLabel";
             this.handlingRoadLabel.Size = new System.Drawing.Size(49, 13);
             this.handlingRoadLabel.TabIndex = 4;
@@ -183,7 +183,7 @@
             // handlingRoadBox
             // 
             this.handlingRoadBox.FormattingEnabled = true;
-            this.handlingRoadBox.Location = new System.Drawing.Point(6, 32);
+            this.handlingRoadBox.Location = new System.Drawing.Point(6, 35);
             this.handlingRoadBox.Name = "handlingRoadBox";
             this.handlingRoadBox.Size = new System.Drawing.Size(77, 21);
             this.handlingRoadBox.TabIndex = 3;

@@ -27,7 +27,7 @@ namespace SRVehicleDesigner
         public int OffRoadHandling { get; private set; }
         public int Speed { get; private set; }
         public int Accel { get; private set; }
-        public double Economy { get; private set; }
+        public decimal Economy { get; private set; }
         public string EconomyUnit => BasePowerPlant.EconomyUnit;
         public int FuelSize { get; private set; }
         public string FuelSizeUnit => BasePowerPlant.FuelSizeUnit;
@@ -85,13 +85,13 @@ namespace SRVehicleDesigner
 
         internal void SetRoadHandling(int score)
         {
-            DesignPoints += Handling.GetDesignPointCost(score - RoadHandling);
+            DesignPoints += EngineRules.GetHandlingDesignPointCost(score - RoadHandling);
             RoadHandling = score;
         }
 
         internal void SetOffRoadHandling(int score)
         {
-            DesignPoints += Handling.GetDesignPointCost(score - OffRoadHandling);
+            DesignPoints += EngineRules.GetHandlingDesignPointCost(score - OffRoadHandling);
             OffRoadHandling = score;
         }
 
@@ -107,5 +107,11 @@ namespace SRVehicleDesigner
             Accel = score;
         }
 
+        internal void SetEconomy(string score)
+        {
+            var rounded = EngineRules.GetRoundedEconomy(score, BasePowerPlant.EconomyBase);
+            DesignPoints += EngineRules.GetEconomyDesignPointCost(rounded - Economy, BasePowerPlant.EconomyBase);
+            Economy = rounded;
+        }
     }
 }

@@ -48,7 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BLL\CostCalculation.cs" />
-    <Compile Include="BLL\Handling.cs" />
+    <Compile Include="BLL\EngineRules.cs" />
     <Compile Include="DAL\Chassis.cs" />
     <Compile Include="DAL\DataStore.cs" />
     <Compile Include="View\Modification.cs">

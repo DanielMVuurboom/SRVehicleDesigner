@@ -20,8 +20,8 @@ namespace SRVehicleDesigner
             InitializeComponent();
             _vehicle = vehicle;
 
-            handlingRoadBox.DataSource = Handling.GetValidHandlingOptions(_vehicle.BaseChassis.RoadHandling);
-            handlingOffRoadBox.DataSource = Handling.GetValidHandlingOptions(_vehicle.BaseChassis.OffRoadHandling);
+            handlingRoadBox.DataSource = EngineRules.GetValidHandlingOptions(_vehicle.BaseChassis.RoadHandling);
+            handlingOffRoadBox.DataSource = EngineRules.GetValidHandlingOptions(_vehicle.BaseChassis.OffRoadHandling);
             economyLabel.Text = $"{economyLabel.Text} ({_vehicle.EconomyUnit})";
             fuelSizeLabel.Text = $"{fuelSizeLabel.Text} ({_vehicle.FuelSizeUnit})";
         }
@@ -36,7 +36,7 @@ namespace SRVehicleDesigner
             handlingOffRoadBox.SelectedItem = ((List<int>)handlingOffRoadBox.DataSource).First(i => i == _vehicle.OffRoadHandling);
             speedBox.Text = _vehicle.Speed.ToString();
             accelBox.Text = _vehicle.Accel.ToString();
-            economyBox.Text = _vehicle.Economy.ToString();
+            economyBox.Text = string.Format("{0:0.00}", _vehicle.Economy);
             fuelSizeBox.Text = _vehicle.FuelSize.ToString();
         }
 
@@ -96,12 +96,21 @@ namespace SRVehicleDesigner
 
         private void economyBox_Validating(object sender, CancelEventArgs e)
         {
+            decimal value;
+            var valid = decimal.TryParse(economyBox.Text, out value);
+            if (!valid || _vehicle.BasePowerPlant.EconomyBase > value || value > _vehicle.BasePowerPlant.EconomyMax)
+            {
+                e.Cancel = true;
+                errorProvider.SetError(economyBox, $"Economy should be between {_vehicle.BasePowerPlant.EconomyBase} and {_vehicle.BasePowerPlant.EconomyMax}");
+            }
 
         }
 
         private void economyBox_Validated(object sender, EventArgs e)
         {
-
+            errorProvider.SetError(economyBox, string.Empty);
+            _vehicle.SetEconomy(economyBox.Text);
+            Invalidate();
         }
 
         private void fuelSizeBox_Validating(object sender, CancelEventArgs e)

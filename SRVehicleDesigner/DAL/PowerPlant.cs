@@ -41,9 +41,9 @@ namespace SRVehicleDesigner
         [DataMember(Order = 8)]
         public int Sig { get; private set; }
         [DataMember(Order = 9)]
-        public double EconomyBase { get; private set; }
+        public decimal EconomyBase { get; private set; }
         [DataMember(Order = 10)]
-        public double EconomyMax { get; private set; }
+        public decimal EconomyMax { get; private set; }
         [DataMember(Order = 11)]
         public string EconomyUnit { get; private set; }
         [DataMember(Order = 12)]
