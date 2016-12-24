@@ -24,4 +24,55 @@
     <FuelSizeUnit>PF</FuelSizeUnit>
     <DesignPoints>5</DesignPoints>
   </PowerPlant>
+  <PowerPlant>
+    <Type>Electric</Type>
+    <AllowedChassisRuleList>
+      <AllowedChassisRule>
+        <AllowedChassisGroup>Cars</AllowedChassisGroup>
+        <AllowedChassisNameList>
+          <AllowedChassisName>Subcompact</AllowedChassisName>
+          <AllowedChassisName>Sand Buggy</AllowedChassisName>
+          <AllowedChassisName>Sedan</AllowedChassisName>
+          <AllowedChassisName>Limousine</AllowedChassisName>
+        </AllowedChassisNameList>
+      </AllowedChassisRule>
+    </AllowedChassisRuleList>
+    <SpeedBase>75</SpeedBase>
+    <SpeedMax>100</SpeedMax>
+    <AccelBase>4</AccelBase>
+    <AccelMax>9</AccelMax>
+    <LoadBase>40</LoadBase>
+    <LoadMax>160</LoadMax>
+    <Sig>5</Sig>
+    <EconomyBase>0.5</EconomyBase>
+    <EconomyMax>2.5</EconomyMax>
+    <EconomyUnit>km/PF</EconomyUnit>
+    <FuelSizeBase>150</FuelSizeBase>
+    <FuelSizeUnit>PF</FuelSizeUnit>
+    <DesignPoints>10</DesignPoints>
+  </PowerPlant>
+  <PowerPlant>
+    <Type>Methane</Type>
+    <AllowedChassisRuleList>
+      <AllowedChassisRule>
+        <AllowedChassisGroup>Bikes</AllowedChassisGroup>
+        <AllowedChassisNameList>
+          <AllowedChassisName>All</AllowedChassisName>
+        </AllowedChassisNameList>
+      </AllowedChassisRule>
+    </AllowedChassisRuleList>
+    <SpeedBase>40</SpeedBase>
+    <SpeedMax>90</SpeedMax>
+    <AccelBase>4</AccelBase>
+    <AccelMax>9</AccelMax>
+    <LoadBase>60</LoadBase>
+    <LoadMax>120</LoadMax>
+    <Sig>4</Sig>
+    <EconomyBase>1.25</EconomyBase>
+    <EconomyMax>2</EconomyMax>
+    <EconomyUnit>km/bar</EconomyUnit>
+    <FuelSizeBase>300</FuelSizeBase>
+    <FuelSizeUnit>bar</FuelSizeUnit>
+    <DesignPoints>5</DesignPoints>
+  </PowerPlant>
 </ArrayOfPowerPlant>

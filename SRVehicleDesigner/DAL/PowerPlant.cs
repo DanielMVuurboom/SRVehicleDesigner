@@ -20,10 +20,28 @@ namespace SRVehicleDesigner
     public class AllowedChassisNameList : List<string> { }
 
     [DataContract(Namespace = "")]
-    public class PowerPlant
+    public enum PowerPlantType {[EnumMember]Electric, [EnumMember]Methane, [EnumMember]Gas, [EnumMember]Diesel, [EnumMember]Jet }
+
+    [DataContract(Namespace = "")]
+    public class FuelTank
     {
         [DataMember(Order = 0)]
-        public string Type { get; private set; }
+        public PowerPlantType PowerPlantType { get; private set; }
+        [DataMember(Order = 1)]
+        public int CapacityIncreaseQuantum { get; private set; }
+        [DataMember(Order = 2)]
+        public int DesignPointCost { get; private set; }
+        [DataMember(Order = 3)]
+        public decimal CargoFactorReduction { get; private set; }
+    }
+
+    [DataContract(Namespace = "")]
+    public class PowerPlant
+    {
+        public static List<FuelTank> FuelTankList;
+
+        [DataMember(Order = 0)]
+        public PowerPlantType Type { get; private set; }
         [DataMember(Order = 1)]
         public List<AllowedChassisRule> AllowedChassisRuleList { get; private set; }
         [DataMember(Order = 2)]
@@ -35,9 +53,9 @@ namespace SRVehicleDesigner
         [DataMember(Order = 5)]
         public int AccelMax { get; private set; }
         [DataMember(Order = 6)]
-        public decimal LoadBase { get; private set; }
+        public int LoadBase { get; private set; }
         [DataMember(Order = 7)]
-        public decimal LoadMax { get; private set; }
+        public int LoadMax { get; private set; }
         [DataMember(Order = 8)]
         public int Sig { get; private set; }
         [DataMember(Order = 9)]
@@ -53,9 +71,11 @@ namespace SRVehicleDesigner
         [DataMember(Order = 14)]
         public int DesignPoints { get; private set; }
 
+        public FuelTank Fueltank => FuelTankList.First(ft => ft.PowerPlantType == Type);
+
         public override string ToString()
         {
-            return Type;
+            return Type.ToString();
         }
     }
 }

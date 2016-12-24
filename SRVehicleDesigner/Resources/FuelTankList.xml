@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ArrayOfFuelTank>
+  <FuelTank>
+    <PowerPlantType>Electric</PowerPlantType>
+    <CapacityIncreaseQuantum>5</CapacityIncreaseQuantum>
+    <DesignPointCost>2</DesignPointCost>
+    <CargoFactorReduction>0</CargoFactorReduction>
+  </FuelTank>
+  <FuelTank>
+    <PowerPlantType>Methane</PowerPlantType>
+    <CapacityIncreaseQuantum>5</CapacityIncreaseQuantum>
+    <DesignPointCost>2</DesignPointCost>
+    <CargoFactorReduction>0.5</CargoFactorReduction>
+  </FuelTank>
+  <FuelTank>
+    <PowerPlantType>Gas</PowerPlantType>
+    <CapacityIncreaseQuantum>1</CapacityIncreaseQuantum>
+    <DesignPointCost>2</DesignPointCost>
+    <CargoFactorReduction>0.02</CargoFactorReduction>
+  </FuelTank>
+  <FuelTank>
+    <PowerPlantType>Diesel</PowerPlantType>
+    <CapacityIncreaseQuantum>1</CapacityIncreaseQuantum>
+    <DesignPointCost>2</DesignPointCost>
+    <CargoFactorReduction>0.02</CargoFactorReduction>
+  </FuelTank>
+  <FuelTank>
+    <PowerPlantType>Jet</PowerPlantType>
+    <CapacityIncreaseQuantum>10</CapacityIncreaseQuantum>
+    <DesignPointCost>1</DesignPointCost>
+    <CargoFactorReduction>0.2</CargoFactorReduction>
+  </FuelTank>
+</ArrayOfFuelTank>

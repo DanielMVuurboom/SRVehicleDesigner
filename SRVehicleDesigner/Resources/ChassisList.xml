@@ -142,6 +142,34 @@
   </Chassis>
   <Chassis>
     <ChassisGroup>Cars</ChassisGroup>
+    <Name>Subcompact</Name>
+    <RoadHandling>4</RoadHandling>
+    <OffRoadHandling>8</OffRoadHandling>
+    <Body>3</Body>
+    <Armor>0</Armor>
+    <CargoFactorBase>1</CargoFactorBase>
+    <CargoFactorMax>16</CargoFactorMax>
+    <AutoNav>0</AutoNav>
+    <Pilot>0</Pilot>
+    <Sensor>0</Sensor>
+    <SeatingList>
+      <Seating>
+        <SeatingType>Bucket</SeatingType>
+        <SeatingCount>1</SeatingCount>
+      </Seating>
+    </SeatingList>
+    <EntryPointList>
+      <EntryPoint>
+        <EntryPointType>Door</EntryPointType>
+        <EntryPointCount>1</EntryPointCount>
+      </EntryPoint>
+    </EntryPointList>
+    <TakeOffProfile>NotApplicable</TakeOffProfile>
+    <DesignPoints>30</DesignPoints>
+    <AccessoryList></AccessoryList>
+  </Chassis>
+  <Chassis>
+    <ChassisGroup>Cars</ChassisGroup>
     <Name>Sedan</Name>
     <RoadHandling>4</RoadHandling>
     <OffRoadHandling>8</OffRoadHandling>

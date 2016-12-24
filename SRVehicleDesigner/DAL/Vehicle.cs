@@ -15,14 +15,16 @@ namespace SRVehicleDesigner
 
         public ChassisGroup ChassisGroup => BaseChassis.ChassisGroup;
         public string Chassis => BaseChassis.Name;
-        public string PowerPlant => BasePowerPlant.Type;
+        public PowerPlantType PowerPlant => BasePowerPlant.Type;
         public bool Drone { get; private set; }
         public string Name { get; set; }
 
         public int Body { get; private set; }
         public int Armor { get; private set; }
-        public decimal CargoFactor { get; private set; }
-        public decimal Load { get; private set; }
+        public int CargoFactor { get; private set; }
+        public decimal CargoFactorFree { get; private set; }
+        public int Load { get; private set; }
+        public decimal LoadFree { get; private set; }
 
         public int RoadHandling { get; private set; }
         public int OffRoadHandling { get; private set; }
@@ -60,7 +62,9 @@ namespace SRVehicleDesigner
             Body = BaseChassis.Body;
             Armor = BaseChassis.Armor;
             CargoFactor = BaseChassis.CargoFactorBase;
+            CargoFactorFree = CargoFactor;
             Load = BasePowerPlant.LoadBase;
+            LoadFree = Load;
 
             RoadHandling = BaseChassis.RoadHandling;
             OffRoadHandling = BaseChassis.OffRoadHandling;
@@ -91,16 +95,16 @@ namespace SRVehicleDesigner
                 PropertyInfo prop = GetType().GetProperty(adjustment.AdjustmentType.ToString());
                 prop.SetValue(this, adjustment.NewValue, null);
                 DesignPoints += adjustment.DesignPointCost;
-                Load -= adjustment.LoadReduction;
-                if (Load < 0)
+                LoadFree -= adjustment.LoadReduction;
+                if (LoadFree < 0)
                 {
-                    var moreLoad = new Adjustment(this, AdjustmentType.Load, Load, 0);
+                    var moreLoad = new Adjustment(this, AdjustmentType.Load, Load, Load - LoadFree );
                     Apply(moreLoad);
                 }
-                CargoFactor -= adjustment.CargoFactorReduction;
-                if (CargoFactor < 0)
+                CargoFactorFree -= adjustment.CargoFactorReduction;
+                if (CargoFactorFree < 0)
                 {
-                    var moreCargo = new Adjustment(this, AdjustmentType.CargoFactor, CargoFactor, 0);
+                    var moreCargo = new Adjustment(this, AdjustmentType.CargoFactor, CargoFactor, CargoFactor - CargoFactorFree);
                     Apply(moreCargo);
                 }
 

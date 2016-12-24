@@ -25,6 +25,7 @@ namespace SRVehicleDesigner
             dataStore.BooleanList.Add(true);
 
             dataStore.ChassisList = LoadXmlFile<Chassis>("Resources\\ChassisList.xml");
+            PowerPlant.FuelTankList = LoadXmlFile<FuelTank>("Resources\\FuelTankList.xml");
             dataStore.PowerPlantList = LoadXmlFile<PowerPlant>("Resources\\PowerPlantList.xml");
 
             return dataStore;

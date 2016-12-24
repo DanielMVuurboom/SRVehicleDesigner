@@ -49,8 +49,22 @@
             this.costLabel = new System.Windows.Forms.Label();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.designPointLabel = new System.Windows.Forms.Label();
+            this.physicalBox = new System.Windows.Forms.GroupBox();
+            this.bodyBox = new System.Windows.Forms.TextBox();
+            this.bodyLabel = new System.Windows.Forms.Label();
+            this.armorLabel = new System.Windows.Forms.Label();
+            this.armorBox = new System.Windows.Forms.TextBox();
+            this.cargoFactorLabel = new System.Windows.Forms.Label();
+            this.cargoFactorBox = new System.Windows.Forms.TextBox();
+            this.loadLabel = new System.Windows.Forms.Label();
+            this.loadBox = new System.Windows.Forms.TextBox();
+            this.cargoFactorFreeLabel = new System.Windows.Forms.Label();
+            this.cargoFactorFreeBox = new System.Windows.Forms.TextBox();
+            this.loadFreeLabel = new System.Windows.Forms.Label();
+            this.loadFreeBox = new System.Windows.Forms.TextBox();
             this.drivingGroup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
+            this.physicalBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // drivingGroup
@@ -68,9 +82,9 @@
             this.drivingGroup.Controls.Add(this.accelBox);
             this.drivingGroup.Controls.Add(this.accelLabel);
             this.drivingGroup.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.drivingGroup.Location = new System.Drawing.Point(24, 85);
+            this.drivingGroup.Location = new System.Drawing.Point(24, 149);
             this.drivingGroup.Name = "drivingGroup";
-            this.drivingGroup.Size = new System.Drawing.Size(621, 77);
+            this.drivingGroup.Size = new System.Drawing.Size(621, 72);
             this.drivingGroup.TabIndex = 0;
             this.drivingGroup.TabStop = false;
             this.drivingGroup.Text = "Driving";
@@ -174,7 +188,7 @@
             // 
             this.handlingRoadLabel.AutoSize = true;
             this.handlingRoadLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.handlingRoadLabel.Location = new System.Drawing.Point(3, 19);
+            this.handlingRoadLabel.Location = new System.Drawing.Point(3, 16);
             this.handlingRoadLabel.Name = "handlingRoadLabel";
             this.handlingRoadLabel.Size = new System.Drawing.Size(49, 13);
             this.handlingRoadLabel.TabIndex = 4;
@@ -218,7 +232,7 @@
             // 
             this.nameLabel.AutoSize = true;
             this.nameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nameLabel.Location = new System.Drawing.Point(27, 32);
+            this.nameLabel.Location = new System.Drawing.Point(21, 20);
             this.nameLabel.Name = "nameLabel";
             this.nameLabel.Size = new System.Drawing.Size(39, 13);
             this.nameLabel.TabIndex = 3;
@@ -227,7 +241,7 @@
             // costLabel
             // 
             this.costLabel.AutoSize = true;
-            this.costLabel.Location = new System.Drawing.Point(27, 45);
+            this.costLabel.Location = new System.Drawing.Point(21, 33);
             this.costLabel.Name = "costLabel";
             this.costLabel.Size = new System.Drawing.Size(27, 13);
             this.costLabel.TabIndex = 4;
@@ -241,17 +255,142 @@
             // designPointLabel
             // 
             this.designPointLabel.AutoSize = true;
-            this.designPointLabel.Location = new System.Drawing.Point(27, 58);
+            this.designPointLabel.Location = new System.Drawing.Point(21, 46);
             this.designPointLabel.Name = "designPointLabel";
             this.designPointLabel.Size = new System.Drawing.Size(69, 13);
             this.designPointLabel.TabIndex = 5;
             this.designPointLabel.Text = "design points";
+            // 
+            // physicalBox
+            // 
+            this.physicalBox.Controls.Add(this.loadFreeLabel);
+            this.physicalBox.Controls.Add(this.loadFreeBox);
+            this.physicalBox.Controls.Add(this.cargoFactorFreeLabel);
+            this.physicalBox.Controls.Add(this.cargoFactorFreeBox);
+            this.physicalBox.Controls.Add(this.loadLabel);
+            this.physicalBox.Controls.Add(this.loadBox);
+            this.physicalBox.Controls.Add(this.cargoFactorLabel);
+            this.physicalBox.Controls.Add(this.cargoFactorBox);
+            this.physicalBox.Controls.Add(this.armorLabel);
+            this.physicalBox.Controls.Add(this.armorBox);
+            this.physicalBox.Controls.Add(this.bodyLabel);
+            this.physicalBox.Controls.Add(this.bodyBox);
+            this.physicalBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.physicalBox.Location = new System.Drawing.Point(24, 73);
+            this.physicalBox.Name = "physicalBox";
+            this.physicalBox.Size = new System.Drawing.Size(621, 70);
+            this.physicalBox.TabIndex = 6;
+            this.physicalBox.TabStop = false;
+            this.physicalBox.Text = "Physical";
+            // 
+            // bodyBox
+            // 
+            this.bodyBox.Location = new System.Drawing.Point(6, 32);
+            this.bodyBox.Name = "bodyBox";
+            this.bodyBox.Size = new System.Drawing.Size(77, 20);
+            this.bodyBox.TabIndex = 7;
+            // 
+            // bodyLabel
+            // 
+            this.bodyLabel.AutoSize = true;
+            this.bodyLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bodyLabel.Location = new System.Drawing.Point(3, 16);
+            this.bodyLabel.Name = "bodyLabel";
+            this.bodyLabel.Size = new System.Drawing.Size(31, 13);
+            this.bodyLabel.TabIndex = 7;
+            this.bodyLabel.Text = "Body";
+            // 
+            // armorLabel
+            // 
+            this.armorLabel.AutoSize = true;
+            this.armorLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.armorLabel.Location = new System.Drawing.Point(105, 16);
+            this.armorLabel.Name = "armorLabel";
+            this.armorLabel.Size = new System.Drawing.Size(34, 13);
+            this.armorLabel.TabIndex = 8;
+            this.armorLabel.Text = "Armor";
+            // 
+            // armorBox
+            // 
+            this.armorBox.Location = new System.Drawing.Point(108, 32);
+            this.armorBox.Name = "armorBox";
+            this.armorBox.Size = new System.Drawing.Size(77, 20);
+            this.armorBox.TabIndex = 9;
+            // 
+            // cargoFactorLabel
+            // 
+            this.cargoFactorLabel.AutoSize = true;
+            this.cargoFactorLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cargoFactorLabel.Location = new System.Drawing.Point(209, 16);
+            this.cargoFactorLabel.Name = "cargoFactorLabel";
+            this.cargoFactorLabel.Size = new System.Drawing.Size(68, 13);
+            this.cargoFactorLabel.TabIndex = 10;
+            this.cargoFactorLabel.Text = "Cargo Factor";
+            // 
+            // cargoFactorBox
+            // 
+            this.cargoFactorBox.Location = new System.Drawing.Point(212, 32);
+            this.cargoFactorBox.Name = "cargoFactorBox";
+            this.cargoFactorBox.Size = new System.Drawing.Size(77, 20);
+            this.cargoFactorBox.TabIndex = 11;
+            // 
+            // loadLabel
+            // 
+            this.loadLabel.AutoSize = true;
+            this.loadLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.loadLabel.Location = new System.Drawing.Point(413, 16);
+            this.loadLabel.Name = "loadLabel";
+            this.loadLabel.Size = new System.Drawing.Size(31, 13);
+            this.loadLabel.TabIndex = 12;
+            this.loadLabel.Text = "Load";
+            // 
+            // loadBox
+            // 
+            this.loadBox.Location = new System.Drawing.Point(416, 32);
+            this.loadBox.Name = "loadBox";
+            this.loadBox.Size = new System.Drawing.Size(77, 20);
+            this.loadBox.TabIndex = 13;
+            // 
+            // cargoFactorFreeLabel
+            // 
+            this.cargoFactorFreeLabel.AutoSize = true;
+            this.cargoFactorFreeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cargoFactorFreeLabel.Location = new System.Drawing.Point(311, 16);
+            this.cargoFactorFreeLabel.Name = "cargoFactorFreeLabel";
+            this.cargoFactorFreeLabel.Size = new System.Drawing.Size(44, 13);
+            this.cargoFactorFreeLabel.TabIndex = 14;
+            this.cargoFactorFreeLabel.Text = "CF Free";
+            // 
+            // cargoFactorFreeBox
+            // 
+            this.cargoFactorFreeBox.Location = new System.Drawing.Point(314, 32);
+            this.cargoFactorFreeBox.Name = "cargoFactorFreeBox";
+            this.cargoFactorFreeBox.Size = new System.Drawing.Size(77, 20);
+            this.cargoFactorFreeBox.TabIndex = 15;
+            // 
+            // loadFreeLabel
+            // 
+            this.loadFreeLabel.AutoSize = true;
+            this.loadFreeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.loadFreeLabel.Location = new System.Drawing.Point(517, 16);
+            this.loadFreeLabel.Name = "loadFreeLabel";
+            this.loadFreeLabel.Size = new System.Drawing.Size(55, 13);
+            this.loadFreeLabel.TabIndex = 16;
+            this.loadFreeLabel.Text = "Load Free";
+            // 
+            // loadFreeBox
+            // 
+            this.loadFreeBox.Location = new System.Drawing.Point(520, 32);
+            this.loadFreeBox.Name = "loadFreeBox";
+            this.loadFreeBox.Size = new System.Drawing.Size(77, 20);
+            this.loadFreeBox.TabIndex = 17;
             // 
             // Modification
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(783, 374);
+            this.Controls.Add(this.physicalBox);
             this.Controls.Add(this.designPointLabel);
             this.Controls.Add(this.costLabel);
             this.Controls.Add(this.nameLabel);
@@ -265,6 +404,8 @@
             this.drivingGroup.ResumeLayout(false);
             this.drivingGroup.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
+            this.physicalBox.ResumeLayout(false);
+            this.physicalBox.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -292,5 +433,18 @@
         private System.Windows.Forms.Label costLabel;
         private System.Windows.Forms.ErrorProvider errorProvider;
         private System.Windows.Forms.Label designPointLabel;
+        private System.Windows.Forms.GroupBox physicalBox;
+        private System.Windows.Forms.Label loadLabel;
+        private System.Windows.Forms.TextBox loadBox;
+        private System.Windows.Forms.Label cargoFactorLabel;
+        private System.Windows.Forms.TextBox cargoFactorBox;
+        private System.Windows.Forms.Label armorLabel;
+        private System.Windows.Forms.TextBox armorBox;
+        private System.Windows.Forms.Label bodyLabel;
+        private System.Windows.Forms.TextBox bodyBox;
+        private System.Windows.Forms.Label loadFreeLabel;
+        private System.Windows.Forms.TextBox loadFreeBox;
+        private System.Windows.Forms.Label cargoFactorFreeLabel;
+        private System.Windows.Forms.TextBox cargoFactorFreeBox;
     }
 }

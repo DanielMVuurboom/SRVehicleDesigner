@@ -46,6 +46,8 @@ namespace SRVehicleDesigner.BLL
 
         private void Calculate()
         {
+            int increaseQuantumCount;
+
             switch (AdjustmentType)
             {
                 case AdjustmentType.RoadHandling:
@@ -60,9 +62,15 @@ namespace SRVehicleDesigner.BLL
                     break;
                 case AdjustmentType.Economy:
                     var fivePercentOfBase = _powerPlant.EconomyBase / 20;
-                    var increaseQuantumCount = (int)Math.Ceiling(((decimal)_target - (decimal)_current) / fivePercentOfBase);
+                    increaseQuantumCount = CalculateQuantumCount(fivePercentOfBase);
                     NewValue = (decimal)_current + fivePercentOfBase * increaseQuantumCount;
                     DesignPointCost = increaseQuantumCount * 5;
+                    break;
+                case AdjustmentType.FuelSize:
+                    increaseQuantumCount = CalculateQuantumCount(_powerPlant.Fueltank.CapacityIncreaseQuantum);
+                    NewValue = (int)_current + _powerPlant.Fueltank.CapacityIncreaseQuantum * increaseQuantumCount;
+                    DesignPointCost = _powerPlant.Fueltank.DesignPointCost * increaseQuantumCount;
+                    CargoFactorReduction = _powerPlant.Fueltank.CargoFactorReduction * increaseQuantumCount;
                     break;
                 default:
                     throw new NotImplementedException();
@@ -88,6 +96,9 @@ namespace SRVehicleDesigner.BLL
                 case AdjustmentType.Economy:
                     IsValid = (_current is decimal && _target is decimal && ValidateBetween(_powerPlant.EconomyBase, _powerPlant.EconomyMax));
                     break;
+                case AdjustmentType.FuelSize:
+                    IsValid = (_current is int && _target is int && (int)_target >= 0);
+                    break;
                 default:
                     throw new NotImplementedException();
             }
@@ -109,6 +120,10 @@ namespace SRVehicleDesigner.BLL
 
             switch (AdjustmentType)
             {
+                case AdjustmentType.RoadHandling:
+                case AdjustmentType.OffRoadHandling:
+                    message = $"Error in dropdownlist generation";
+                    break;
                 case AdjustmentType.Speed:
                     message = $"Speed should be between {_powerPlant.SpeedBase} and {_powerPlant.SpeedMax}";
                     break;
@@ -118,11 +133,24 @@ namespace SRVehicleDesigner.BLL
                 case AdjustmentType.Economy:
                     message = $"Economy should be between {_powerPlant.EconomyBase} and {_powerPlant.EconomyMax}";
                     break;
+                case AdjustmentType.FuelSize:
+                    message = $"Fuel should be a positive integer";
+                    break;
                 default:
                     throw new NotImplementedException();
             }
 
             return message;
+        }
+
+        private int CalculateQuantumCount(int quantumSize)
+        {
+            return (int)Math.Ceiling(((int)_target - (int)_current) / (double)quantumSize);
+        }
+
+        private int CalculateQuantumCount(decimal quantumSize)
+        {
+            return (int)Math.Ceiling(((decimal)_target - (decimal)_current) / quantumSize);
         }
     }
 }

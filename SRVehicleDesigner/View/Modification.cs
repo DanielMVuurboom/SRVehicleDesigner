@@ -32,6 +32,14 @@ namespace SRVehicleDesigner
             nameLabel.Text = _vehicle.Name;
             costLabel.Text = $"{_vehicle.Cost} nuYen";
             designPointLabel.Text = $"{ _vehicle.DesignPoints} DP";
+
+            bodyBox.Text = _vehicle.Body.ToString();
+            armorBox.Text = _vehicle.Armor.ToString();
+            cargoFactorBox.Text = _vehicle.CargoFactor.ToString();
+            cargoFactorFreeBox.Text = string.Format("{0:0.00}", _vehicle.CargoFactorFree);
+            loadBox.Text = _vehicle.Load.ToString();
+            loadFreeBox.Text = string.Format("{0:0.00}", _vehicle.LoadFree);
+
             handlingRoadBox.SelectedItem = ((List<int>)handlingRoadBox.DataSource).First(i => i == _vehicle.RoadHandling);
             handlingOffRoadBox.SelectedItem = ((List<int>)handlingOffRoadBox.DataSource).First(i => i == _vehicle.OffRoadHandling);
             speedBox.Text = _vehicle.Speed.ToString();
@@ -119,12 +127,23 @@ namespace SRVehicleDesigner
 
         private void fuelSizeBox_Validating(object sender, CancelEventArgs e)
         {
-            //TODO: implement
+            int value;
+            var valid = int.TryParse(fuelSizeBox.Text, out value);
+            var adjustment = new Adjustment(_vehicle, AdjustmentType.FuelSize, _vehicle.FuelSize, value);
+
+            if (!valid || !adjustment.IsValid)
+            {
+                e.Cancel = true;
+                errorProvider.SetError(fuelSizeBox, adjustment.GetValidationMessage());
+            }
+            fuelSizeBox.Tag = adjustment;
         }
 
         private void fuelSizeBox_Validated(object sender, EventArgs e)
         {
-            //TODO: implement
+            errorProvider.SetError(fuelSizeBox, string.Empty);
+            _vehicle.Apply((Adjustment)fuelSizeBox.Tag);
+            Invalidate();
         }
     }
 }
