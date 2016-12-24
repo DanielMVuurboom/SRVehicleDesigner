@@ -19,23 +19,19 @@ namespace SRVehicleDesigner
         {
             InitializeComponent();
             _vehicle = vehicle;
-            Text = vehicle.Name;
 
             handlingRoadBox.DataSource = Handling.GetValidHandlingOptions(_vehicle.BaseChassis.RoadHandling);
             handlingOffRoadBox.DataSource = Handling.GetValidHandlingOptions(_vehicle.BaseChassis.OffRoadHandling);
-            speedBox.Text = _vehicle.Speed.ToString();
-            accelBox.Text = _vehicle.Accel.ToString();
             economyLabel.Text = economyLabel.Text + " (" + _vehicle.EconomyUnit + ")";
-            economyBox.Text = _vehicle.Economy.ToString();
             fuelSizeLabel.Text = fuelSizeLabel.Text + " (" + _vehicle.FuelSizeUnit + ")";
-            fuelSizeBox.Text = _vehicle.FuelSize.ToString();
         }
 
         private void handlingRoadBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if ((int)handlingRoadBox.SelectedItem != _vehicle.RoadHandling)
             {
-                throw new NotImplementedException();
+                _vehicle.SetRoadHandling((int)handlingRoadBox.SelectedItem);
+                Invalidate();
             }
         }
 
@@ -43,7 +39,8 @@ namespace SRVehicleDesigner
         {
             if ((int)handlingOffRoadBox.SelectedItem != _vehicle.OffRoadHandling)
             {
-                throw new NotImplementedException();
+                _vehicle.SetOffRoadHandling((int)handlingOffRoadBox.SelectedItem);
+                Invalidate();
             }
         }
 
@@ -77,6 +74,19 @@ namespace SRVehicleDesigner
             {
                 throw new NotImplementedException();
             }
+        }
+
+        private void Modification_Paint(object sender, PaintEventArgs e)
+        {
+            Text = _vehicle.Name;
+            nameLabel.Text = _vehicle.Name;
+            costLabel.Text = _vehicle.Cost + " nuYen";
+            handlingRoadBox.SelectedItem = ((List<int>)handlingRoadBox.DataSource).First(i => i == _vehicle.RoadHandling);
+            handlingOffRoadBox.SelectedItem = ((List<int>)handlingOffRoadBox.DataSource).First(i => i == _vehicle.OffRoadHandling);
+            speedBox.Text = _vehicle.Speed.ToString();
+            accelBox.Text = _vehicle.Accel.ToString();
+            economyBox.Text = _vehicle.Economy.ToString();
+            fuelSizeBox.Text = _vehicle.FuelSize.ToString();
         }
     }
 }

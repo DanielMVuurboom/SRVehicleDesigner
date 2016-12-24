@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SRVehicleDesigner.BLL;
 
 namespace SRVehicleDesigner
 {
@@ -79,33 +80,20 @@ namespace SRVehicleDesigner
             AccessoryList = new List<Accessory>(BaseChassis.AccessoryList);
 
             DesignPoints = BaseChassis.DesignPoints + BasePowerPlant.DesignPoints;
-            DesignMultiplier = CalculateDesignMultiplier();
+            DesignMultiplier = CostCalculation.CalculateDesignMultiplier(ChassisGroup, Drone, AccessoryList);
         }
 
-        private double CalculateDesignMultiplier()
+        internal void SetRoadHandling(int score)
         {
-            double designMultiplier;
-
-            switch (ChassisGroup)
-            {
-                case ChassisGroup.Bikes:
-                    designMultiplier = 0.5;
-                    break;
-                case ChassisGroup.Cars:
-                    designMultiplier = 1;
-                    break;
-                default:
-                    designMultiplier = 0;
-                    break;
-            }
-
-            //TODO: Include special accessories
-
-            if (Drone)
-            {
-                designMultiplier = designMultiplier / 100;
-            }
-            return designMultiplier;
+            DesignPoints += Handling.GetDesignPointCost(score - RoadHandling);
+            RoadHandling = score;
         }
+
+        internal void SetOffRoadHandling(int score)
+        {
+            DesignPoints += Handling.GetDesignPointCost(score - OffRoadHandling);
+            OffRoadHandling = score;
+        }
+
     }
 }

@@ -19,5 +19,10 @@ namespace SRVehicleDesigner.BLL
 
             return returnval;
         }
+
+        public static int GetDesignPointCost(int delta)
+        {
+            return -delta * 25;
+        }
     }
 }
