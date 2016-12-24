@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BLL\Adjustment.cs" />
     <Compile Include="BLL\CostCalculation.cs" />
     <Compile Include="BLL\EngineRules.cs" />
     <Compile Include="DAL\Chassis.cs" />

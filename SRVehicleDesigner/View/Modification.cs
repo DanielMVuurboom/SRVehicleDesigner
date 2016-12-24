@@ -36,28 +36,25 @@ namespace SRVehicleDesigner
             handlingOffRoadBox.SelectedItem = ((List<int>)handlingOffRoadBox.DataSource).First(i => i == _vehicle.OffRoadHandling);
             speedBox.Text = _vehicle.Speed.ToString();
             accelBox.Text = _vehicle.Accel.ToString();
-            economyBox.Text = string.Format("{0:0.00}", _vehicle.Economy);
+            economyBox.Text = string.Format("{0:0.000}", _vehicle.Economy);
             fuelSizeBox.Text = _vehicle.FuelSize.ToString();
         }
 
         private void handlingRoadBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if ((int)handlingRoadBox.SelectedItem != _vehicle.RoadHandling)
-            {
-                _vehicle.SetRoadHandling((int)handlingRoadBox.SelectedItem);
-                Invalidate();
-            }
+            var adjustment = new Adjustment(_vehicle, AdjustmentType.RoadHandling, _vehicle.RoadHandling, handlingRoadBox.SelectedItem);
+            _vehicle.Apply(adjustment);
+            Invalidate();
         }
 
         private void handlingOffRoadBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if ((int)handlingOffRoadBox.SelectedItem != _vehicle.OffRoadHandling)
-            {
-                _vehicle.SetOffRoadHandling((int)handlingOffRoadBox.SelectedItem);
-                Invalidate();
-            }
+            var adjustment = new Adjustment(_vehicle, AdjustmentType.OffRoadHandling, _vehicle.OffRoadHandling, handlingOffRoadBox.SelectedItem);
+            _vehicle.Apply(adjustment);
+            Invalidate();
         }
 
+        //TODO: Refactor the below to Adjustment
         private void speedBox_Validating(object sender, CancelEventArgs e)
         {
             int value;

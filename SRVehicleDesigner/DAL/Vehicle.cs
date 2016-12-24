@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SRVehicleDesigner.BLL;
+using System.Reflection;
 
 namespace SRVehicleDesigner
 {
@@ -20,8 +21,8 @@ namespace SRVehicleDesigner
 
         public int Body { get; private set; }
         public int Armor { get; private set; }
-        public int CargoFactor { get; private set; }
-        public int Load { get; private set; }
+        public decimal CargoFactor { get; private set; }
+        public decimal Load { get; private set; }
 
         public int RoadHandling { get; private set; }
         public int OffRoadHandling { get; private set; }
@@ -83,18 +84,6 @@ namespace SRVehicleDesigner
             DesignMultiplier = CostCalculation.CalculateDesignMultiplier(ChassisGroup, Drone, AccessoryList);
         }
 
-        internal void SetRoadHandling(int score)
-        {
-            DesignPoints += EngineRules.GetHandlingDesignPointCost(score - RoadHandling);
-            RoadHandling = score;
-        }
-
-        internal void SetOffRoadHandling(int score)
-        {
-            DesignPoints += EngineRules.GetHandlingDesignPointCost(score - OffRoadHandling);
-            OffRoadHandling = score;
-        }
-
         internal void SetSpeed(int score)
         {
             DesignPoints += 2 * (score - Speed);
@@ -112,6 +101,29 @@ namespace SRVehicleDesigner
             var rounded = EngineRules.GetRoundedEconomy(score, BasePowerPlant.EconomyBase);
             DesignPoints += EngineRules.GetEconomyDesignPointCost(rounded - Economy, BasePowerPlant.EconomyBase);
             Economy = rounded;
+        }
+
+        internal void Apply(Adjustment adjustment)
+        {
+            if (adjustment.IsValid)
+            {
+                PropertyInfo prop = GetType().GetProperty(adjustment.AdjustmentType.ToString());
+                prop.SetValue(this, adjustment.NewValue, null);
+                DesignPoints += adjustment.DesignPointCost;
+                Load -= adjustment.LoadReduction;
+                if (Load < 0)
+                {
+                    var moreLoad = new Adjustment(this, AdjustmentType.Load, Load, 0);
+                    Apply(moreLoad);
+                }
+                CargoFactor -= adjustment.CargoFactorReduction;
+                if (CargoFactor < 0)
+                {
+                    var moreCargo = new Adjustment(this, AdjustmentType.CargoFactor, CargoFactor, 0);
+                    Apply(moreCargo);
+                }
+
+            }
         }
     }
 }
