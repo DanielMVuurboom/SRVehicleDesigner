@@ -350,6 +350,8 @@
             this.loadBox.Name = "loadBox";
             this.loadBox.Size = new System.Drawing.Size(77, 20);
             this.loadBox.TabIndex = 13;
+            this.loadBox.Validating += new System.ComponentModel.CancelEventHandler(this.loadBox_Validating);
+            this.loadBox.Validated += new System.EventHandler(this.loadBox_Validated);
             // 
             // cargoFactorFreeLabel
             // 
@@ -365,6 +367,7 @@
             // 
             this.cargoFactorFreeBox.Location = new System.Drawing.Point(314, 32);
             this.cargoFactorFreeBox.Name = "cargoFactorFreeBox";
+            this.cargoFactorFreeBox.ReadOnly = true;
             this.cargoFactorFreeBox.Size = new System.Drawing.Size(77, 20);
             this.cargoFactorFreeBox.TabIndex = 15;
             // 
@@ -382,6 +385,7 @@
             // 
             this.loadFreeBox.Location = new System.Drawing.Point(520, 32);
             this.loadFreeBox.Name = "loadFreeBox";
+            this.loadFreeBox.ReadOnly = true;
             this.loadFreeBox.Size = new System.Drawing.Size(77, 20);
             this.loadFreeBox.TabIndex = 17;
             // 

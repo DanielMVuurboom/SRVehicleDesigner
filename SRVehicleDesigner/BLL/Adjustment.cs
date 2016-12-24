@@ -72,6 +72,12 @@ namespace SRVehicleDesigner.BLL
                     DesignPointCost = _powerPlant.Fueltank.DesignPointCost * increaseQuantumCount;
                     CargoFactorReduction = _powerPlant.Fueltank.CargoFactorReduction * increaseQuantumCount;
                     break;
+                case AdjustmentType.Load:
+                    increaseQuantumCount = CalculateQuantumCount(10);
+                    NewValue = (int)_current + 10 * increaseQuantumCount;
+                    DesignPointCost = increaseQuantumCount;
+                    LoadReduction = -10 * increaseQuantumCount;
+                    break;
                 default:
                     throw new NotImplementedException();
             }
@@ -98,6 +104,9 @@ namespace SRVehicleDesigner.BLL
                     break;
                 case AdjustmentType.FuelSize:
                     IsValid = (_current is int && _target is int && (int)_target >= 0);
+                    break;
+                case AdjustmentType.Load:
+                    IsValid = (_current is int && _target is int && ValidateBetween(_powerPlant.LoadBase, _powerPlant.LoadMax));
                     break;
                 default:
                     throw new NotImplementedException();
@@ -135,6 +144,9 @@ namespace SRVehicleDesigner.BLL
                     break;
                 case AdjustmentType.FuelSize:
                     message = $"Fuel should be a positive integer";
+                    break;
+                case AdjustmentType.Load:
+                    message = $"Load should be between {_powerPlant.LoadBase} and {_powerPlant.LoadMax}";
                     break;
                 default:
                     throw new NotImplementedException();

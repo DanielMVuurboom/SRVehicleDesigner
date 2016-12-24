@@ -15,7 +15,7 @@
     <AccelBase>3</AccelBase>
     <AccelMax>6</AccelMax>
     <LoadBase>15</LoadBase>
-    <LoadMax>40</LoadMax>
+    <LoadMax>45</LoadMax> <!--Adjusted for increase quantum of 10-->
     <Sig>5</Sig>
     <EconomyBase>0.5</EconomyBase>
     <EconomyMax>2</EconomyMax>

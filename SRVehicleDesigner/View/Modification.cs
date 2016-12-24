@@ -48,6 +48,28 @@ namespace SRVehicleDesigner
             fuelSizeBox.Text = _vehicle.FuelSize.ToString();
         }
 
+        private void loadBox_Validating(object sender, CancelEventArgs e)
+        {
+            int value;
+            var valid = int.TryParse(loadBox.Text, out value);
+            var adjustment = new Adjustment(_vehicle, AdjustmentType.Load, _vehicle.Load, value);
+
+            if (!valid || !adjustment.IsValid)
+            {
+                e.Cancel = true;
+                errorProvider.SetError(loadBox, adjustment.GetValidationMessage());
+            }
+            loadBox.Tag = adjustment;
+
+        }
+
+        private void loadBox_Validated(object sender, EventArgs e)
+        {
+            errorProvider.SetError(loadBox, string.Empty);
+            _vehicle.Apply((Adjustment)loadBox.Tag);
+            Invalidate();
+        }
+
         private void handlingRoadBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             var adjustment = new Adjustment(_vehicle, AdjustmentType.RoadHandling, _vehicle.RoadHandling, handlingRoadBox.SelectedItem);

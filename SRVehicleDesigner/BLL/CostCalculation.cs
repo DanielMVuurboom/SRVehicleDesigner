@@ -29,7 +29,7 @@ namespace SRVehicleDesigner.BLL
 
             if (drone)
             {
-                designMultiplier = designMultiplier / 100;
+                designMultiplier = designMultiplier / 10;
             }
             return designMultiplier;
         }
