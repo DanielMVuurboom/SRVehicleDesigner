@@ -42,9 +42,6 @@
             this.handlingOffRoadBox = new System.Windows.Forms.ComboBox();
             this.handlingRoadLabel = new System.Windows.Forms.Label();
             this.handlingRoadBox = new System.Windows.Forms.ComboBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.nameLabel = new System.Windows.Forms.Label();
             this.costLabel = new System.Windows.Forms.Label();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
@@ -94,7 +91,7 @@
             this.fuelSizeBox.Location = new System.Drawing.Point(520, 36);
             this.fuelSizeBox.Name = "fuelSizeBox";
             this.fuelSizeBox.Size = new System.Drawing.Size(77, 20);
-            this.fuelSizeBox.TabIndex = 12;
+            this.fuelSizeBox.TabIndex = 10;
             this.fuelSizeBox.Validating += new System.ComponentModel.CancelEventHandler(this.fuelSizeBox_Validating);
             this.fuelSizeBox.Validated += new System.EventHandler(this.generic_Validated);
             // 
@@ -113,7 +110,7 @@
             this.economyBox.Location = new System.Drawing.Point(416, 36);
             this.economyBox.Name = "economyBox";
             this.economyBox.Size = new System.Drawing.Size(77, 20);
-            this.economyBox.TabIndex = 10;
+            this.economyBox.TabIndex = 9;
             this.economyBox.Validating += new System.ComponentModel.CancelEventHandler(this.economyBox_Validating);
             this.economyBox.Validated += new System.EventHandler(this.generic_Validated);
             // 
@@ -151,7 +148,7 @@
             this.speedBox.Location = new System.Drawing.Point(212, 36);
             this.speedBox.Name = "speedBox";
             this.speedBox.Size = new System.Drawing.Size(77, 20);
-            this.speedBox.TabIndex = 5;
+            this.speedBox.TabIndex = 7;
             this.speedBox.Validating += new System.ComponentModel.CancelEventHandler(this.speedBox_Validating);
             this.speedBox.Validated += new System.EventHandler(this.generic_Validated);
             // 
@@ -181,7 +178,7 @@
             this.handlingOffRoadBox.Location = new System.Drawing.Point(108, 35);
             this.handlingOffRoadBox.Name = "handlingOffRoadBox";
             this.handlingOffRoadBox.Size = new System.Drawing.Size(77, 21);
-            this.handlingOffRoadBox.TabIndex = 5;
+            this.handlingOffRoadBox.TabIndex = 6;
             this.handlingOffRoadBox.SelectedIndexChanged += new System.EventHandler(this.handlingOffRoadBox_SelectedIndexChanged);
             // 
             // handlingRoadLabel
@@ -200,33 +197,8 @@
             this.handlingRoadBox.Location = new System.Drawing.Point(6, 35);
             this.handlingRoadBox.Name = "handlingRoadBox";
             this.handlingRoadBox.Size = new System.Drawing.Size(77, 21);
-            this.handlingRoadBox.TabIndex = 3;
+            this.handlingRoadBox.TabIndex = 5;
             this.handlingRoadBox.SelectedIndexChanged += new System.EventHandler(this.handlingRoadBox_SelectedIndexChanged);
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(85, 257);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(77, 21);
-            this.comboBox1.TabIndex = 0;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(82, 241);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(68, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Cargo Factor";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(85, 285);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(77, 20);
-            this.textBox1.TabIndex = 2;
             // 
             // nameLabel
             // 
@@ -288,7 +260,7 @@
             this.bodyBox.Location = new System.Drawing.Point(6, 32);
             this.bodyBox.Name = "bodyBox";
             this.bodyBox.Size = new System.Drawing.Size(77, 20);
-            this.bodyBox.TabIndex = 7;
+            this.bodyBox.TabIndex = 1;
             // 
             // bodyLabel
             // 
@@ -315,7 +287,7 @@
             this.armorBox.Location = new System.Drawing.Point(108, 32);
             this.armorBox.Name = "armorBox";
             this.armorBox.Size = new System.Drawing.Size(77, 20);
-            this.armorBox.TabIndex = 9;
+            this.armorBox.TabIndex = 2;
             // 
             // cargoFactorLabel
             // 
@@ -332,7 +304,9 @@
             this.cargoFactorBox.Location = new System.Drawing.Point(212, 32);
             this.cargoFactorBox.Name = "cargoFactorBox";
             this.cargoFactorBox.Size = new System.Drawing.Size(77, 20);
-            this.cargoFactorBox.TabIndex = 11;
+            this.cargoFactorBox.TabIndex = 3;
+            this.cargoFactorBox.Validating += new System.ComponentModel.CancelEventHandler(this.cargoFactorBox_Validating);
+            this.cargoFactorBox.Validated += new System.EventHandler(this.generic_Validated);
             // 
             // loadLabel
             // 
@@ -349,7 +323,7 @@
             this.loadBox.Location = new System.Drawing.Point(416, 32);
             this.loadBox.Name = "loadBox";
             this.loadBox.Size = new System.Drawing.Size(77, 20);
-            this.loadBox.TabIndex = 13;
+            this.loadBox.TabIndex = 4;
             this.loadBox.Validating += new System.ComponentModel.CancelEventHandler(this.loadBox_Validating);
             this.loadBox.Validated += new System.EventHandler(this.generic_Validated);
             // 
@@ -370,6 +344,7 @@
             this.cargoFactorFreeBox.ReadOnly = true;
             this.cargoFactorFreeBox.Size = new System.Drawing.Size(77, 20);
             this.cargoFactorFreeBox.TabIndex = 15;
+            this.cargoFactorFreeBox.TabStop = false;
             // 
             // loadFreeLabel
             // 
@@ -388,6 +363,7 @@
             this.loadFreeBox.ReadOnly = true;
             this.loadFreeBox.Size = new System.Drawing.Size(77, 20);
             this.loadFreeBox.TabIndex = 17;
+            this.loadFreeBox.TabStop = false;
             // 
             // Modification
             // 
@@ -398,10 +374,7 @@
             this.Controls.Add(this.designPointLabel);
             this.Controls.Add(this.costLabel);
             this.Controls.Add(this.nameLabel);
-            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.drivingGroup);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.comboBox1);
             this.Name = "Modification";
             this.Text = "Modification";
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.Modification_Paint);
@@ -418,13 +391,10 @@
         #endregion
 
         private System.Windows.Forms.GroupBox drivingGroup;
-        private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label handlingOffRoadLabel;
         private System.Windows.Forms.ComboBox handlingOffRoadBox;
         private System.Windows.Forms.Label handlingRoadLabel;
         private System.Windows.Forms.ComboBox handlingRoadBox;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox accelBox;
         private System.Windows.Forms.Label accelLabel;
         private System.Windows.Forms.TextBox speedBox;

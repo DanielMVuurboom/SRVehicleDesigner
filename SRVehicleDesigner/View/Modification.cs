@@ -25,6 +25,7 @@ namespace SRVehicleDesigner
             handlingOffRoadBox.DataSource = EngineRules.GetValidHandlingOptions(_vehicle.BaseChassis.OffRoadHandling);
             economyLabel.Text = $"{economyLabel.Text} ({_vehicle.EconomyUnit})";
             fuelSizeLabel.Text = $"{fuelSizeLabel.Text} ({_vehicle.FuelSizeUnit})";
+            bodyBox.Select();
         }
 
         private void Modification_Paint(object sender, PaintEventArgs e)
@@ -79,6 +80,11 @@ namespace SRVehicleDesigner
             errorProvider.SetError(control, string.Empty);
             _vehicle.Apply((Adjustment)control.Tag);
             Invalidate();
+        }
+
+        private void cargoFactorBox_Validating(object sender, CancelEventArgs e)
+        {
+            generic_Validating(sender, e, AdjustmentType.CargoFactor);
         }
 
         private void loadBox_Validating(object sender, CancelEventArgs e)
