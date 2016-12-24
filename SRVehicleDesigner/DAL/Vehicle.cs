@@ -84,25 +84,6 @@ namespace SRVehicleDesigner
             DesignMultiplier = CostCalculation.CalculateDesignMultiplier(ChassisGroup, Drone, AccessoryList);
         }
 
-        internal void SetSpeed(int score)
-        {
-            DesignPoints += 2 * (score - Speed);
-            Speed = score;
-        }
-
-        internal void SetAccel(int score)
-        {
-            DesignPoints += 2 * (score - Accel);
-            Accel = score;
-        }
-
-        internal void SetEconomy(string score)
-        {
-            var rounded = EngineRules.GetRoundedEconomy(score, BasePowerPlant.EconomyBase);
-            DesignPoints += EngineRules.GetEconomyDesignPointCost(rounded - Economy, BasePowerPlant.EconomyBase);
-            Economy = rounded;
-        }
-
         internal void Apply(Adjustment adjustment)
         {
             if (adjustment.IsValid)

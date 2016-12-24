@@ -19,22 +19,5 @@ namespace SRVehicleDesigner.BLL
 
             return returnval;
         }
-
-        public static int GetHandlingDesignPointCost(int delta)
-        {
-            return -delta * 25;
-        }
-
-        public static decimal GetRoundedEconomy(string score, decimal economyBase)
-        {
-            var fivePercent = economyBase / 20;
-            return Math.Ceiling(decimal.Parse(score) / fivePercent) * fivePercent;
-        }
-
-        public static int GetEconomyDesignPointCost(decimal delta, decimal economyBase)
-        {
-            var fivePercent = economyBase / 20;
-            return (int)Math.Ceiling(delta / fivePercent) * 5;
-        }
     }
 }

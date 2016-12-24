@@ -54,22 +54,24 @@ namespace SRVehicleDesigner
             Invalidate();
         }
 
-        //TODO: Refactor the below to Adjustment
         private void speedBox_Validating(object sender, CancelEventArgs e)
         {
             int value;
             var valid = int.TryParse(speedBox.Text, out value);
-            if (!valid || _vehicle.BasePowerPlant.SpeedBase > value || value > _vehicle.BasePowerPlant.SpeedMax)
+            var adjustment = new Adjustment(_vehicle, AdjustmentType.Speed, _vehicle.Speed, value);
+
+            if (!valid || !adjustment.IsValid)
             {
                 e.Cancel = true;
-                errorProvider.SetError(speedBox, $"Speed should be between {_vehicle.BasePowerPlant.SpeedBase} and {_vehicle.BasePowerPlant.SpeedMax}");
+                errorProvider.SetError(speedBox, adjustment.GetValidationMessage());
             }
+            speedBox.Tag = adjustment;
         }
 
         private void speedBox_Validated(object sender, EventArgs e)
         {
             errorProvider.SetError(speedBox, string.Empty);
-            _vehicle.SetSpeed(int.Parse(speedBox.Text));
+            _vehicle.Apply((Adjustment)speedBox.Tag);
             Invalidate();
         }
 
@@ -77,17 +79,20 @@ namespace SRVehicleDesigner
         {
             int value;
             var valid = int.TryParse(accelBox.Text, out value);
-            if (!valid || _vehicle.BasePowerPlant.AccelBase > value || value > _vehicle.BasePowerPlant.AccelMax)
+            var adjustment = new Adjustment(_vehicle, AdjustmentType.Accel, _vehicle.Accel, value);
+
+            if (!valid || !adjustment.IsValid)
             {
                 e.Cancel = true;
-                errorProvider.SetError(accelBox, $"Accel should be between {_vehicle.BasePowerPlant.AccelBase} and {_vehicle.BasePowerPlant.AccelMax}");
+                errorProvider.SetError(accelBox, adjustment.GetValidationMessage());
             }
+            accelBox.Tag = adjustment;
         }
 
         private void accelBox_Validated(object sender, EventArgs e)
         {
             errorProvider.SetError(accelBox, string.Empty);
-            _vehicle.SetAccel(int.Parse(accelBox.Text));
+            _vehicle.Apply((Adjustment)accelBox.Tag);
             Invalidate();
         }
 
@@ -95,29 +100,31 @@ namespace SRVehicleDesigner
         {
             decimal value;
             var valid = decimal.TryParse(economyBox.Text, out value);
-            if (!valid || _vehicle.BasePowerPlant.EconomyBase > value || value > _vehicle.BasePowerPlant.EconomyMax)
+            var adjustment = new Adjustment(_vehicle, AdjustmentType.Economy, _vehicle.Economy, value);
+
+            if (!valid || !adjustment.IsValid)
             {
                 e.Cancel = true;
-                errorProvider.SetError(economyBox, $"Economy should be between {_vehicle.BasePowerPlant.EconomyBase} and {_vehicle.BasePowerPlant.EconomyMax}");
+                errorProvider.SetError(economyBox, adjustment.GetValidationMessage());
             }
-
+            economyBox.Tag = adjustment;
         }
 
         private void economyBox_Validated(object sender, EventArgs e)
         {
             errorProvider.SetError(economyBox, string.Empty);
-            _vehicle.SetEconomy(economyBox.Text);
+            _vehicle.Apply((Adjustment)economyBox.Tag);
             Invalidate();
         }
 
         private void fuelSizeBox_Validating(object sender, CancelEventArgs e)
         {
-
+            //TODO: implement
         }
 
         private void fuelSizeBox_Validated(object sender, EventArgs e)
         {
-
+            //TODO: implement
         }
     }
 }
