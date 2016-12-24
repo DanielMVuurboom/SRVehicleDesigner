@@ -96,7 +96,7 @@
             this.fuelSizeBox.Size = new System.Drawing.Size(77, 20);
             this.fuelSizeBox.TabIndex = 12;
             this.fuelSizeBox.Validating += new System.ComponentModel.CancelEventHandler(this.fuelSizeBox_Validating);
-            this.fuelSizeBox.Validated += new System.EventHandler(this.fuelSizeBox_Validated);
+            this.fuelSizeBox.Validated += new System.EventHandler(this.generic_Validated);
             // 
             // fuelSizeLabel
             // 
@@ -115,7 +115,7 @@
             this.economyBox.Size = new System.Drawing.Size(77, 20);
             this.economyBox.TabIndex = 10;
             this.economyBox.Validating += new System.ComponentModel.CancelEventHandler(this.economyBox_Validating);
-            this.economyBox.Validated += new System.EventHandler(this.economyBox_Validated);
+            this.economyBox.Validated += new System.EventHandler(this.generic_Validated);
             // 
             // economyLabel
             // 
@@ -134,7 +134,7 @@
             this.accelBox.Size = new System.Drawing.Size(77, 20);
             this.accelBox.TabIndex = 8;
             this.accelBox.Validating += new System.ComponentModel.CancelEventHandler(this.accelBox_Validating);
-            this.accelBox.Validated += new System.EventHandler(this.accelBox_Validated);
+            this.accelBox.Validated += new System.EventHandler(this.generic_Validated);
             // 
             // accelLabel
             // 
@@ -153,7 +153,7 @@
             this.speedBox.Size = new System.Drawing.Size(77, 20);
             this.speedBox.TabIndex = 5;
             this.speedBox.Validating += new System.ComponentModel.CancelEventHandler(this.speedBox_Validating);
-            this.speedBox.Validated += new System.EventHandler(this.speedBox_Validated);
+            this.speedBox.Validated += new System.EventHandler(this.generic_Validated);
             // 
             // speedLabel
             // 
@@ -351,7 +351,7 @@
             this.loadBox.Size = new System.Drawing.Size(77, 20);
             this.loadBox.TabIndex = 13;
             this.loadBox.Validating += new System.ComponentModel.CancelEventHandler(this.loadBox_Validating);
-            this.loadBox.Validated += new System.EventHandler(this.loadBox_Validated);
+            this.loadBox.Validated += new System.EventHandler(this.generic_Validated);
             // 
             // cargoFactorFreeLabel
             // 

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using SRVehicleDesigner.BLL;
+using System.Reflection;
 
 namespace SRVehicleDesigner
 {
@@ -48,26 +49,41 @@ namespace SRVehicleDesigner
             fuelSizeBox.Text = _vehicle.FuelSize.ToString();
         }
 
-        private void loadBox_Validating(object sender, CancelEventArgs e)
+        private void generic_Validating(object sender, CancelEventArgs e, AdjustmentType adjustmentType)
         {
-            int value;
-            var valid = int.TryParse(loadBox.Text, out value);
-            var adjustment = new Adjustment(_vehicle, AdjustmentType.Load, _vehicle.Load, value);
+            var control = (Control)sender;
+            var property = _vehicle.GetType().GetProperty(adjustmentType.ToString());
+            var converter = TypeDescriptor.GetConverter(property.PropertyType);
+            var value = converter.ConvertFrom("0");
+            var validConversion = true;
+            try
+            { 
+                value = converter.ConvertFrom(control.Text);
+            } catch
+            {
+                validConversion = false;
+            }
 
-            if (!valid || !adjustment.IsValid)
+            var adjustment = new Adjustment(_vehicle, adjustmentType, property.GetValue(_vehicle), value);
+            if (!validConversion || !adjustment.IsValid)
             {
                 e.Cancel = true;
-                errorProvider.SetError(loadBox, adjustment.GetValidationMessage());
+                errorProvider.SetError(control, adjustment.GetValidationMessage());
             }
-            loadBox.Tag = adjustment;
-
+            control.Tag = adjustment;
         }
 
-        private void loadBox_Validated(object sender, EventArgs e)
+        private void generic_Validated(object sender, EventArgs e)
         {
-            errorProvider.SetError(loadBox, string.Empty);
-            _vehicle.Apply((Adjustment)loadBox.Tag);
+            var control = (Control)sender;
+            errorProvider.SetError(control, string.Empty);
+            _vehicle.Apply((Adjustment)control.Tag);
             Invalidate();
+        }
+
+        private void loadBox_Validating(object sender, CancelEventArgs e)
+        {
+            generic_Validating(sender, e, AdjustmentType.Load);
         }
 
         private void handlingRoadBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -86,86 +102,22 @@ namespace SRVehicleDesigner
 
         private void speedBox_Validating(object sender, CancelEventArgs e)
         {
-            int value;
-            var valid = int.TryParse(speedBox.Text, out value);
-            var adjustment = new Adjustment(_vehicle, AdjustmentType.Speed, _vehicle.Speed, value);
-
-            if (!valid || !adjustment.IsValid)
-            {
-                e.Cancel = true;
-                errorProvider.SetError(speedBox, adjustment.GetValidationMessage());
-            }
-            speedBox.Tag = adjustment;
-        }
-
-        private void speedBox_Validated(object sender, EventArgs e)
-        {
-            errorProvider.SetError(speedBox, string.Empty);
-            _vehicle.Apply((Adjustment)speedBox.Tag);
-            Invalidate();
+            generic_Validating(sender, e, AdjustmentType.Speed);
         }
 
         private void accelBox_Validating(object sender, CancelEventArgs e)
         {
-            int value;
-            var valid = int.TryParse(accelBox.Text, out value);
-            var adjustment = new Adjustment(_vehicle, AdjustmentType.Accel, _vehicle.Accel, value);
-
-            if (!valid || !adjustment.IsValid)
-            {
-                e.Cancel = true;
-                errorProvider.SetError(accelBox, adjustment.GetValidationMessage());
-            }
-            accelBox.Tag = adjustment;
-        }
-
-        private void accelBox_Validated(object sender, EventArgs e)
-        {
-            errorProvider.SetError(accelBox, string.Empty);
-            _vehicle.Apply((Adjustment)accelBox.Tag);
-            Invalidate();
+            generic_Validating(sender, e, AdjustmentType.Accel);
         }
 
         private void economyBox_Validating(object sender, CancelEventArgs e)
         {
-            decimal value;
-            var valid = decimal.TryParse(economyBox.Text, out value);
-            var adjustment = new Adjustment(_vehicle, AdjustmentType.Economy, _vehicle.Economy, value);
-
-            if (!valid || !adjustment.IsValid)
-            {
-                e.Cancel = true;
-                errorProvider.SetError(economyBox, adjustment.GetValidationMessage());
-            }
-            economyBox.Tag = adjustment;
-        }
-
-        private void economyBox_Validated(object sender, EventArgs e)
-        {
-            errorProvider.SetError(economyBox, string.Empty);
-            _vehicle.Apply((Adjustment)economyBox.Tag);
-            Invalidate();
+            generic_Validating(sender, e, AdjustmentType.Economy);
         }
 
         private void fuelSizeBox_Validating(object sender, CancelEventArgs e)
         {
-            int value;
-            var valid = int.TryParse(fuelSizeBox.Text, out value);
-            var adjustment = new Adjustment(_vehicle, AdjustmentType.FuelSize, _vehicle.FuelSize, value);
-
-            if (!valid || !adjustment.IsValid)
-            {
-                e.Cancel = true;
-                errorProvider.SetError(fuelSizeBox, adjustment.GetValidationMessage());
-            }
-            fuelSizeBox.Tag = adjustment;
-        }
-
-        private void fuelSizeBox_Validated(object sender, EventArgs e)
-        {
-            errorProvider.SetError(fuelSizeBox, string.Empty);
-            _vehicle.Apply((Adjustment)fuelSizeBox.Tag);
-            Invalidate();
+            generic_Validating(sender, e, AdjustmentType.FuelSize);
         }
     }
 }
