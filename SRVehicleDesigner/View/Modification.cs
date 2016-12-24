@@ -22,8 +22,22 @@ namespace SRVehicleDesigner
 
             handlingRoadBox.DataSource = Handling.GetValidHandlingOptions(_vehicle.BaseChassis.RoadHandling);
             handlingOffRoadBox.DataSource = Handling.GetValidHandlingOptions(_vehicle.BaseChassis.OffRoadHandling);
-            economyLabel.Text = economyLabel.Text + " (" + _vehicle.EconomyUnit + ")";
-            fuelSizeLabel.Text = fuelSizeLabel.Text + " (" + _vehicle.FuelSizeUnit + ")";
+            economyLabel.Text = $"{economyLabel.Text} ({_vehicle.EconomyUnit})";
+            fuelSizeLabel.Text = $"{fuelSizeLabel.Text} ({_vehicle.FuelSizeUnit})";
+        }
+
+        private void Modification_Paint(object sender, PaintEventArgs e)
+        {
+            Text = _vehicle.Name;
+            nameLabel.Text = _vehicle.Name;
+            costLabel.Text = $"{_vehicle.Cost} nuYen";
+            designPointLabel.Text = $"{ _vehicle.DesignPoints} DP";
+            handlingRoadBox.SelectedItem = ((List<int>)handlingRoadBox.DataSource).First(i => i == _vehicle.RoadHandling);
+            handlingOffRoadBox.SelectedItem = ((List<int>)handlingOffRoadBox.DataSource).First(i => i == _vehicle.OffRoadHandling);
+            speedBox.Text = _vehicle.Speed.ToString();
+            accelBox.Text = _vehicle.Accel.ToString();
+            economyBox.Text = _vehicle.Economy.ToString();
+            fuelSizeBox.Text = _vehicle.FuelSize.ToString();
         }
 
         private void handlingRoadBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -44,49 +58,60 @@ namespace SRVehicleDesigner
             }
         }
 
-        private void speedBox_TextChanged(object sender, EventArgs e)
+        private void speedBox_Validating(object sender, CancelEventArgs e)
         {
-            if (int.Parse(speedBox.Text) != _vehicle.Speed)
+            int value;
+            var valid = int.TryParse(speedBox.Text, out value);
+            if (!valid || _vehicle.BasePowerPlant.SpeedBase > value || value > _vehicle.BasePowerPlant.SpeedMax)
             {
-                throw new NotImplementedException();
+                e.Cancel = true;
+                errorProvider.SetError(speedBox, $"Speed should be between {_vehicle.BasePowerPlant.SpeedBase} and {_vehicle.BasePowerPlant.SpeedMax}");
             }
         }
 
-        private void accelBox_TextChanged(object sender, EventArgs e)
+        private void speedBox_Validated(object sender, EventArgs e)
         {
-            if (int.Parse(accelBox.Text) != _vehicle.Accel)
+            errorProvider.SetError(speedBox, string.Empty);
+            _vehicle.SetSpeed(int.Parse(speedBox.Text));
+            Invalidate();
+        }
+
+        private void accelBox_Validating(object sender, CancelEventArgs e)
+        {
+            int value;
+            var valid = int.TryParse(accelBox.Text, out value);
+            if (!valid || _vehicle.BasePowerPlant.AccelBase > value || value > _vehicle.BasePowerPlant.AccelMax)
             {
-                throw new NotImplementedException();
+                e.Cancel = true;
+                errorProvider.SetError(accelBox, $"Accel should be between {_vehicle.BasePowerPlant.AccelBase} and {_vehicle.BasePowerPlant.AccelMax}");
             }
         }
 
-        private void economyBox_TextChanged(object sender, EventArgs e)
+        private void accelBox_Validated(object sender, EventArgs e)
         {
-            if (double.Parse(economyBox.Text) != _vehicle.Economy)
-            {
-                throw new NotImplementedException();
-            }
+            errorProvider.SetError(accelBox, string.Empty);
+            _vehicle.SetAccel(int.Parse(accelBox.Text));
+            Invalidate();
         }
 
-        private void fuelSizeBox_TextChanged(object sender, EventArgs e)
+        private void economyBox_Validating(object sender, CancelEventArgs e)
         {
-            if (int.Parse(fuelSizeBox.Text) != _vehicle.FuelSize)
-            {
-                throw new NotImplementedException();
-            }
+
         }
 
-        private void Modification_Paint(object sender, PaintEventArgs e)
+        private void economyBox_Validated(object sender, EventArgs e)
         {
-            Text = _vehicle.Name;
-            nameLabel.Text = _vehicle.Name;
-            costLabel.Text = _vehicle.Cost + " nuYen";
-            handlingRoadBox.SelectedItem = ((List<int>)handlingRoadBox.DataSource).First(i => i == _vehicle.RoadHandling);
-            handlingOffRoadBox.SelectedItem = ((List<int>)handlingOffRoadBox.DataSource).First(i => i == _vehicle.OffRoadHandling);
-            speedBox.Text = _vehicle.Speed.ToString();
-            accelBox.Text = _vehicle.Accel.ToString();
-            economyBox.Text = _vehicle.Economy.ToString();
-            fuelSizeBox.Text = _vehicle.FuelSize.ToString();
+
+        }
+
+        private void fuelSizeBox_Validating(object sender, CancelEventArgs e)
+        {
+
+        }
+
+        private void fuelSizeBox_Validated(object sender, EventArgs e)
+        {
+
         }
     }
 }

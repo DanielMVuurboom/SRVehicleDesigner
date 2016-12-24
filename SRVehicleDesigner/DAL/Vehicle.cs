@@ -95,5 +95,17 @@ namespace SRVehicleDesigner
             OffRoadHandling = score;
         }
 
+        internal void SetSpeed(int score)
+        {
+            DesignPoints += 2 * (score - Speed);
+            Speed = score;
+        }
+
+        internal void SetAccel(int score)
+        {
+            DesignPoints += 2 * (score - Accel);
+            Accel = score;
+        }
+
     }
 }
