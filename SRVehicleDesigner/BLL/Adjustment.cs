@@ -88,12 +88,12 @@ namespace SRVehicleDesigner.BLL
                     break;
                 case AdjustmentType.CargoFactor:
                     NewValue = _target;
-                    DesignPointCost = ((int)_target - (int)_current) * 5;
-                    CargoFactorReduction = (int)_current - (int)_target;
+                    DesignPointCost = (int)((decimal)_target - (decimal)_current) * 5;
+                    CargoFactorReduction = (decimal)_current - (decimal)_target;
                     break;
                 case AdjustmentType.Load:
                     increaseQuantumCount = CalculateQuantumCount(10);
-                    NewValue = (int)_current + 10 * increaseQuantumCount;
+                    NewValue = (decimal)_current + 10 * increaseQuantumCount;
                     DesignPointCost = increaseQuantumCount;
                     LoadReduction = -10 * increaseQuantumCount;
                     break;
@@ -152,10 +152,10 @@ namespace SRVehicleDesigner.BLL
                     IsValid = (_current is int && _target is int && (int)_target >= 0);
                     break;
                 case AdjustmentType.CargoFactor:
-                    IsValid = (_current is int && _target is int && ValidateBetween(_chassis.CargoFactorBase, _chassis.CargoFactorMax));
+                    IsValid = (_current is decimal && _target is decimal && ValidateBetween(_chassis.CargoFactorBase, _chassis.CargoFactorMax));
                     break;
                 case AdjustmentType.Load:
-                    IsValid = (_current is int && _target is int && ValidateBetween(_powerPlant.LoadBase, _powerPlant.LoadMax));
+                    IsValid = (_current is decimal && _target is decimal && ValidateBetween(_powerPlant.LoadBase, _powerPlant.LoadMax));
                     break;
                 default:
                     throw new NotImplementedException();
@@ -214,15 +214,47 @@ namespace SRVehicleDesigner.BLL
             return message;
         }
 
-        //BUG: Unsafe unboxing
+        //TODO: Ask advice - OOOOOOgly.
         private int CalculateQuantumCount(int quantumSize)
         {
-            return (int)Math.Ceiling(((int)_target - (int)_current) / (double)quantumSize);
+            double target;
+            double current;
+            if (_target is int)
+            {
+                target = (int)_target;
+                current = (int)_current;
+            } else if (_target is decimal)
+            {
+                target = (double)(decimal)_target;
+                current = (double)(decimal)_current;
+            } else
+            {
+                target = (double)_target;
+                current = (double)_current;
+            }
+            return (int)Math.Ceiling((target - current) / quantumSize);
         }
 
         private int CalculateQuantumCount(decimal quantumSize)
         {
-            return (int)Math.Ceiling(((decimal)_target - (decimal)_current) / quantumSize);
+            decimal target;
+            decimal current;
+            if (_target is int)
+            {
+                target = (int)_target;
+                current = (int)_current;
+            }
+            else if (_target is double)
+            {
+                target = (decimal)(double)_target;
+                current = (decimal)(double)_current;
+            }
+            else
+            {
+                target = (decimal)_target;
+                current = (decimal)_current;
+            }
+            return (int)Math.Ceiling((target - current) / quantumSize);
         }
     }
 }

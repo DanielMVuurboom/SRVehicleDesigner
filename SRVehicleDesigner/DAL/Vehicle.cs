@@ -21,9 +21,9 @@ namespace SRVehicleDesigner.DAL
 
         public int Body { get; private set; }
         public int Armor { get; private set; }
-        public int CargoFactor { get; private set; }
+        public decimal CargoFactor { get; private set; }
         public decimal CargoFactorFree { get; private set; }
-        public int Load { get; private set; }
+        public decimal Load { get; private set; }
         public decimal LoadFree { get; private set; }
 
         public int RoadHandling { get; private set; }
@@ -100,6 +100,7 @@ namespace SRVehicleDesigner.DAL
                 prop.SetValue(this, adjustment.NewValue, null);
                 DesignPoints += adjustment.DesignPointCost;
                 LoadFree -= adjustment.LoadReduction;
+                //NOTE: if Load/CF ajustment is invalid (because the *Max is exceed), their Apply will not be executed, resulting in negative *Free values.
                 if (LoadFree < 0)
                 {
                     var moreLoad = new Adjustment(this, AdjustmentType.Load, Load, Load - LoadFree );

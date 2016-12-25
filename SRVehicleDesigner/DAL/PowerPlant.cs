@@ -53,9 +53,9 @@ namespace SRVehicleDesigner.DAL
         [DataMember(Order = 5)]
         public int AccelMax { get; private set; }
         [DataMember(Order = 6)]
-        public int LoadBase { get; private set; }
+        public decimal LoadBase { get; private set; }
         [DataMember(Order = 7)]
-        public int LoadMax { get; private set; }
+        public decimal LoadMax { get; private set; }
         [DataMember(Order = 8)]
         public int Sig { get; private set; }
         [DataMember(Order = 9)]

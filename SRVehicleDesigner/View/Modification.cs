@@ -49,9 +49,9 @@ namespace SRVehicleDesigner
 
             bodyBox.Text = _vehicle.Body.ToString();
             armorBox.Text = _vehicle.Armor.ToString();
-            cargoFactorBox.Text = _vehicle.CargoFactor.ToString();
+            cargoFactorBox.Text = string.Format("{0:0}", _vehicle.CargoFactor);
             cargoFactorFreeBox.Text = string.Format("{0:0.00}", _vehicle.CargoFactorFree);
-            loadBox.Text = _vehicle.Load.ToString();
+            loadBox.Text = string.Format("{0:0}", _vehicle.Load);
             loadFreeBox.Text = string.Format("{0:0.00}", _vehicle.LoadFree);
 
             handlingRoadBox.SelectedItem = ((List<int>)handlingRoadBox.DataSource).First(i => i == _vehicle.RoadHandling);

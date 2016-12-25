@@ -53,9 +53,9 @@ namespace SRVehicleDesigner.DAL
         [DataMember(Order = 5)]
         public int Armor { get; private set; }
         [DataMember(Order = 6)]
-        public int CargoFactorBase { get; private set; }
+        public decimal CargoFactorBase { get; private set; }
         [DataMember(Order = 7)]
-        public int CargoFactorMax { get; private set; }
+        public decimal CargoFactorMax { get; private set; }
         [DataMember(Order = 8)]
         public int AutoNav { get; private set; }
         [DataMember(Order = 9)]
