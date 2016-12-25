@@ -24,6 +24,8 @@ namespace SRVehicleDesigner.DAL
 
     public class Electronics
     {
+        public List<Component> AutoNavList { get; private set; }
+        public List<Component> PilotList { get; private set; }
         public List<Component> SensorList { get; private set; }
         public List<Component> EcmList { get; private set; }
         public List<Component> EccmList { get; private set; }
@@ -34,6 +36,8 @@ namespace SRVehicleDesigner.DAL
         {
             var electronics = new Electronics();
 
+            electronics.AutoNavList = Helper.LoadXmlFile<Component>("Resources\\AutoNavList.xml");
+            electronics.PilotList = Helper.LoadXmlFile<Component>("Resources\\PilotList.xml");
             electronics.SensorList = Helper.LoadXmlFile<Component>("Resources\\SensorList.xml");
             electronics.EcmList = Helper.LoadXmlFile<Component>("Resources\\EcmList.xml");
             electronics.EccmList = Helper.LoadXmlFile<Component>("Resources\\EccmList.xml");

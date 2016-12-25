@@ -29,6 +29,8 @@ namespace SRVehicleDesigner
             economyLabel.Text = $"{economyLabel.Text} ({_vehicle.EconomyUnit})";
             fuelSizeLabel.Text = $"{fuelSizeLabel.Text} ({_vehicle.FuelSizeUnit})";
 
+            autoNavBox.DataSource = _dataStore.Electronics.AutoNavList;
+            pilotBox.DataSource = _dataStore.Electronics.PilotList;
             sensorBox.DataSource = _dataStore.Electronics.SensorList;
             ecmBox.DataSource = _dataStore.Electronics.EcmList;
             eccmBox.DataSource = _dataStore.Electronics.EccmList;
@@ -59,6 +61,8 @@ namespace SRVehicleDesigner
             economyBox.Text = string.Format("{0:0.000}", _vehicle.Economy);
             fuelSizeBox.Text = _vehicle.FuelSize.ToString();
 
+            autoNavBox.SelectedItem = _dataStore.Electronics.AutoNavList.First(c => c.Level == _vehicle.AutoNav);
+            pilotBox.SelectedItem = _dataStore.Electronics.PilotList.First(c => c.Level == _vehicle.Pilot);
             sigBox.Text = _vehicle.Sig.ToString();
             sensorBox.SelectedItem = _dataStore.Electronics.SensorList.First(c => c.Level == _vehicle.Sensor);
             ecmBox.SelectedItem = _dataStore.Electronics.EcmList.First(c => c.Level == _vehicle.Ecm);

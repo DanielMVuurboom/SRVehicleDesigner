@@ -499,6 +499,7 @@
             // 
             // pilotBox
             // 
+            this.pilotBox.DisplayMember = "Level";
             this.pilotBox.FormattingEnabled = true;
             this.pilotBox.Location = new System.Drawing.Point(108, 32);
             this.pilotBox.Name = "pilotBox";
@@ -517,6 +518,7 @@
             // 
             // autoNavBox
             // 
+            this.autoNavBox.DisplayMember = "Level";
             this.autoNavBox.FormattingEnabled = true;
             this.autoNavBox.Location = new System.Drawing.Point(6, 32);
             this.autoNavBox.Name = "autoNavBox";

@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ArrayOfComponent>
+  <Component>
+    <Level>0</Level>
+    <AccessoryList></AccessoryList>
+    <CargoFactor>0</CargoFactor>
+    <DesignPoints>0</DesignPoints>
+    <Load>0</Load>
+  </Component>
+  <Component>
+    <Level>1</Level>
+    <AccessoryList>
+    </AccessoryList>
+    <CargoFactor>0</CargoFactor>
+    <DesignPoints>5</DesignPoints>
+    <Load>0</Load>
+  </Component>
+  <Component>
+    <Level>2</Level>
+    <AccessoryList>
+    </AccessoryList>
+    <CargoFactor>0</CargoFactor>
+    <DesignPoints>10</DesignPoints>
+    <Load>0</Load>
+  </Component>
+  <Component>
+    <Level>3</Level>
+    <AccessoryList>
+    </AccessoryList>
+    <CargoFactor>0</CargoFactor>
+    <DesignPoints>50</DesignPoints>
+    <Load>0</Load>
+  </Component>
+  <Component>
+    <Level>4</Level>
+    <AccessoryList>
+    </AccessoryList>
+    <CargoFactor>0</CargoFactor>
+    <DesignPoints>150</DesignPoints>
+    <Load>0</Load>
+  </Component>
+</ArrayOfComponent>
