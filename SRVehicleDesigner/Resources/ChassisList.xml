@@ -30,7 +30,7 @@
   </Chassis>
   <Chassis>
     <ChassisGroup>Bikes</ChassisGroup>
-    <Name>Racing Cycle</Name>
+    <Name>Racing Bike</Name>
     <RoadHandling>3</RoadHandling>
     <OffRoadHandling>6</OffRoadHandling>
     <Body>2</Body>
@@ -576,7 +576,7 @@
   </Chassis>
   <Chassis>
     <ChassisGroup>Cars</ChassisGroup>
-    <Name>Small Crawler</Name>
+    <Name>Small Wheeled Crawler</Name>
     <RoadHandling>4</RoadHandling>
     <OffRoadHandling>4</OffRoadHandling>
     <Body>1</Body>
@@ -600,7 +600,55 @@
   </Chassis>
   <Chassis>
     <ChassisGroup>Cars</ChassisGroup>
-    <Name>Large Crawler</Name>
+    <Name>Small Tracked Crawler</Name>
+    <RoadHandling>4</RoadHandling>
+    <OffRoadHandling>4</OffRoadHandling>
+    <Body>1</Body>
+    <Armor>0</Armor>
+    <CargoFactorBase>0</CargoFactorBase>
+    <CargoFactorMax>6</CargoFactorMax>
+    <AutoNav>0</AutoNav>
+    <Pilot>1</Pilot>
+    <Sensor>1</Sensor>
+    <SeatingList>
+    </SeatingList>
+    <EntryPointList>
+    </EntryPointList>
+    <SetupTime>3</SetupTime>
+    <TakeOffProfile>NotApplicable</TakeOffProfile>
+    <DesignPoints>115</DesignPoints>
+    <AccessoryList>
+      <Accessory>RemoteControlInterface</Accessory>
+      <Accessory>RiggerAdaptation</Accessory>
+    </AccessoryList>
+  </Chassis>
+  <Chassis>
+    <ChassisGroup>Cars</ChassisGroup>
+    <Name>Large Tracked Crawler</Name>
+    <RoadHandling>4</RoadHandling>
+    <OffRoadHandling>4</OffRoadHandling>
+    <Body>2</Body>
+    <Armor>0</Armor>
+    <CargoFactorBase>2</CargoFactorBase>
+    <CargoFactorMax>12</CargoFactorMax>
+    <AutoNav>0</AutoNav>
+    <Pilot>1</Pilot>
+    <Sensor>1</Sensor>
+    <SeatingList>
+    </SeatingList>
+    <EntryPointList>
+    </EntryPointList>
+    <SetupTime>5</SetupTime>
+    <TakeOffProfile>NotApplicable</TakeOffProfile>
+    <DesignPoints>215</DesignPoints>
+    <AccessoryList>
+      <Accessory>RemoteControlInterface</Accessory>
+      <Accessory>RiggerAdaptation</Accessory>
+    </AccessoryList>
+  </Chassis>
+  <Chassis>
+    <ChassisGroup>Cars</ChassisGroup>
+    <Name>Large Wheeled Crawler</Name>
     <RoadHandling>4</RoadHandling>
     <OffRoadHandling>4</OffRoadHandling>
     <Body>2</Body>
