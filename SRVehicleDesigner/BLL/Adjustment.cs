@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Reflection;
+using SRVehicleDesigner.DAL;
 
 namespace SRVehicleDesigner.BLL
 {
@@ -32,6 +33,7 @@ namespace SRVehicleDesigner.BLL
         public decimal CargoFactorReduction { get; private set; }
         public decimal LoadReduction { get; private set; }
         public object NewValue { get; private set; }
+        public List<Accessory> Accessories { get; private set; }
 
         public Adjustment(Vehicle vehicle, AdjustmentType type, object current, object target)
         {
@@ -40,6 +42,7 @@ namespace SRVehicleDesigner.BLL
             AdjustmentType = type;
             _current = current;
             _target = target;
+            Accessories = new List<Accessory>();
             Validate();
             Calculate();
         }

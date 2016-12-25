@@ -3,11 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Runtime.Serialization;
-using System.IO;
-using System.Xml;
 
-namespace SRVehicleDesigner
+namespace SRVehicleDesigner.DAL
 {
     public class DataStore
     {
@@ -15,6 +12,7 @@ namespace SRVehicleDesigner
         public List<ChassisGroup> ChassisGroupList { get { return ChassisList.Select(c => c.ChassisGroup).Distinct().ToList(); } }
         public List<PowerPlant> PowerPlantList { get; private set; }
         public List<bool> BooleanList { get; private set; }
+        public Electronics Electronics { get; private set; }
 
         public static DataStore LoadData()
         {
@@ -24,20 +22,13 @@ namespace SRVehicleDesigner
             dataStore.BooleanList.Add(false);
             dataStore.BooleanList.Add(true);
 
-            dataStore.ChassisList = LoadXmlFile<Chassis>("Resources\\ChassisList.xml");
-            PowerPlant.FuelTankList = LoadXmlFile<FuelTank>("Resources\\FuelTankList.xml");
-            dataStore.PowerPlantList = LoadXmlFile<PowerPlant>("Resources\\PowerPlantList.xml");
+            dataStore.Electronics = Electronics.LoadData();
+
+            dataStore.ChassisList = Helper.LoadXmlFile<Chassis>("Resources\\ChassisList.xml");
+            PowerPlant.FuelTankList = Helper.LoadXmlFile<FuelTank>("Resources\\FuelTankList.xml");
+            dataStore.PowerPlantList = Helper.LoadXmlFile<PowerPlant>("Resources\\PowerPlantList.xml");
 
             return dataStore;
-        }
-
-        private static List<T> LoadXmlFile<T>(string relativeFilePath)
-        {
-            string path = System.IO.Path.Combine(System.Windows.Forms.Application.StartupPath, relativeFilePath);
-            DataContractSerializer dcs = new DataContractSerializer(typeof(List<T>));
-            FileStream fs = new FileStream(path, FileMode.Open);
-            XmlDictionaryReader reader = XmlDictionaryReader.CreateTextReader(fs, new XmlDictionaryReaderQuotas());
-            return (List<T>)dcs.ReadObject(reader);
         }
     }
 }

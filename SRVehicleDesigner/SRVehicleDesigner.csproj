@@ -50,8 +50,11 @@
     <Compile Include="BLL\Adjustment.cs" />
     <Compile Include="BLL\CostCalculation.cs" />
     <Compile Include="BLL\EngineRules.cs" />
+    <Compile Include="DAL\Accessory.cs" />
     <Compile Include="DAL\Chassis.cs" />
     <Compile Include="DAL\DataStore.cs" />
+    <Compile Include="DAL\Electronics.cs" />
+    <Compile Include="DAL\Helper.cs" />
     <Compile Include="View\Modification.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -102,10 +105,25 @@
     <Content Include="Resources\ChassisList.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Resources\EccmList.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\EcdList.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\EcmList.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\EdList.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\FuelTankList.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\PowerPlantList.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\SensorList.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using SRVehicleDesigner.BLL;
 using System.Reflection;
 
-namespace SRVehicleDesigner
+namespace SRVehicleDesigner.DAL
 {
     public class Vehicle
     {
@@ -39,6 +39,10 @@ namespace SRVehicleDesigner
         public int Pilot { get; private set; }
         public int Sensor { get; private set; }
         public int Sig { get; private set; }
+        public int Ecm { get; private set; }
+        public int Eccm { get; private set; }
+        public int Ed { get; private set; }
+        public int Ecd { get; private set; }
 
         public int SetupTime { get; private set; }
         public TakeOffProfile TakeOffProfile => BaseChassis.TakeOffProfile;
@@ -82,7 +86,7 @@ namespace SRVehicleDesigner
 
             SeatingList = new List<Seating>(BaseChassis.SeatingList);
             EntryPointList = new List<EntryPoint>(BaseChassis.EntryPointList);
-            AccessoryList = new List<Accessory>(BaseChassis.AccessoryList);
+            AccessoryList = BaseChassis.AccessoryList.OrderBy(a => a.ToString()).ToList();
 
             DesignPoints = BaseChassis.DesignPoints + BasePowerPlant.DesignPoints;
             DesignMultiplier = CostCalculation.CalculateDesignMultiplier(ChassisGroup, Drone, AccessoryList);
@@ -107,7 +111,7 @@ namespace SRVehicleDesigner
                     var moreCargo = new Adjustment(this, AdjustmentType.CargoFactor, CargoFactor, CargoFactor - CargoFactorFree);
                     Apply(moreCargo);
                 }
-
+                AccessoryList = AccessoryList.Union(adjustment.Accessories).OrderBy(a => a.ToString()).ToList();
             }
         }
     }

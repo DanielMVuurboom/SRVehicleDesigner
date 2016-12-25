@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Runtime.Serialization;
 
-namespace SRVehicleDesigner
+namespace SRVehicleDesigner.DAL
 {
     [DataContract(Namespace = "")]
     public enum ChassisGroup {[EnumMember]Bikes, [EnumMember]Cars }
@@ -36,9 +36,6 @@ namespace SRVehicleDesigner
 
     [DataContract(Namespace = "")]
     public enum TakeOffProfile {[EnumMember]NotApplicable }
-
-    [DataContract(Namespace = "")]
-    public enum Accessory {[EnumMember]RemoteControlInterface, [EnumMember]RiggerAdaptation, [EnumMember]LivingAmenitiesBasic }
 
     [DataContract(Namespace = "")]
     public class Chassis

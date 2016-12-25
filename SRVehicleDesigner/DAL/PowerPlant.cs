@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Runtime.Serialization;
 
-namespace SRVehicleDesigner
+namespace SRVehicleDesigner.DAL
 {
     [DataContract(Namespace = "")]
     public class AllowedChassisRule

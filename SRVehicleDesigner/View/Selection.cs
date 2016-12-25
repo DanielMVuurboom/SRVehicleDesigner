@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SRVehicleDesigner.DAL;
 
 namespace SRVehicleDesigner
 {
@@ -41,7 +42,7 @@ namespace SRVehicleDesigner
         private void newVehicleButton_Click(object sender, EventArgs e)
         {
             var vehicle = new Vehicle((Chassis)chassisBox.SelectedItem, (PowerPlant)powerPlantBox.SelectedItem, (bool)droneBox.SelectedItem);
-            var modificationForm = new Modification(vehicle);
+            var modificationForm = new Modification(vehicle, _dataStore);
             modificationForm.Show();
         }
     }

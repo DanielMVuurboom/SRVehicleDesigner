@@ -8,23 +8,33 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using SRVehicleDesigner.BLL;
+using SRVehicleDesigner.DAL;
 using System.Reflection;
 
 namespace SRVehicleDesigner
 {
     public partial class Modification : Form
     {
-        private Vehicle _vehicle;
+        private readonly Vehicle _vehicle;
+        private readonly DataStore _dataStore;
 
-        public Modification(Vehicle vehicle)
+        public Modification(Vehicle vehicle, DataStore datastore)
         {
             InitializeComponent();
             _vehicle = vehicle;
+            _dataStore = datastore;
 
             handlingRoadBox.DataSource = EngineRules.GetValidHandlingOptions(_vehicle.BaseChassis.RoadHandling);
             handlingOffRoadBox.DataSource = EngineRules.GetValidHandlingOptions(_vehicle.BaseChassis.OffRoadHandling);
             economyLabel.Text = $"{economyLabel.Text} ({_vehicle.EconomyUnit})";
             fuelSizeLabel.Text = $"{fuelSizeLabel.Text} ({_vehicle.FuelSizeUnit})";
+
+            sensorBox.DataSource = _dataStore.Electronics.SensorList;
+            ecmBox.DataSource = _dataStore.Electronics.EcmList;
+            eccmBox.DataSource = _dataStore.Electronics.EccmList;
+            edBox.DataSource = _dataStore.Electronics.EdList;
+            ecdBox.DataSource = _dataStore.Electronics.EcdList;
+
             bodyBox.Select();
         }
 
@@ -48,6 +58,13 @@ namespace SRVehicleDesigner
             accelBox.Text = _vehicle.Accel.ToString();
             economyBox.Text = string.Format("{0:0.000}", _vehicle.Economy);
             fuelSizeBox.Text = _vehicle.FuelSize.ToString();
+
+            sigBox.Text = _vehicle.Sig.ToString();
+            sensorBox.SelectedItem = _dataStore.Electronics.SensorList.First(c => c.Level == _vehicle.Sensor);
+            ecmBox.SelectedItem = _dataStore.Electronics.EcmList.First(c => c.Level == _vehicle.Ecm);
+            eccmBox.SelectedItem = _dataStore.Electronics.EccmList.First(c => c.Level == _vehicle.Eccm);
+            edBox.SelectedItem = _dataStore.Electronics.EdList.First(c => c.Level == _vehicle.Ed);
+            ecdBox.SelectedItem = _dataStore.Electronics.EcdList.First(c => c.Level == _vehicle.Ecd);
         }
 
         private void generic_Validating(object sender, CancelEventArgs e, AdjustmentType adjustmentType)
