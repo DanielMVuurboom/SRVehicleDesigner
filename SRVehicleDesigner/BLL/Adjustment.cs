@@ -17,7 +17,14 @@ namespace SRVehicleDesigner.BLL
         Economy,
         FuelSize,
         Load,
-        CargoFactor
+        CargoFactor,
+        AutoNav,
+        Pilot,
+        Sensor,
+        Ecm,
+        Eccm,
+        Ed,
+        Ecd
     }
 
     public class Adjustment
@@ -26,6 +33,7 @@ namespace SRVehicleDesigner.BLL
         private PowerPlant _powerPlant;
         private object _current;
         private object _target;
+        private Electronics _electronics;
 
         public AdjustmentType AdjustmentType { get; private set; }
         public bool IsValid { get; private set; }
@@ -33,16 +41,19 @@ namespace SRVehicleDesigner.BLL
         public decimal CargoFactorReduction { get; private set; }
         public decimal LoadReduction { get; private set; }
         public object NewValue { get; private set; }
-        public List<Accessory> Accessories { get; private set; }
+        public List<Accessory> AccessoriesToAdd { get; private set; }
+        public List<Accessory> AccessoriesToRemove { get; private set; }
 
         public Adjustment(Vehicle vehicle, AdjustmentType type, object current, object target)
         {
             _chassis = vehicle.BaseChassis;
             _powerPlant = vehicle.BasePowerPlant;
+            _electronics = Electronics.GetDefaultElectronics();
             AdjustmentType = type;
             _current = current;
             _target = target;
-            Accessories = new List<Accessory>();
+            AccessoriesToAdd = new List<Accessory>();
+            AccessoriesToRemove = new List<Accessory>();
             Validate();
             Calculate();
         }
@@ -86,6 +97,23 @@ namespace SRVehicleDesigner.BLL
                     DesignPointCost = increaseQuantumCount;
                     LoadReduction = -10 * increaseQuantumCount;
                     break;
+                case AdjustmentType.AutoNav:
+                case AdjustmentType.Pilot:
+                case AdjustmentType.Sensor:
+                case AdjustmentType.Ecm:
+                case AdjustmentType.Eccm:
+                case AdjustmentType.Ed:
+                case AdjustmentType.Ecd:
+                    var componentlist = (List<Component>)_electronics.GetType().GetProperty($"{AdjustmentType}List").GetValue(_electronics);
+                    var currentComponent = componentlist.First(c => c.Level == (int)_current);
+                    var targetComponent = componentlist.First(c => c.Level == (int)_target);
+                    NewValue = targetComponent.Level;
+                    DesignPointCost = targetComponent.DesignPoints - currentComponent.DesignPoints;
+                    CargoFactorReduction = targetComponent.CargoFactor - currentComponent.CargoFactor;
+                    LoadReduction = targetComponent.Load - currentComponent.Load;
+                    AccessoriesToAdd = targetComponent.AccessoryList.Except(currentComponent.AccessoryList).ToList();
+                    AccessoriesToRemove = currentComponent.AccessoryList.Except(targetComponent.AccessoryList).ToList();
+                    break;
                 default:
                     throw new NotImplementedException();
             }
@@ -100,6 +128,16 @@ namespace SRVehicleDesigner.BLL
                     break;
                 case AdjustmentType.OffRoadHandling:
                     IsValid = (_current is int && _target is int && EngineRules.GetValidHandlingOptions(_chassis.OffRoadHandling).Contains((int)_target));
+                    break;
+                case AdjustmentType.AutoNav:
+                case AdjustmentType.Pilot:
+                case AdjustmentType.Sensor:
+                case AdjustmentType.Ecm:
+                case AdjustmentType.Eccm:
+                case AdjustmentType.Ed:
+                case AdjustmentType.Ecd:
+                    var componentlist = (List<Component>)_electronics.GetType().GetProperty($"{AdjustmentType}List").GetValue(_electronics);
+                    IsValid = (_current is int && _target is int && componentlist.Any(c => c.Level == (int)_target));
                     break;
                 case AdjustmentType.Speed:
                     IsValid = (_current is int && _target is int && ValidateBetween(_powerPlant.SpeedBase, _powerPlant.SpeedMax));
@@ -142,7 +180,14 @@ namespace SRVehicleDesigner.BLL
             {
                 case AdjustmentType.RoadHandling:
                 case AdjustmentType.OffRoadHandling:
-                    message = $"Error in dropdownlist generation";
+                case AdjustmentType.AutoNav:
+                case AdjustmentType.Pilot:
+                case AdjustmentType.Sensor:
+                case AdjustmentType.Ecm:
+                case AdjustmentType.Eccm:
+                case AdjustmentType.Ed:
+                case AdjustmentType.Ecd:
+                    message = $"Error in dropdownlist generation for {AdjustmentType}";
                     break;
                 case AdjustmentType.Speed:
                     message = $"Speed should be between {_powerPlant.SpeedBase} and {_powerPlant.SpeedMax}";
@@ -169,6 +214,7 @@ namespace SRVehicleDesigner.BLL
             return message;
         }
 
+        //BUG: Unsafe unboxing
         private int CalculateQuantumCount(int quantumSize)
         {
             return (int)Math.Ceiling(((int)_target - (int)_current) / (double)quantumSize);

@@ -111,7 +111,7 @@ namespace SRVehicleDesigner.DAL
                     var moreCargo = new Adjustment(this, AdjustmentType.CargoFactor, CargoFactor, CargoFactor - CargoFactorFree);
                     Apply(moreCargo);
                 }
-                AccessoryList = AccessoryList.Union(adjustment.Accessories).OrderBy(a => a.ToString()).ToList();
+                AccessoryList = AccessoryList.Union(adjustment.AccessoriesToAdd).Except(adjustment.AccessoriesToRemove).OrderBy(a => a.ToString()).ToList();
             }
         }
     }

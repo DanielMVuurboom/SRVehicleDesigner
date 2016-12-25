@@ -146,5 +146,54 @@ namespace SRVehicleDesigner
         {
             generic_Validating(sender, e, AdjustmentType.FuelSize);
         }
+
+        private void autoNavBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var adjustment = new Adjustment(_vehicle, AdjustmentType.AutoNav, _vehicle.AutoNav, ((DAL.Component)autoNavBox.SelectedItem).Level);
+            _vehicle.Apply(adjustment);
+            Invalidate();
+        }
+
+        private void pilotBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var adjustment = new Adjustment(_vehicle, AdjustmentType.Pilot, _vehicle.Pilot, ((DAL.Component)pilotBox.SelectedItem).Level);
+            _vehicle.Apply(adjustment);
+            Invalidate();
+        }
+
+        private void sensorBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var adjustment = new Adjustment(_vehicle, AdjustmentType.Sensor, _vehicle.Sensor, ((DAL.Component)sensorBox.SelectedItem).Level);
+            _vehicle.Apply(adjustment);
+            Invalidate();
+        }
+
+        private void ecmBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var adjustment = new Adjustment(_vehicle, AdjustmentType.Ecm, _vehicle.Ecm, ((DAL.Component)ecmBox.SelectedItem).Level);
+            _vehicle.Apply(adjustment);
+            Invalidate();
+        }
+
+        private void eccmBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var adjustment = new Adjustment(_vehicle, AdjustmentType.Eccm, _vehicle.Eccm, ((DAL.Component)eccmBox.SelectedItem).Level);
+            _vehicle.Apply(adjustment);
+            Invalidate();
+        }
+
+        private void edBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var adjustment = new Adjustment(_vehicle, AdjustmentType.Ed, _vehicle.Ed, ((DAL.Component)edBox.SelectedItem).Level);
+            _vehicle.Apply(adjustment);
+            Invalidate();
+        }
+
+        private void ecdBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var adjustment = new Adjustment(_vehicle, AdjustmentType.Ecd, _vehicle.Ecd, ((DAL.Component)ecdBox.SelectedItem).Level);
+            _vehicle.Apply(adjustment);
+            Invalidate();
+        }
     }
 }

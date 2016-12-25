@@ -419,6 +419,7 @@
             this.edBox.Name = "edBox";
             this.edBox.Size = new System.Drawing.Size(77, 21);
             this.edBox.TabIndex = 19;
+            this.edBox.SelectedIndexChanged += new System.EventHandler(this.edBox_SelectedIndexChanged);
             // 
             // edLabel
             // 
@@ -438,6 +439,7 @@
             this.eccmBox.Name = "eccmBox";
             this.eccmBox.Size = new System.Drawing.Size(77, 21);
             this.eccmBox.TabIndex = 18;
+            this.eccmBox.SelectedIndexChanged += new System.EventHandler(this.eccmBox_SelectedIndexChanged);
             // 
             // eccmLabel
             // 
@@ -457,6 +459,7 @@
             this.ecmBox.Name = "ecmBox";
             this.ecmBox.Size = new System.Drawing.Size(77, 21);
             this.ecmBox.TabIndex = 17;
+            this.ecmBox.SelectedIndexChanged += new System.EventHandler(this.ecmBox_SelectedIndexChanged);
             // 
             // ecmLabel
             // 
@@ -476,6 +479,7 @@
             this.sensorBox.Name = "sensorBox";
             this.sensorBox.Size = new System.Drawing.Size(77, 21);
             this.sensorBox.TabIndex = 16;
+            this.sensorBox.SelectedIndexChanged += new System.EventHandler(this.sensorBox_SelectedIndexChanged);
             // 
             // sensorLabel
             // 
@@ -505,6 +509,7 @@
             this.pilotBox.Name = "pilotBox";
             this.pilotBox.Size = new System.Drawing.Size(77, 21);
             this.pilotBox.TabIndex = 14;
+            this.pilotBox.SelectedIndexChanged += new System.EventHandler(this.pilotBox_SelectedIndexChanged);
             // 
             // pilotLabel
             // 
@@ -524,6 +529,7 @@
             this.autoNavBox.Name = "autoNavBox";
             this.autoNavBox.Size = new System.Drawing.Size(77, 21);
             this.autoNavBox.TabIndex = 13;
+            this.autoNavBox.SelectedIndexChanged += new System.EventHandler(this.autoNavBox_SelectedIndexChanged);
             // 
             // autoNavlabel
             // 
@@ -543,6 +549,7 @@
             this.ecdBox.Name = "ecdBox";
             this.ecdBox.Size = new System.Drawing.Size(77, 21);
             this.ecdBox.TabIndex = 20;
+            this.ecdBox.SelectedIndexChanged += new System.EventHandler(this.ecdBox_SelectedIndexChanged);
             // 
             // ecdLabel
             // 

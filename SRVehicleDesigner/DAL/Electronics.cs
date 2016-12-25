@@ -32,19 +32,23 @@ namespace SRVehicleDesigner.DAL
         public List<Component> EdList { get; private set; }
         public List<Component> EcdList { get; private set; }
 
-        public static Electronics LoadData()
+        private static Electronics _defaultElectronics;
+
+        public static Electronics GetDefaultElectronics()
         {
-            var electronics = new Electronics();
+            if (_defaultElectronics == null)
+            {
+                _defaultElectronics = new Electronics();
 
-            electronics.AutoNavList = Helper.LoadXmlFile<Component>("Resources\\AutoNavList.xml");
-            electronics.PilotList = Helper.LoadXmlFile<Component>("Resources\\PilotList.xml");
-            electronics.SensorList = Helper.LoadXmlFile<Component>("Resources\\SensorList.xml");
-            electronics.EcmList = Helper.LoadXmlFile<Component>("Resources\\EcmList.xml");
-            electronics.EccmList = Helper.LoadXmlFile<Component>("Resources\\EccmList.xml");
-            electronics.EdList = Helper.LoadXmlFile<Component>("Resources\\EdList.xml");
-            electronics.EcdList = Helper.LoadXmlFile<Component>("Resources\\EcdList.xml");
-
-            return electronics;
+                _defaultElectronics.AutoNavList = Helper.LoadXmlFile<Component>("Resources\\AutoNavList.xml");
+                _defaultElectronics.PilotList = Helper.LoadXmlFile<Component>("Resources\\PilotList.xml");
+                _defaultElectronics.SensorList = Helper.LoadXmlFile<Component>("Resources\\SensorList.xml");
+                _defaultElectronics.EcmList = Helper.LoadXmlFile<Component>("Resources\\EcmList.xml");
+                _defaultElectronics.EccmList = Helper.LoadXmlFile<Component>("Resources\\EccmList.xml");
+                _defaultElectronics.EdList = Helper.LoadXmlFile<Component>("Resources\\EdList.xml");
+                _defaultElectronics.EcdList = Helper.LoadXmlFile<Component>("Resources\\EcdList.xml");
+            }
+            return _defaultElectronics;
         }
     }
 }

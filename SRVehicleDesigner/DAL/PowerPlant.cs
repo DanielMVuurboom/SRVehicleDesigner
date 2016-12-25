@@ -38,7 +38,7 @@ namespace SRVehicleDesigner.DAL
     [DataContract(Namespace = "")]
     public class PowerPlant
     {
-        public static List<FuelTank> FuelTankList;
+        private static List<FuelTank> _fuelTankList;
 
         [DataMember(Order = 0)]
         public PowerPlantType Type { get; private set; }
@@ -71,7 +71,15 @@ namespace SRVehicleDesigner.DAL
         [DataMember(Order = 14)]
         public int DesignPoints { get; private set; }
 
-        public FuelTank Fueltank => FuelTankList.First(ft => ft.PowerPlantType == Type);
+        public FuelTank Fueltank => _fuelTankList.First(ft => ft.PowerPlantType == Type);
+
+        public static void LoadFuelTankList()
+        {
+            if (_fuelTankList == null)
+            {
+                _fuelTankList = Helper.LoadXmlFile<FuelTank>("Resources\\FuelTankList.xml");
+            }
+        }
 
         public override string ToString()
         {

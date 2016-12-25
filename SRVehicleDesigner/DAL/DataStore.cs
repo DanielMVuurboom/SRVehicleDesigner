@@ -14,21 +14,25 @@ namespace SRVehicleDesigner.DAL
         public List<bool> BooleanList { get; private set; }
         public Electronics Electronics { get; private set; }
 
-        public static DataStore LoadData()
+        private static DataStore _defaultDataStore;
+
+        public static DataStore GetDefaultDataStore()
         {
-            var dataStore = new DataStore();
+            if (_defaultDataStore == null)
+            {
+                _defaultDataStore = new DataStore();
 
-            dataStore.BooleanList = new List<bool>();
-            dataStore.BooleanList.Add(false);
-            dataStore.BooleanList.Add(true);
+                _defaultDataStore.BooleanList = new List<bool>();
+                _defaultDataStore.BooleanList.Add(false);
+                _defaultDataStore.BooleanList.Add(true);
 
-            dataStore.Electronics = Electronics.LoadData();
+                _defaultDataStore.Electronics = Electronics.GetDefaultElectronics();
+                PowerPlant.LoadFuelTankList();
 
-            dataStore.ChassisList = Helper.LoadXmlFile<Chassis>("Resources\\ChassisList.xml");
-            PowerPlant.FuelTankList = Helper.LoadXmlFile<FuelTank>("Resources\\FuelTankList.xml");
-            dataStore.PowerPlantList = Helper.LoadXmlFile<PowerPlant>("Resources\\PowerPlantList.xml");
-
-            return dataStore;
+                _defaultDataStore.ChassisList = Helper.LoadXmlFile<Chassis>("Resources\\ChassisList.xml");
+                _defaultDataStore.PowerPlantList = Helper.LoadXmlFile<PowerPlant>("Resources\\PowerPlantList.xml");
+            }
+            return _defaultDataStore;
         }
     }
 }

@@ -18,7 +18,7 @@ namespace SRVehicleDesigner
         public Selection()
         {
             InitializeComponent();
-            _dataStore = DataStore.LoadData();
+            _dataStore = DataStore.GetDefaultDataStore();
             chassisGroupBox.DataSource = _dataStore.ChassisGroupList;
             droneBox.DataSource = _dataStore.BooleanList;
         }
