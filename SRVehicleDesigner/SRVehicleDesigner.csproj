@@ -54,7 +54,7 @@
     <Compile Include="DAL\Chassis.cs" />
     <Compile Include="DAL\DataStore.cs" />
     <Compile Include="DAL\Electronics.cs" />
-    <Compile Include="DAL\Helper.cs" />
+    <Compile Include="DAL\FileAccessHelper.cs" />
     <Compile Include="View\Modification.cs">
       <SubType>Form</SubType>
     </Compile>

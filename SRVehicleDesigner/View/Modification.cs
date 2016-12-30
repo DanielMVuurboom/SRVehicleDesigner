@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using SRVehicleDesigner.BLL;
 using SRVehicleDesigner.DAL;
 using System.Reflection;
+using System.IO;
 
 namespace SRVehicleDesigner
 {
@@ -122,14 +123,14 @@ namespace SRVehicleDesigner
             generic_Validating(sender, e, AdjustmentType.Load);
         }
 
-        private void handlingRoadBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void handlingRoadBox_SelectionChangeCommitted(object sender, EventArgs e)
         {
             var adjustment = new Adjustment(_vehicle, AdjustmentType.RoadHandling, _vehicle.RoadHandling, handlingRoadBox.SelectedItem);
             _vehicle.Apply(adjustment);
             Invalidate();
         }
 
-        private void handlingOffRoadBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void handlingOffRoadBox_SelectionChangeCommitted(object sender, EventArgs e)
         {
             var adjustment = new Adjustment(_vehicle, AdjustmentType.OffRoadHandling, _vehicle.OffRoadHandling, handlingOffRoadBox.SelectedItem);
             _vehicle.Apply(adjustment);
@@ -156,53 +157,75 @@ namespace SRVehicleDesigner
             generic_Validating(sender, e, AdjustmentType.FuelSize);
         }
 
-        private void autoNavBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void autoNavBox_SelectionChangeCommitted(object sender, EventArgs e)
         {
             var adjustment = new Adjustment(_vehicle, AdjustmentType.AutoNav, _vehicle.AutoNav, ((DAL.Component)autoNavBox.SelectedItem).Level);
             _vehicle.Apply(adjustment);
             Invalidate();
         }
 
-        private void pilotBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void pilotBox_SelectionChangeCommitted(object sender, EventArgs e)
         {
             var adjustment = new Adjustment(_vehicle, AdjustmentType.Pilot, _vehicle.Pilot, ((DAL.Component)pilotBox.SelectedItem).Level);
             _vehicle.Apply(adjustment);
             Invalidate();
         }
 
-        private void sensorBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void sensorBox_SelectionChangeCommitted(object sender, EventArgs e)
         {
             var adjustment = new Adjustment(_vehicle, AdjustmentType.Sensor, _vehicle.Sensor, ((DAL.Component)sensorBox.SelectedItem).Level);
             _vehicle.Apply(adjustment);
             Invalidate();
         }
 
-        private void ecmBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void ecmBox_SelectionChangeCommitted(object sender, EventArgs e)
         {
             var adjustment = new Adjustment(_vehicle, AdjustmentType.Ecm, _vehicle.Ecm, ((DAL.Component)ecmBox.SelectedItem).Level);
             _vehicle.Apply(adjustment);
             Invalidate();
         }
 
-        private void eccmBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void eccmBox_SelectionChangeCommitted(object sender, EventArgs e)
         {
             var adjustment = new Adjustment(_vehicle, AdjustmentType.Eccm, _vehicle.Eccm, ((DAL.Component)eccmBox.SelectedItem).Level);
             _vehicle.Apply(adjustment);
             Invalidate();
         }
 
-        private void edBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void edBox_SelectionChangeCommitted(object sender, EventArgs e)
         {
             var adjustment = new Adjustment(_vehicle, AdjustmentType.Ed, _vehicle.Ed, ((DAL.Component)edBox.SelectedItem).Level);
             _vehicle.Apply(adjustment);
             Invalidate();
         }
 
-        private void ecdBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void ecdBox_SelectionChangeCommitted(object sender, EventArgs e)
         {
             var adjustment = new Adjustment(_vehicle, AdjustmentType.Ecd, _vehicle.Ecd, ((DAL.Component)ecdBox.SelectedItem).Level);
             _vehicle.Apply(adjustment);
             Invalidate();
+        }
+
+        private void saveButton_Click(object sender, EventArgs e)
+        {
+            var saveFileDialog = new SaveFileDialog();
+            saveFileDialog.InitialDirectory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "SRVehicleDesigner");
+            saveFileDialog.FileName = $"{_vehicle.Name}.xml";
+            saveFileDialog.Filter = "xml files (*.xml)|*.xml|All files (*.*)|*.*";
+            saveFileDialog.FilterIndex = 0;
+            saveFileDialog.RestoreDirectory = true;
+
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    FileAccessHelper.SaveToFile(_vehicle, saveFileDialog.OpenFile());
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error writing vehicle to disk. Original error: " + ex.Message);
+                }
+            }
         }
     }
 }

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using SRVehicleDesigner.DAL;
+using System.IO;
 
 namespace SRVehicleDesigner
 {
@@ -44,6 +45,32 @@ namespace SRVehicleDesigner
             var vehicle = new Vehicle((Chassis)chassisBox.SelectedItem, (PowerPlant)powerPlantBox.SelectedItem, (bool)droneBox.SelectedItem);
             var modificationForm = new Modification(vehicle, _dataStore);
             modificationForm.Show();
+        }
+
+        private void loadButton_Click(object sender, EventArgs e)
+        {
+            var openFileDialog = new OpenFileDialog();
+            openFileDialog.InitialDirectory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "SRVehicleDesigner");
+            openFileDialog.Filter = "xml files (*.xml)|*.xml|All files (*.*)|*.*";
+            openFileDialog.FilterIndex = 0;
+            openFileDialog.RestoreDirectory = true;
+
+            Vehicle vehicle;
+
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    vehicle = FileAccessHelper.LoadFromFile<Vehicle>(openFileDialog.OpenFile());
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error reading vehicle from disk. Original error: " + ex.Message);
+                    return;
+                }
+                var modificationForm = new Modification(vehicle, _dataStore); 
+                modificationForm.Show();
+            }
         }
     }
 }

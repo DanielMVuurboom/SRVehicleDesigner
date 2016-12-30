@@ -29,8 +29,8 @@ namespace SRVehicleDesigner.DAL
                 _defaultDataStore.Electronics = Electronics.GetDefaultElectronics();
                 PowerPlant.LoadFuelTankList();
 
-                _defaultDataStore.ChassisList = Helper.LoadXmlFile<Chassis>("Resources\\ChassisList.xml");
-                _defaultDataStore.PowerPlantList = Helper.LoadXmlFile<PowerPlant>("Resources\\PowerPlantList.xml");
+                _defaultDataStore.ChassisList = FileAccessHelper.LoadListFromXmlFile<Chassis>("Resources\\ChassisList.xml");
+                _defaultDataStore.PowerPlantList = FileAccessHelper.LoadListFromXmlFile<PowerPlant>("Resources\\PowerPlantList.xml");
             }
             return _defaultDataStore;
         }

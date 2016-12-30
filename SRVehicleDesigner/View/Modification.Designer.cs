@@ -60,6 +60,9 @@
             this.bodyLabel = new System.Windows.Forms.Label();
             this.bodyBox = new System.Windows.Forms.TextBox();
             this.ElectronicsGroup = new System.Windows.Forms.GroupBox();
+            this.sigBox = new System.Windows.Forms.TextBox();
+            this.ecdBox = new System.Windows.Forms.ComboBox();
+            this.ecdLabel = new System.Windows.Forms.Label();
             this.edBox = new System.Windows.Forms.ComboBox();
             this.edLabel = new System.Windows.Forms.Label();
             this.eccmBox = new System.Windows.Forms.ComboBox();
@@ -73,9 +76,7 @@
             this.pilotLabel = new System.Windows.Forms.Label();
             this.autoNavBox = new System.Windows.Forms.ComboBox();
             this.autoNavlabel = new System.Windows.Forms.Label();
-            this.ecdBox = new System.Windows.Forms.ComboBox();
-            this.ecdLabel = new System.Windows.Forms.Label();
-            this.sigBox = new System.Windows.Forms.TextBox();
+            this.saveButton = new System.Windows.Forms.Button();
             this.drivingGroup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.physicalGroup.SuspendLayout();
@@ -140,7 +141,7 @@
             this.handlingRoadBox.Name = "handlingRoadBox";
             this.handlingRoadBox.Size = new System.Drawing.Size(77, 21);
             this.handlingRoadBox.TabIndex = 7;
-            this.handlingRoadBox.SelectedIndexChanged += new System.EventHandler(this.handlingRoadBox_SelectedIndexChanged);
+            this.handlingRoadBox.SelectionChangeCommitted += new System.EventHandler(this.handlingRoadBox_SelectionChangeCommitted);
             // 
             // handlingOffRoadBox
             // 
@@ -149,7 +150,7 @@
             this.handlingOffRoadBox.Name = "handlingOffRoadBox";
             this.handlingOffRoadBox.Size = new System.Drawing.Size(77, 21);
             this.handlingOffRoadBox.TabIndex = 8;
-            this.handlingOffRoadBox.SelectedIndexChanged += new System.EventHandler(this.handlingOffRoadBox_SelectedIndexChanged);
+            this.handlingOffRoadBox.SelectionChangeCommitted += new System.EventHandler(this.handlingOffRoadBox_SelectionChangeCommitted);
             // 
             // handlingOffRoadLabel
             // 
@@ -411,6 +412,34 @@
             this.ElectronicsGroup.TabStop = false;
             this.ElectronicsGroup.Text = "Electronics";
             // 
+            // sigBox
+            // 
+            this.sigBox.Location = new System.Drawing.Point(211, 33);
+            this.sigBox.Name = "sigBox";
+            this.sigBox.ReadOnly = true;
+            this.sigBox.Size = new System.Drawing.Size(77, 20);
+            this.sigBox.TabIndex = 15;
+            // 
+            // ecdBox
+            // 
+            this.ecdBox.DisplayMember = "Level";
+            this.ecdBox.FormattingEnabled = true;
+            this.ecdBox.Location = new System.Drawing.Point(314, 81);
+            this.ecdBox.Name = "ecdBox";
+            this.ecdBox.Size = new System.Drawing.Size(77, 21);
+            this.ecdBox.TabIndex = 20;
+            this.ecdBox.SelectionChangeCommitted += new System.EventHandler(this.ecdBox_SelectionChangeCommitted);
+            // 
+            // ecdLabel
+            // 
+            this.ecdLabel.AutoSize = true;
+            this.ecdLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ecdLabel.Location = new System.Drawing.Point(311, 65);
+            this.ecdLabel.Name = "ecdLabel";
+            this.ecdLabel.Size = new System.Drawing.Size(29, 13);
+            this.ecdLabel.TabIndex = 27;
+            this.ecdLabel.Text = "ECD";
+            // 
             // edBox
             // 
             this.edBox.DisplayMember = "Level";
@@ -419,7 +448,7 @@
             this.edBox.Name = "edBox";
             this.edBox.Size = new System.Drawing.Size(77, 21);
             this.edBox.TabIndex = 19;
-            this.edBox.SelectedIndexChanged += new System.EventHandler(this.edBox_SelectedIndexChanged);
+            this.edBox.SelectionChangeCommitted += new System.EventHandler(this.edBox_SelectionChangeCommitted);
             // 
             // edLabel
             // 
@@ -439,7 +468,7 @@
             this.eccmBox.Name = "eccmBox";
             this.eccmBox.Size = new System.Drawing.Size(77, 21);
             this.eccmBox.TabIndex = 18;
-            this.eccmBox.SelectedIndexChanged += new System.EventHandler(this.eccmBox_SelectedIndexChanged);
+            this.eccmBox.SelectionChangeCommitted += new System.EventHandler(this.eccmBox_SelectionChangeCommitted);
             // 
             // eccmLabel
             // 
@@ -459,7 +488,7 @@
             this.ecmBox.Name = "ecmBox";
             this.ecmBox.Size = new System.Drawing.Size(77, 21);
             this.ecmBox.TabIndex = 17;
-            this.ecmBox.SelectedIndexChanged += new System.EventHandler(this.ecmBox_SelectedIndexChanged);
+            this.ecmBox.SelectionChangeCommitted += new System.EventHandler(this.ecmBox_SelectionChangeCommitted);
             // 
             // ecmLabel
             // 
@@ -479,7 +508,7 @@
             this.sensorBox.Name = "sensorBox";
             this.sensorBox.Size = new System.Drawing.Size(77, 21);
             this.sensorBox.TabIndex = 16;
-            this.sensorBox.SelectedIndexChanged += new System.EventHandler(this.sensorBox_SelectedIndexChanged);
+            this.sensorBox.SelectionChangeCommitted += new System.EventHandler(this.sensorBox_SelectionChangeCommitted);
             // 
             // sensorLabel
             // 
@@ -509,7 +538,7 @@
             this.pilotBox.Name = "pilotBox";
             this.pilotBox.Size = new System.Drawing.Size(77, 21);
             this.pilotBox.TabIndex = 14;
-            this.pilotBox.SelectedIndexChanged += new System.EventHandler(this.pilotBox_SelectedIndexChanged);
+            this.pilotBox.SelectionChangeCommitted += new System.EventHandler(this.pilotBox_SelectionChangeCommitted);
             // 
             // pilotLabel
             // 
@@ -529,7 +558,7 @@
             this.autoNavBox.Name = "autoNavBox";
             this.autoNavBox.Size = new System.Drawing.Size(77, 21);
             this.autoNavBox.TabIndex = 13;
-            this.autoNavBox.SelectedIndexChanged += new System.EventHandler(this.autoNavBox_SelectedIndexChanged);
+            this.autoNavBox.SelectionChangeCommitted += new System.EventHandler(this.autoNavBox_SelectionChangeCommitted);
             // 
             // autoNavlabel
             // 
@@ -541,39 +570,23 @@
             this.autoNavlabel.TabIndex = 13;
             this.autoNavlabel.Text = "AutoNav";
             // 
-            // ecdBox
+            // saveButton
             // 
-            this.ecdBox.DisplayMember = "Level";
-            this.ecdBox.FormattingEnabled = true;
-            this.ecdBox.Location = new System.Drawing.Point(314, 81);
-            this.ecdBox.Name = "ecdBox";
-            this.ecdBox.Size = new System.Drawing.Size(77, 21);
-            this.ecdBox.TabIndex = 20;
-            this.ecdBox.SelectedIndexChanged += new System.EventHandler(this.ecdBox_SelectedIndexChanged);
-            // 
-            // ecdLabel
-            // 
-            this.ecdLabel.AutoSize = true;
-            this.ecdLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ecdLabel.Location = new System.Drawing.Point(311, 65);
-            this.ecdLabel.Name = "ecdLabel";
-            this.ecdLabel.Size = new System.Drawing.Size(29, 13);
-            this.ecdLabel.TabIndex = 27;
-            this.ecdLabel.Text = "ECD";
-            // 
-            // sigBox
-            // 
-            this.sigBox.Location = new System.Drawing.Point(211, 33);
-            this.sigBox.Name = "sigBox";
-            this.sigBox.ReadOnly = true;
-            this.sigBox.Size = new System.Drawing.Size(77, 20);
-            this.sigBox.TabIndex = 15;
+            this.saveButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.saveButton.Location = new System.Drawing.Point(570, 423);
+            this.saveButton.Name = "saveButton";
+            this.saveButton.Size = new System.Drawing.Size(75, 23);
+            this.saveButton.TabIndex = 8;
+            this.saveButton.Text = "Save";
+            this.saveButton.UseVisualStyleBackColor = true;
+            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
             // Modification
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(674, 458);
+            this.Controls.Add(this.saveButton);
             this.Controls.Add(this.ElectronicsGroup);
             this.Controls.Add(this.physicalGroup);
             this.Controls.Add(this.designPointLabel);
@@ -644,5 +657,6 @@
         private System.Windows.Forms.ComboBox ecdBox;
         private System.Windows.Forms.Label ecdLabel;
         private System.Windows.Forms.TextBox sigBox;
+        private System.Windows.Forms.Button saveButton;
     }
 }

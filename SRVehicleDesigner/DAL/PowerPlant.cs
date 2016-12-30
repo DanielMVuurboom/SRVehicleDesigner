@@ -77,7 +77,7 @@ namespace SRVehicleDesigner.DAL
         {
             if (_fuelTankList == null)
             {
-                _fuelTankList = Helper.LoadXmlFile<FuelTank>("Resources\\FuelTankList.xml");
+                _fuelTankList = FileAccessHelper.LoadListFromXmlFile<FuelTank>("Resources\\FuelTankList.xml");
             }
         }
 

@@ -37,6 +37,7 @@
             this.droneBox = new System.Windows.Forms.ComboBox();
             this.droneLabel = new System.Windows.Forms.Label();
             this.newVehicleButton = new System.Windows.Forms.Button();
+            this.loadButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // chassisGroupLabel
@@ -126,11 +127,23 @@
             this.newVehicleButton.UseVisualStyleBackColor = true;
             this.newVehicleButton.Click += new System.EventHandler(this.newVehicleButton_Click);
             // 
+            // loadButton
+            // 
+            this.loadButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.loadButton.Location = new System.Drawing.Point(119, 195);
+            this.loadButton.Name = "loadButton";
+            this.loadButton.Size = new System.Drawing.Size(120, 23);
+            this.loadButton.TabIndex = 12;
+            this.loadButton.Text = "Load Vehicle";
+            this.loadButton.UseVisualStyleBackColor = true;
+            this.loadButton.Click += new System.EventHandler(this.loadButton_Click);
+            // 
             // Selection
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(271, 261);
+            this.Controls.Add(this.loadButton);
             this.Controls.Add(this.newVehicleButton);
             this.Controls.Add(this.droneLabel);
             this.Controls.Add(this.droneBox);
@@ -157,6 +170,7 @@
         private System.Windows.Forms.ComboBox droneBox;
         private System.Windows.Forms.Label droneLabel;
         private System.Windows.Forms.Button newVehicleButton;
+        private System.Windows.Forms.Button loadButton;
     }
 }
 
