@@ -17,17 +17,26 @@ namespace SRVehicleDesigner
     {
         private readonly Vehicle _vehicle;
         private readonly DataStore _dataStore;
+        private readonly ToolTip _toolTip;
 
         public Modification(Vehicle vehicle, DataStore datastore)
         {
             InitializeComponent();
             _vehicle = vehicle;
             _dataStore = datastore;
+            _toolTip = new ToolTip();
+
+            _toolTip.SetToolTip(cargoFactorBox, $"Between {_vehicle.BaseChassis.CargoFactorBase} and {_vehicle.BaseChassis.CargoFactorMax}");
+            _toolTip.SetToolTip(loadBox, $"Between {_vehicle.BasePowerPlant.LoadBase} and {_vehicle.BasePowerPlant.LoadMax}");
 
             handlingRoadBox.DataSource = EngineRules.GetValidHandlingOptions(_vehicle.BaseChassis.RoadHandling);
             handlingOffRoadBox.DataSource = EngineRules.GetValidHandlingOptions(_vehicle.BaseChassis.OffRoadHandling);
+            _toolTip.SetToolTip(speedBox, $"Between {_vehicle.BasePowerPlant.SpeedBase} and {_vehicle.BasePowerPlant.SpeedMax}");
+            _toolTip.SetToolTip(accelBox, $"Between {_vehicle.BasePowerPlant.AccelBase} and {_vehicle.BasePowerPlant.AccelMax}");
             economyLabel.Text = $"{economyLabel.Text} ({_vehicle.EconomyUnit})";
+            _toolTip.SetToolTip(economyBox, $"Between {_vehicle.BasePowerPlant.EconomyBase} and {_vehicle.BasePowerPlant.EconomyMax}");
             fuelSizeLabel.Text = $"{fuelSizeLabel.Text} ({_vehicle.FuelSizeUnit})";
+            _toolTip.SetToolTip(fuelSizeBox, $"From {_vehicle.BasePowerPlant.FuelSizeBase} upwards");
 
             autoNavBox.DataSource = _dataStore.Electronics.AutoNavList;
             pilotBox.DataSource = _dataStore.Electronics.PilotList;
