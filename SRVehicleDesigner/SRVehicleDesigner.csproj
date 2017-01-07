@@ -91,6 +91,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="NewVehicleDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="SRVehicleDesignerMain.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -110,6 +114,9 @@
     <Compile Include="DAL\FileAccessHelper.cs" />
     <Compile Include="DAL\PowerPlant.cs" />
     <Compile Include="DAL\Vehicle.cs" />
+    <Compile Include="NewVehicleDialog.xaml.cs">
+      <DependentUpon>NewVehicleDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SRVehicleDesignerMain.xaml.cs">
       <DependentUpon>SRVehicleDesignerMain.xaml</DependentUpon>
       <SubType>Code</SubType>

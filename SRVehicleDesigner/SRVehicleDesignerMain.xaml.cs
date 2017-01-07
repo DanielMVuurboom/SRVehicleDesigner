@@ -48,10 +48,11 @@ namespace SRVehicleDesigner
 
         private void NewCommand_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            //TODO: actual implementation
-            var chassis = _dataStore.ChassisList.First(c => c.Name == "Scooter");
-            var powerPlant = _dataStore.PowerPlantList.First(pp => pp.IsValidFor(chassis));
-            DataContext = new Vehicle(chassis, powerPlant, false);
+            var newVehicleDialog = new NewVehicleDialog(_dataStore);
+            if (newVehicleDialog.ShowDialog() == true)
+            {
+                DataContext = newVehicleDialog.Vehicle;
+            }
         }
 
         private void OpenCommand_CanExecute(object sender, CanExecuteRoutedEventArgs e)
