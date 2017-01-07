@@ -84,6 +84,7 @@ namespace SRVehicleDesigner
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.Filter = "XML File (*.xml)|*.xml";
             saveFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            saveFileDialog.FileName = $"{((Vehicle)DataContext).Name}.xml";
             if (saveFileDialog.ShowDialog() == true)
             {
                 using (var fs = new FileStream(saveFileDialog.FileName, FileMode.OpenOrCreate, FileAccess.ReadWrite))

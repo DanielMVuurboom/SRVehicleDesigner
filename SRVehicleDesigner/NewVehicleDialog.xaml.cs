@@ -20,6 +20,8 @@ namespace SRVehicleDesigner
     /// </summary>
     public partial class NewVehicleDialog : Window
     {
+        public Vehicle Vehicle { get; private set; }
+
         public NewVehicleDialog(DataStore dataStore)
         {
             InitializeComponent();
@@ -28,12 +30,30 @@ namespace SRVehicleDesigner
 
         private void btnDialogOk_Click(object sender, RoutedEventArgs e)
         {
+            Vehicle = new Vehicle((Chassis)chassisBox.SelectedItem, (PowerPlant)powerPlantBox.SelectedItem, droneCheck.IsChecked == true);
+            if (nameBox.Text != string.Empty)
+            {
+                Vehicle.Name = nameBox.Text;
+            }
             DialogResult = true;
         }
 
-        public Vehicle Vehicle { get
-            {
-                throw new NotImplementedException();
-            } }
+        private void chassisGroupBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            chassisBox.ItemsSource = ((DataStore)DataContext).ChassisList.Where(c => c.ChassisGroup == (ChassisGroup)chassisGroupBox.SelectedItem);
+            powerPlantBox.ItemsSource = new List<PowerPlant>();
+            btnDialogOk.IsEnabled = false;
+        }
+
+        private void chassisBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            powerPlantBox.ItemsSource = ((DataStore)DataContext).PowerPlantList.Where(pp => pp.IsValidFor((Chassis)chassisBox.SelectedItem));
+            btnDialogOk.IsEnabled = false;
+        }
+
+        private void powerPlanBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            btnDialogOk.IsEnabled = true;
+        }
     }
 }

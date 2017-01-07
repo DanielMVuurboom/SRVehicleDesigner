@@ -21,15 +21,21 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <Label Content="Type" Grid.Column="0" Grid.Row="0"/>
-        <ComboBox Grid.Column="1" Grid.Row="0" ItemsSource="{Binding ChassisGroupList}"/>
-        <Label Content="Chassis" Grid.Column="0" Grid.Row="1"/>
-        <ComboBox Grid.Column="1" Grid.Row="1"/>
-        <Label Content="Power Plant" Grid.Column="0" Grid.Row="2"/>
-        <ComboBox Grid.Column="1" Grid.Row="2"/>
-        <WrapPanel Grid.Row="3" Grid.Column="1" HorizontalAlignment="Right" Margin="0,15,0,0">
-            <Button IsDefault="True" Name="btnDialogOk" Click="btnDialogOk_Click" MinWidth="60" Margin="0,0,10,0">_Ok</Button>
+        <Label Content="Name" Grid.Column="0" Grid.Row="0"/>
+        <TextBox Name="nameBox" Grid.Column="1" Grid.Row="0" Margin="5,5,5,5"/>
+        <Label Content="Type" Grid.Column="0" Grid.Row="1"/>
+        <ComboBox Name="chassisGroupBox" Grid.Column="1" Grid.Row="1" ItemsSource="{Binding ChassisGroupList}" SelectionChanged="chassisGroupBox_SelectionChanged"/>
+        <Label Content="Chassis" Grid.Column="0" Grid.Row="2"/>
+        <ComboBox Name="chassisBox" Grid.Column="1" Grid.Row="2" SelectionChanged="chassisBox_SelectionChanged"/>
+        <Label Content="Power Plant" Grid.Column="0" Grid.Row="3"/>
+        <ComboBox Name="powerPlantBox" Grid.Column="1" Grid.Row="3" SelectionChanged="powerPlanBox_SelectionChanged"/>
+        <Label Content="Drone" Grid.Column="0" Grid.Row="4"/>
+        <CheckBox Name="droneCheck" Margin="5,5,0,0" Grid.Column="1" Grid.Row="4"/>
+        <WrapPanel Grid.Row="5" Grid.Column="1" HorizontalAlignment="Right" Margin="0,15,0,0">
+            <Button IsDefault="True" Name="btnDialogOk" Click="btnDialogOk_Click" MinWidth="60" Margin="0,0,10,0" IsEnabled="False">_Ok</Button>
             <Button IsCancel="True" MinWidth="60">_Cancel</Button>
         </WrapPanel>
     </Grid>
