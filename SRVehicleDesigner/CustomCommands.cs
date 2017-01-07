@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace VehicleDesigner
+namespace SRVehicleDesigner
 {
     public static class CustomCommands
     {

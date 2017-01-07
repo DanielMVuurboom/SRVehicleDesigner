@@ -13,7 +13,7 @@ namespace SRVehicleDesigner.DAL
     {
         internal static List<T> LoadListFromXmlFile<T>(string relativeFilePath)
         {
-            string path = Path.Combine(System.Windows.Forms.Application.StartupPath, relativeFilePath);
+            string path = Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, relativeFilePath);
             var dcs = new DataContractSerializer(typeof(List<T>));
             var fs = new FileStream(path, FileMode.Open);
             var reader = XmlDictionaryReader.CreateTextReader(fs, new XmlDictionaryReaderQuotas());

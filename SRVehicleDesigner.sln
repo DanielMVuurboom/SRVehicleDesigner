@@ -3,9 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SRVehicleDesigner", "SRVehicleDesigner\SRVehicleDesigner.csproj", "{CA05F244-132C-439D-97B9-73B7F2A4F0A0}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VehicleDesigner", "VehicleDesigner\VehicleDesigner.csproj", "{CFC94623-64AC-47C3-8352-168D1012E10B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SRVehicleDesigner", "SRVehicleDesigner\SRVehicleDesigner.csproj", "{CFC94623-64AC-47C3-8352-168D1012E10B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,14 +13,6 @@ Global
 		Release|x64 = Release|x64
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{CA05F244-132C-439D-97B9-73B7F2A4F0A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CA05F244-132C-439D-97B9-73B7F2A4F0A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CA05F244-132C-439D-97B9-73B7F2A4F0A0}.Debug|x64.ActiveCfg = Debug|x64
-		{CA05F244-132C-439D-97B9-73B7F2A4F0A0}.Debug|x64.Build.0 = Debug|x64
-		{CA05F244-132C-439D-97B9-73B7F2A4F0A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CA05F244-132C-439D-97B9-73B7F2A4F0A0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CA05F244-132C-439D-97B9-73B7F2A4F0A0}.Release|x64.ActiveCfg = Release|x64
-		{CA05F244-132C-439D-97B9-73B7F2A4F0A0}.Release|x64.Build.0 = Release|x64
 		{CFC94623-64AC-47C3-8352-168D1012E10B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CFC94623-64AC-47C3-8352-168D1012E10B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CFC94623-64AC-47C3-8352-168D1012E10B}.Debug|x64.ActiveCfg = Debug|x64
