@@ -59,7 +59,7 @@
             <StackPanel Grid.Column="3" Grid.Row="0" VerticalAlignment="Center">
                 <Label Content=""/>
                 <Label Content="CF Free"/>
-                <TextBox x:Name="cargoFactorFreeBox"  IsReadOnly="True"/>
+                <TextBox x:Name="cargoFactorFreeBox" Text="{Binding CargoFactorFree, Mode=OneWay}" IsReadOnly="True"/>
             </StackPanel>
             <Label Content=""/>
             <StackPanel Grid.Column="4" Grid.Row="0" VerticalAlignment="Center">
@@ -70,7 +70,7 @@
             <StackPanel Grid.Column="5" Grid.Row="0" VerticalAlignment="Center">
                 <Label Content=""/>
                 <Label Content="Load Free"/>
-                <TextBox x:Name="loadFreeBox"  IsReadOnly="True"/>
+                <TextBox x:Name="loadFreeBox" Text="{Binding LoadFree, Mode=OneWay}" IsReadOnly="True"/>
             </StackPanel>
             <StackPanel Grid.Column="0" Grid.Row="1" VerticalAlignment="Center">
                 <Label Content="Driving" FontWeight="DemiBold"/>

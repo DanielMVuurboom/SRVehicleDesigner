@@ -81,7 +81,14 @@ namespace SRVehicleDesigner.DAL
             }
         }
 
-        public override string ToString()
+        public bool IsValidFor(Chassis chassis)
+        {
+            return AllowedChassisRuleList.Any(
+                rule => rule.AllowedChassisGroup == chassis.ChassisGroup
+                && (rule.AllowedChassisNameList.Contains(chassis.Name) || rule.AllowedChassisNameList.Contains("All")));
+        }
+
+public override string ToString()
         {
             return Type.ToString();
         }

@@ -12,6 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Microsoft.Win32;
+using SRVehicleDesigner.DAL;
+using System.IO;
 
 namespace SRVehicleDesigner
 {
@@ -20,9 +23,12 @@ namespace SRVehicleDesigner
     /// </summary>
     public partial class SRVehicleDesignerMain : Window
     {
+        private DataStore _dataStore;
+
         public SRVehicleDesignerMain()
         {
             InitializeComponent();
+            _dataStore = DataStore.GetDefaultDataStore();
         }
 
         private void ExitCommand_CanExecute(object sender, CanExecuteRoutedEventArgs e)
@@ -42,8 +48,12 @@ namespace SRVehicleDesigner
 
         private void NewCommand_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            //TODO: actual implementation
+            var chassis = _dataStore.ChassisList.First(c => c.Name == "Scooter");
+            var powerPlant = _dataStore.PowerPlantList.First(pp => pp.IsValidFor(chassis));
+            DataContext = new Vehicle(chassis, powerPlant, false);
         }
+
         private void OpenCommand_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
             e.CanExecute = true;
@@ -51,18 +61,35 @@ namespace SRVehicleDesigner
 
         private void OpenCommand_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "XML Files (*.xml)|*.xml|All files (*.*)|*.*";
+            openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            if (openFileDialog.ShowDialog() == true)
+            {
+                using (var fs = new FileStream(openFileDialog.FileName, FileMode.Open))
+                {
+                    DataContext = FileAccessHelper.LoadFromFile<Vehicle>(fs);
+                }
+            }
         }
 
         private void SaveCommand_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
-            //TODO: actual implementation
-            e.CanExecute = true;
+            e.CanExecute = (DataContext is Vehicle);
         }
 
         private void SaveCommand_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "XML File (*.xml)|*.xml";
+            saveFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            if (saveFileDialog.ShowDialog() == true)
+            {
+                using (var fs = new FileStream(saveFileDialog.FileName, FileMode.OpenOrCreate, FileAccess.ReadWrite))
+                {
+                    FileAccessHelper.SaveToFile<Vehicle>((Vehicle)DataContext, fs);
+                }
+            }
         }
 
     }
