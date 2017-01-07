@@ -67,10 +67,7 @@ namespace SRVehicleDesigner
             openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             if (openFileDialog.ShowDialog() == true)
             {
-                using (var fs = new FileStream(openFileDialog.FileName, FileMode.Open))
-                {
-                    DataContext = FileAccessHelper.LoadFromFile<Vehicle>(fs);
-                }
+                DataContext = Vehicle.GetVehicle(openFileDialog.FileName);
             }
         }
 
@@ -87,10 +84,7 @@ namespace SRVehicleDesigner
             saveFileDialog.FileName = $"{((Vehicle)DataContext).Name}.xml";
             if (saveFileDialog.ShowDialog() == true)
             {
-                using (var fs = new FileStream(saveFileDialog.FileName, FileMode.OpenOrCreate, FileAccess.ReadWrite))
-                {
-                    FileAccessHelper.SaveToFile<Vehicle>((Vehicle)DataContext, fs);
-                }
+                ((Vehicle)DataContext).StoreVehicle(saveFileDialog.FileName);
             }
         }
 

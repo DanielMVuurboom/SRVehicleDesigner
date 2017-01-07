@@ -22,19 +22,23 @@ namespace SRVehicleDesigner.DAL
             return returnval;
         }
 
-        internal static void SaveToFile<T>(T objectToWrite, Stream fs)
+        internal static void SaveToFile<T>(T objectToWrite, string fileName)
         {
-            var dcs = new DataContractSerializer(typeof(T));
-            dcs.WriteObject(fs, objectToWrite);
-            fs.Close();
+            using (var fs = new FileStream(fileName, FileMode.OpenOrCreate, FileAccess.Write))
+            {
+                var dcs = new DataContractSerializer(typeof(T));
+                dcs.WriteObject(fs, objectToWrite);
+            }
         }
 
-        internal static T LoadFromFile<T>(Stream fs)
+        internal static T LoadFromFile<T>(string fileName)
         {
-            var dcs = new DataContractSerializer(typeof(T));
-            var returnval = (T)dcs.ReadObject(fs);
-            fs.Close();
-            return returnval;
+            using (var fs = new FileStream(fileName, FileMode.Open))
+            {
+                var dcs = new DataContractSerializer(typeof(T));
+                var returnval = (T)dcs.ReadObject(fs);
+                return returnval;
+            }
         }
 
     }

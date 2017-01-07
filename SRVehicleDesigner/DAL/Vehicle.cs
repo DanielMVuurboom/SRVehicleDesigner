@@ -135,7 +135,7 @@ namespace SRVehicleDesigner.DAL
                 //NOTE: if Load/CF ajustment is invalid (because the *Max is exceed), their Apply will not be executed, resulting in negative *Free values.
                 if (LoadFree < 0)
                 {
-                    var moreLoad = new Adjustment(this, AdjustmentType.Load, Load, Load - LoadFree );
+                    var moreLoad = new Adjustment(this, AdjustmentType.Load, Load, Load - LoadFree);
                     Apply(moreLoad);
                 }
                 CargoFactorFree -= adjustment.CargoFactorReduction;
@@ -146,6 +146,16 @@ namespace SRVehicleDesigner.DAL
                 }
                 AccessoryList = AccessoryList.Union(adjustment.AccessoriesToAdd).Except(adjustment.AccessoriesToRemove).OrderBy(a => a.ToString()).ToList();
             }
+        }
+
+        public void StoreVehicle(string fileName)
+        {
+            FileAccessHelper.SaveToFile<Vehicle>(this, fileName);
+        }
+
+        public static Vehicle GetVehicle(string fileName)
+        {
+            return FileAccessHelper.LoadFromFile<Vehicle>(fileName);
         }
     }
 }
