@@ -48,7 +48,7 @@ namespace SRVehicleDesigner
 
         private void NewCommand_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            var newVehicleDialog = new NewVehicleDialog(_dataStore);
+            var newVehicleDialog = new NewVehicleDialog();
             if (newVehicleDialog.ShowDialog() == true)
             {
                 DataContext = newVehicleDialog.Vehicle;

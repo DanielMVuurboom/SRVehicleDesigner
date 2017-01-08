@@ -20,6 +20,11 @@ namespace SRVehicleDesigner.DAL
         public int DesignPoints { get; private set; }
         [DataMember(Order = 4)]
         public int Load { get; private set; }
+
+        public override string ToString()
+        {
+            return Level.ToString();
+        }
     }
 
     public class Electronics

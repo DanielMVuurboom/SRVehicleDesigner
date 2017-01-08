@@ -22,10 +22,9 @@ namespace SRVehicleDesigner
     {
         public Vehicle Vehicle { get; private set; }
 
-        public NewVehicleDialog(DataStore dataStore)
+        public NewVehicleDialog()
         {
             InitializeComponent();
-            DataContext = dataStore;
         }
 
         private void btnDialogOk_Click(object sender, RoutedEventArgs e)

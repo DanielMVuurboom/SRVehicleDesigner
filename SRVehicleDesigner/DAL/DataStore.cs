@@ -16,6 +16,8 @@ namespace SRVehicleDesigner.DAL
 
         private static DataStore _defaultDataStore;
 
+        public static DataStore DataStoreSingleton { get { return GetDefaultDataStore(); } }
+
         public static DataStore GetDefaultDataStore()
         {
             if (_defaultDataStore == null)
