@@ -16,6 +16,7 @@ using Microsoft.Win32;
 using SRVehicleDesigner.DAL;
 using SRVehicleDesigner.BLL;
 using System.IO;
+using System.Reflection;
 
 namespace SRVehicleDesigner
 {
@@ -86,13 +87,48 @@ namespace SRVehicleDesigner
             }
         }
 
+        private void autoNavBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            electronics_SelectionChanged(AdjustmentType.AutoNav, (ComboBox)sender);
+        }
+
+        private void pilotBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            electronics_SelectionChanged(AdjustmentType.Pilot, (ComboBox)sender);
+        }
+
+        private void sensorBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            electronics_SelectionChanged(AdjustmentType.Sensor, (ComboBox)sender);
+        }
+
+        private void ecmBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            electronics_SelectionChanged(AdjustmentType.Ecm, (ComboBox)sender);
+        }
+
+        private void eccmBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            electronics_SelectionChanged(AdjustmentType.Eccm, (ComboBox)sender);
+        }
+
+        private void edBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            electronics_SelectionChanged(AdjustmentType.Ed, (ComboBox)sender);
+        }
+
         private void ecdBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var comboBox = sender as ComboBox;
+            electronics_SelectionChanged(AdjustmentType.Ecd, (ComboBox)sender);
+        }
+
+        private void electronics_SelectionChanged(AdjustmentType type, ComboBox comboBox)
+        {
             var vehicle = DataContext as Vehicle;
-            if (comboBox.SelectedIndex != vehicle.Ecd)
+            int oldValue = (int)vehicle.GetType().GetProperty(type.ToString()).GetValue(vehicle);
+            if (comboBox.SelectedIndex != oldValue)
             {
-                var adjustment = new Adjustment(vehicle, AdjustmentType.Ecd, vehicle.Ecd, comboBox.SelectedIndex);
+                var adjustment = new Adjustment(vehicle, type, oldValue, comboBox.SelectedIndex);
                 vehicle.Apply(adjustment);
             }
         }
