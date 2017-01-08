@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 using SRVehicleDesigner.BLL;
 using System.Reflection;
 using System.Runtime.Serialization;
+using System.ComponentModel;
 
 namespace SRVehicleDesigner.DAL
 {
     [DataContract]
-    public class Vehicle
+    public class Vehicle : INotifyPropertyChanged
     {
         [DataMember]
         public Chassis BaseChassis { get; private set; }
@@ -32,11 +33,13 @@ namespace SRVehicleDesigner.DAL
         [DataMember]
         public decimal CargoFactor { get; private set; }
         [DataMember]
-        public decimal CargoFactorFree { get; private set; }
+        public decimal CargoFactorFree { get { return _cargoFactorFree; } private set { _cargoFactorFree = value; OnPropertyChanged("LoadFree"); } }
+        private decimal _cargoFactorFree;
         [DataMember]
         public decimal Load { get; private set; }
         [DataMember]
-        public decimal LoadFree { get; private set; }
+        public decimal LoadFree { get { return _loadFree; } private set { _loadFree = value; OnPropertyChanged("LoadFree"); } }
+        private decimal _loadFree;
 
         [DataMember]
         public int RoadHandling { get; private set; }
@@ -86,6 +89,8 @@ namespace SRVehicleDesigner.DAL
         [DataMember]
         public double DesignMultiplier { get; private set; }
         public int Cost => Convert.ToInt32(Math.Round(DesignMultiplier * DesignPoints * 100));
+
+        public event PropertyChangedEventHandler PropertyChanged;
 
         public Vehicle(Chassis chassis, PowerPlant powerPlant, bool drone)
         {
@@ -156,6 +161,15 @@ namespace SRVehicleDesigner.DAL
         public static Vehicle GetVehicle(string fileName)
         {
             return FileAccessHelper.LoadFromFile<Vehicle>(fileName);
+        }
+
+        protected void OnPropertyChanged(string name)
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+            if (handler != null)
+            {
+                handler(this, new PropertyChangedEventArgs(name));
+            }
         }
     }
 }

@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SRVehicleDesigner"
+        xmlns:dal="clr-namespace:SRVehicleDesigner.DAL"
         mc:Ignorable="d"
         Title="SRVehicleDesigner" Height="400" Width="700">
     <Window.CommandBindings>
@@ -59,7 +60,7 @@
             <StackPanel Grid.Column="3" Grid.Row="0" VerticalAlignment="Center">
                 <Label Content=""/>
                 <Label Content="CF Free"/>
-                <TextBox x:Name="cargoFactorFreeBox" Text="{Binding CargoFactorFree, Mode=OneWay}" IsReadOnly="True"/>
+                <TextBox x:Name="cargoFactorFreeBox" Text="{Binding CargoFactorFree, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
             </StackPanel>
             <Label Content=""/>
             <StackPanel Grid.Column="4" Grid.Row="0" VerticalAlignment="Center">
@@ -70,7 +71,7 @@
             <StackPanel Grid.Column="5" Grid.Row="0" VerticalAlignment="Center">
                 <Label Content=""/>
                 <Label Content="Load Free"/>
-                <TextBox x:Name="loadFreeBox" Text="{Binding LoadFree, Mode=OneWay}" IsReadOnly="True"/>
+                <TextBox x:Name="loadFreeBox" Text="{Binding LoadFree, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
             </StackPanel>
             <StackPanel Grid.Column="0" Grid.Row="1" VerticalAlignment="Center">
                 <Label Content="Driving" FontWeight="DemiBold"/>
@@ -105,38 +106,38 @@
             <StackPanel Grid.Column="0" Grid.Row="2" VerticalAlignment="Center">
                 <Label Content="Electronics" FontWeight="DemiBold"/>
                 <Label Content="AutoNav"/>
-                <ComboBox x:Name="autoNavBox"  />
+                <ComboBox x:Name="autoNavBox" ItemsSource="{Binding Source={StaticResource dataStore}, Path=Electronics.AutoNavList}" SelectedIndex="{Binding AutoNav, Mode=OneWay}" />
             </StackPanel>
             <StackPanel Grid.Column="1" Grid.Row="2" VerticalAlignment="Center">
                 <Label Content=""/>
                 <Label Content="Pilot"/>
-                <ComboBox x:Name="pilotBox"  />
+                <ComboBox x:Name="pilotBox" ItemsSource="{Binding Source={StaticResource dataStore}, Path=Electronics.PilotList}" SelectedIndex="{Binding Pilot, Mode=OneWay}" />
             </StackPanel>
             <StackPanel Grid.Column="2" Grid.Row="2" VerticalAlignment="Center">
                 <Label Content=""/>
                 <Label Content="Signature"/>
-                <TextBox x:Name="signatureBox" IsReadOnly="True"  />
+                <TextBox x:Name="signatureBox" IsReadOnly="True" Text="{Binding Sig, Mode=OneWay}" />
             </StackPanel>
             <StackPanel Grid.Column="3" Grid.Row="2" VerticalAlignment="Center">
                 <Label Content=""/>
                 <Label Content="Sensors"/>
-                <ComboBox x:Name="sensorBox"  />
+                <ComboBox x:Name="sensorBox" ItemsSource="{Binding Source={StaticResource dataStore}, Path=Electronics.SensorList}" SelectedIndex="{Binding Sensor, Mode=OneWay}" />
             </StackPanel>
             <StackPanel Grid.Column="0" Grid.Row="3" VerticalAlignment="Center">
                 <Label Content="ECM"/>
-                <ComboBox x:Name="ecmBox"  />
+                <ComboBox x:Name="ecmBox" ItemsSource="{Binding Source={StaticResource dataStore}, Path=Electronics.EcmList}" SelectedIndex="{Binding Ecm, Mode=OneWay}" />
             </StackPanel>
             <StackPanel Grid.Column="1" Grid.Row="3" VerticalAlignment="Center">
                 <Label Content="ECCM"/>
-                <ComboBox x:Name="eccmBox"  />
+                <ComboBox x:Name="eccmBox" ItemsSource="{Binding Source={StaticResource dataStore}, Path=Electronics.EccmList}" SelectedIndex="{Binding Eccm, Mode=OneWay}" />
             </StackPanel>
             <StackPanel Grid.Column="2" Grid.Row="3" VerticalAlignment="Center">
                 <Label Content="ED"/>
-                <ComboBox x:Name="edBox"  />
+                <ComboBox x:Name="edBox" ItemsSource="{Binding Source={StaticResource dataStore}, Path=Electronics.EdList}" SelectedIndex="{Binding Ed, Mode=OneWay}" />
             </StackPanel>
             <StackPanel Grid.Column="3" Grid.Row="3" VerticalAlignment="Center">
                 <Label Content="ECD"/>
-                <ComboBox x:Name="ecdBox"  />
+                <ComboBox x:Name="ecdBox" ItemsSource="{Binding Source={StaticResource dataStore}, Path=Electronics.EcdList}" SelectedIndex="{Binding Ecd, Mode=OneWay}" SelectionChanged="ecdBox_SelectionChanged"/>
             </StackPanel>
         </Grid>
     </Grid>

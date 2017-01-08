@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.Win32;
 using SRVehicleDesigner.DAL;
+using SRVehicleDesigner.BLL;
 using System.IO;
 
 namespace SRVehicleDesigner
@@ -23,12 +24,9 @@ namespace SRVehicleDesigner
     /// </summary>
     public partial class SRVehicleDesignerMain : Window
     {
-        private DataStore _dataStore;
-
         public SRVehicleDesignerMain()
         {
             InitializeComponent();
-            _dataStore = DataStore.GetDefaultDataStore();
         }
 
         private void ExitCommand_CanExecute(object sender, CanExecuteRoutedEventArgs e)
@@ -88,5 +86,15 @@ namespace SRVehicleDesigner
             }
         }
 
+        private void ecdBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var comboBox = sender as ComboBox;
+            var vehicle = DataContext as Vehicle;
+            if (comboBox.SelectedIndex != vehicle.Ecd)
+            {
+                var adjustment = new Adjustment(vehicle, AdjustmentType.Ecd, vehicle.Ecd, comboBox.SelectedIndex);
+                vehicle.Apply(adjustment);
+            }
+        }
     }
 }
