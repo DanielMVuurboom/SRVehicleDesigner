@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:SRVehicleDesigner"
         mc:Ignorable="d"
         DataContext="{StaticResource dataStore}"
-        Title="New Vehicle" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen">
+        Title="New Vehicle" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterOwner">
     <Window.Resources>
         <Style TargetType="ComboBox">
             <Setter Property="Margin" Value="5,5,5,5"/>

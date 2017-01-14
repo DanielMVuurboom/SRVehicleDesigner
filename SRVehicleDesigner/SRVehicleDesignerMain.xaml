@@ -95,12 +95,16 @@
             </StackPanel>
             <StackPanel Grid.Column="4" Grid.Row="1" VerticalAlignment="Center">
                 <Label Content=""/>
-                <Label Content="Economy" x:Name="economyLabel"  />
+                <Label>
+                    <TextBox Text="{Binding EconomyUnit, Mode=OneWay,StringFormat=Econ. ({0})}" Margin="0" BorderThickness="0"/>
+                </Label> 
                 <TextBox x:Name="economyBox"/>
             </StackPanel>
             <StackPanel Grid.Column="5" Grid.Row="1" VerticalAlignment="Center">
                 <Label Content=""/>
-                <Label Content="Fuel" x:Name="fuelSizeLabel"/>
+                <Label>
+                    <TextBox Text="{Binding FuelSizeUnit, Mode=OneWay,StringFormat=Fuel ({0})}" Margin="0" BorderThickness="0"/>
+                </Label>
                 <TextBox x:Name="fuelSizeBox" IsReadOnly="True"  />
             </StackPanel>
             <StackPanel Grid.Column="0" Grid.Row="2" VerticalAlignment="Center">
