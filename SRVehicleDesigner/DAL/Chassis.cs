@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Runtime.Serialization;
+using SRVehicleDesigner.BLL;
 
 namespace SRVehicleDesigner.DAL
 {
@@ -74,6 +75,9 @@ namespace SRVehicleDesigner.DAL
         public int DesignPoints { get; private set; }
         [DataMember(Order = 16)]
         public List<Accessory> AccessoryList { get; private set; }
+
+        public List<int> AllowedRoadHandlingValues => EngineRules.GetValidHandlingOptions(RoadHandling);
+        public List<int> AllowedOffRoadHandlingValues => EngineRules.GetValidHandlingOptions(OffRoadHandling);
 
         public override string ToString()
         {

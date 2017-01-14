@@ -5,8 +5,12 @@
              xmlns:dal="clr-namespace:SRVehicleDesigner.DAL"
              StartupUri="SRVehicleDesignerMain.xaml">
     <Application.Resources>
-        <Style TargetType="TextBox">
-            <Setter Property="Margin" Value="5,0,5,0"/>
+        <Style TargetType="TextBox" x:Key="displayBox">
+            <Setter Property="Margin" Value="0" />
+            <Setter Property="BorderThickness" Value="0" />
+        </Style>
+        <Style TargetType="TextBox"  x:Key="inputBox">
+            <Setter Property="Margin" Value="5,0,5,0" />
         </Style>
         <Style TargetType="StackPanel">
             <Setter Property="Margin" Value="5,0,5,0"/>

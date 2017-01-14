@@ -24,7 +24,8 @@ namespace SRVehicleDesigner.DAL
         [DataMember]
         public bool Drone { get; private set; }
         [DataMember]
-        public string Name { get; set; }
+        public string Name { get { return _name; } set { _name = value; OnPropertyChanged("Name"); } }
+        private string _name;
 
         [DataMember]
         public int Body { get; private set; }
@@ -85,9 +86,11 @@ namespace SRVehicleDesigner.DAL
         public List<Accessory> AccessoryList { get; private set; }
 
         [DataMember]
-        public int DesignPoints { get; private set; }
+        public int DesignPoints { get { return _designPoints; } private set { _designPoints = value; OnPropertyChanged("DesignPoints"); OnPropertyChanged("Cost"); } }
+        private int _designPoints;
         [DataMember]
-        public double DesignMultiplier { get; private set; }
+        public double DesignMultiplier { get { return _designMultiplier; } private set { _designMultiplier = value; OnPropertyChanged("DesignMultiplier"); OnPropertyChanged("Cost"); } }
+        private double _designMultiplier;
         public int Cost => Convert.ToInt32(Math.Round(DesignMultiplier * DesignPoints * 100));
 
         public event PropertyChangedEventHandler PropertyChanged;

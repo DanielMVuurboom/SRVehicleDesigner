@@ -87,48 +87,68 @@ namespace SRVehicleDesigner
             }
         }
 
+        private void roadHandlingBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            comboBox_int_SelectionChanged(AdjustmentType.RoadHandling, (ComboBox)sender);
+        }
+
+        private void offRoadHandlingBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            comboBox_int_SelectionChanged(AdjustmentType.OffRoadHandling, (ComboBox)sender);
+        }
+
         private void autoNavBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            electronics_SelectionChanged(AdjustmentType.AutoNav, (ComboBox)sender);
+            comboBox_Component_SelectionChanged(AdjustmentType.AutoNav, (ComboBox)sender);
         }
 
         private void pilotBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            electronics_SelectionChanged(AdjustmentType.Pilot, (ComboBox)sender);
+            comboBox_Component_SelectionChanged(AdjustmentType.Pilot, (ComboBox)sender);
         }
 
         private void sensorBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            electronics_SelectionChanged(AdjustmentType.Sensor, (ComboBox)sender);
+            comboBox_Component_SelectionChanged(AdjustmentType.Sensor, (ComboBox)sender);
         }
 
         private void ecmBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            electronics_SelectionChanged(AdjustmentType.Ecm, (ComboBox)sender);
+            comboBox_Component_SelectionChanged(AdjustmentType.Ecm, (ComboBox)sender);
         }
 
         private void eccmBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            electronics_SelectionChanged(AdjustmentType.Eccm, (ComboBox)sender);
+            comboBox_Component_SelectionChanged(AdjustmentType.Eccm, (ComboBox)sender);
         }
 
         private void edBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            electronics_SelectionChanged(AdjustmentType.Ed, (ComboBox)sender);
+            comboBox_Component_SelectionChanged(AdjustmentType.Ed, (ComboBox)sender);
         }
 
         private void ecdBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            electronics_SelectionChanged(AdjustmentType.Ecd, (ComboBox)sender);
+            comboBox_Component_SelectionChanged(AdjustmentType.Ecd, (ComboBox)sender);
         }
 
-        private void electronics_SelectionChanged(AdjustmentType type, ComboBox comboBox)
+        private void comboBox_Component_SelectionChanged(AdjustmentType type, ComboBox comboBox)
         {
             var vehicle = DataContext as Vehicle;
             int oldValue = (int)vehicle.GetType().GetProperty(type.ToString()).GetValue(vehicle);
             if (comboBox.SelectedIndex != oldValue)
             {
                 var adjustment = new Adjustment(vehicle, type, oldValue, comboBox.SelectedIndex);
+                vehicle.Apply(adjustment);
+            }
+        }
+        private void comboBox_int_SelectionChanged(AdjustmentType type, ComboBox comboBox)
+        {
+            var vehicle = DataContext as Vehicle;
+            var oldValue = vehicle.GetType().GetProperty(type.ToString()).GetValue(vehicle);
+            if (comboBox.SelectedValue != null && comboBox.SelectedValue != oldValue)
+            {
+                var adjustment = new Adjustment(vehicle, type, oldValue, comboBox.SelectedValue);
                 vehicle.Apply(adjustment);
             }
         }

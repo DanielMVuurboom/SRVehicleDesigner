@@ -12,7 +12,7 @@ namespace SRVehicleDesigner.BLL
         {
             var returnval = new List<int>();
 
-            for (int i = baseHandling; i > baseHandling/2; i--)
+            for (int i = baseHandling; i >= (baseHandling + 1) / 2; i--)
             {
                 returnval.Add(i);
             }
