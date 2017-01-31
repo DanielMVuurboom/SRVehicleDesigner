@@ -1,28 +1,14 @@
-﻿<Window x:Class="SRVehicleDesigner.SRVehicleDesignerMain"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:SRVehicleDesigner"
-        xmlns:dal="clr-namespace:SRVehicleDesigner.DAL"
-        mc:Ignorable="d"
-        Title="SRVehicleDesigner" Height="400" Width="700">
-    <Window.CommandBindings>
-        <CommandBinding Command="local:CustomCommands.Exit" CanExecute="ExitCommand_CanExecute" Executed="ExitCommand_Executed" />
-        <CommandBinding Command="ApplicationCommands.New" CanExecute="NewCommand_CanExecute" Executed="NewCommand_Executed" />
-        <CommandBinding Command="ApplicationCommands.Open" CanExecute="OpenCommand_CanExecute" Executed="OpenCommand_Executed" />
-        <CommandBinding Command="ApplicationCommands.Save" CanExecute="SaveCommand_CanExecute" Executed="SaveCommand_Executed" />
-    </Window.CommandBindings>
+﻿<UserControl x:Class="SRVehicleDesigner.Views.VehicleDetailView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:dal="clr-namespace:SRVehicleDesigner.DAL"
+             mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance Type=dal:Vehicle}"
+             DataContext="{Binding Path=Vehicle, RelativeSource={RelativeSource Self}}"
+             >
     <StackPanel>
-        <Menu>
-            <MenuItem Header="File">
-                <MenuItem Command="ApplicationCommands.New" />
-                <MenuItem Command="ApplicationCommands.Open" />
-                <MenuItem Command="ApplicationCommands.Save" />
-                <Separator />
-                <MenuItem Command="local:CustomCommands.Exit" />
-            </MenuItem>
-        </Menu>
         <StackPanel Orientation="Horizontal" Margin="20,10,20,0">
             <TextBox Style="{StaticResource displayBox}" FontWeight="DemiBold" Text="{Binding Path=Name, UpdateSourceTrigger=PropertyChanged}"/>
             <TextBox Style="{StaticResource displayBox}" Text="{Binding Path=Cost, Mode=OneWay, StringFormat=' Cost: {0}', UpdateSourceTrigger=PropertyChanged}"/>
@@ -126,4 +112,4 @@
             </StackPanel>
         </Grid>
     </StackPanel>
-</Window>
+</UserControl>

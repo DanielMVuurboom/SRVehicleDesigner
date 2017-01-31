@@ -91,11 +91,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="NewVehicleDialog.xaml">
+    <Compile Include="Views\VehicleDetailView.xaml.cs">
+      <DependentUpon>VehicleDetailView.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Views\NewVehicleDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="SRVehicleDesignerMain.xaml">
+    <Page Include="Views\SRVehicleDesignerMainView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -106,21 +109,27 @@
     <Compile Include="BLL\Adjustment.cs" />
     <Compile Include="BLL\CostCalculation.cs" />
     <Compile Include="BLL\EngineRules.cs" />
-    <Compile Include="CustomCommands.cs" />
+    <Compile Include="ViewModels\CustomCommands.cs" />
     <Compile Include="DAL\Accessory.cs" />
+    <Compile Include="DAL\BindableBase.cs" />
     <Compile Include="DAL\Chassis.cs" />
     <Compile Include="DAL\DataStore.cs" />
     <Compile Include="DAL\Electronics.cs" />
     <Compile Include="DAL\FileAccessHelper.cs" />
     <Compile Include="DAL\PowerPlant.cs" />
     <Compile Include="DAL\Vehicle.cs" />
-    <Compile Include="NewVehicleDialog.xaml.cs">
+    <Compile Include="Views\NewVehicleDialog.xaml.cs">
       <DependentUpon>NewVehicleDialog.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="SRVehicleDesignerMain.xaml.cs">
-      <DependentUpon>SRVehicleDesignerMain.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Views\SRVehicleDesignerMainView.xaml.cs">
+      <DependentUpon>SRVehicleDesignerMainView.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Views\VehicleDetailView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -196,6 +205,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

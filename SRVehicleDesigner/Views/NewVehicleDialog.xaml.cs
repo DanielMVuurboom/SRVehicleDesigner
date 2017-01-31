@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using SRVehicleDesigner.DAL;
 
-namespace SRVehicleDesigner
+namespace SRVehicleDesigner.Views
 {
     /// <summary>
     /// Interaction logic for NewVehicleDialog.xaml

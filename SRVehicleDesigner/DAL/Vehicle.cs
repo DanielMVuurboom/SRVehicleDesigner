@@ -11,7 +11,7 @@ using System.ComponentModel;
 namespace SRVehicleDesigner.DAL
 {
     [DataContract]
-    public class Vehicle : INotifyPropertyChanged
+    public class Vehicle : BindableBase
     {
         [DataMember]
         public Chassis BaseChassis { get; private set; }
@@ -24,7 +24,7 @@ namespace SRVehicleDesigner.DAL
         [DataMember]
         public bool Drone { get; private set; }
         [DataMember]
-        public string Name { get { return _name; } set { _name = value; OnPropertyChanged("Name"); } }
+        public string Name { get { return _name; } set { SetProperty(ref _name, value); } }
         private string _name;
 
         [DataMember]
@@ -34,12 +34,12 @@ namespace SRVehicleDesigner.DAL
         [DataMember]
         public decimal CargoFactor { get; private set; }
         [DataMember]
-        public decimal CargoFactorFree { get { return _cargoFactorFree; } private set { _cargoFactorFree = value; OnPropertyChanged("LoadFree"); } }
+        public decimal CargoFactorFree { get { return _cargoFactorFree; } private set { SetProperty(ref _cargoFactorFree, value); } }
         private decimal _cargoFactorFree;
         [DataMember]
         public decimal Load { get; private set; }
         [DataMember]
-        public decimal LoadFree { get { return _loadFree; } private set { _loadFree = value; OnPropertyChanged("LoadFree"); } }
+        public decimal LoadFree { get { return _loadFree; } private set { SetProperty(ref _loadFree, value); } }
         private decimal _loadFree;
 
         [DataMember]
@@ -86,14 +86,12 @@ namespace SRVehicleDesigner.DAL
         public List<Accessory> AccessoryList { get; private set; }
 
         [DataMember]
-        public int DesignPoints { get { return _designPoints; } private set { _designPoints = value; OnPropertyChanged("DesignPoints"); OnPropertyChanged("Cost"); } }
+        public int DesignPoints { get { return _designPoints; } private set { SetProperty(ref _designPoints, value); OnPropertyChanged("Cost"); } }
         private int _designPoints;
         [DataMember]
-        public double DesignMultiplier { get { return _designMultiplier; } private set { _designMultiplier = value; OnPropertyChanged("DesignMultiplier"); OnPropertyChanged("Cost"); } }
+        public double DesignMultiplier { get { return _designMultiplier; } private set { SetProperty(ref _designMultiplier, value); OnPropertyChanged("Cost"); } }
         private double _designMultiplier;
         public int Cost => Convert.ToInt32(Math.Round(DesignMultiplier * DesignPoints * 100));
-
-        public event PropertyChangedEventHandler PropertyChanged;
 
         public Vehicle(Chassis chassis, PowerPlant powerPlant, bool drone)
         {
@@ -164,15 +162,6 @@ namespace SRVehicleDesigner.DAL
         public static Vehicle GetVehicle(string fileName)
         {
             return FileAccessHelper.LoadFromFile<Vehicle>(fileName);
-        }
-
-        protected void OnPropertyChanged(string name)
-        {
-            PropertyChangedEventHandler handler = PropertyChanged;
-            if (handler != null)
-            {
-                handler(this, new PropertyChangedEventArgs(name));
-            }
         }
     }
 }
