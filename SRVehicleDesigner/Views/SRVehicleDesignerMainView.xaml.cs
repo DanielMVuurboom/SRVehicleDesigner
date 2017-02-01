@@ -21,7 +21,7 @@ using System.Reflection;
 namespace SRVehicleDesigner.Views
 {
     /// <summary>
-    /// Interaction logic for SRVehicleDesigner.xaml
+    /// Interaction logic for SRVehicleDesignerMainView.xaml
     /// </summary>
     public partial class SRVehicleDesignerMainView : Window
     {

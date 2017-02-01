@@ -6,7 +6,6 @@
              xmlns:dal="clr-namespace:SRVehicleDesigner.DAL"
              mc:Ignorable="d"
              d:DataContext="{d:DesignInstance Type=dal:Vehicle}"
-             DataContext="{Binding Path=Vehicle, RelativeSource={RelativeSource Self}}"
              >
     <StackPanel>
         <StackPanel Orientation="Horizontal" Margin="20,10,20,0">

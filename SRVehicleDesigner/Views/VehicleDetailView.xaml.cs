@@ -27,6 +27,7 @@ namespace SRVehicleDesigner.Views
         {
             InitializeComponent();
             Vehicle = vehicle;
+            DataContext = vehicle;
         }
 
         private void roadHandlingBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
