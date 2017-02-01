@@ -44,10 +44,10 @@ namespace SRVehicleDesigner.BLL
         public List<Accessory> AccessoriesToAdd { get; private set; }
         public List<Accessory> AccessoriesToRemove { get; private set; }
 
-        public Adjustment(Vehicle vehicle, AdjustmentType type, object current, object target)
+        public Adjustment(AdjustmentType type, Chassis chassis, PowerPlant powerPlant, object current, object target)
         {
-            _chassis = vehicle.BaseChassis;
-            _powerPlant = vehicle.BasePowerPlant;
+            _chassis = chassis;
+            _powerPlant = powerPlant;
             _electronics = Electronics.GetDefaultElectronics();
             AdjustmentType = type;
             _current = current;

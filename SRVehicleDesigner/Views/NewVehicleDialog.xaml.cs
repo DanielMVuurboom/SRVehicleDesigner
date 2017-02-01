@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using SRVehicleDesigner.DAL;
+using SRVehicleDesigner.ViewModels;
 
 namespace SRVehicleDesigner.Views
 {
@@ -20,7 +21,7 @@ namespace SRVehicleDesigner.Views
     /// </summary>
     public partial class NewVehicleDialog : Window
     {
-        public Vehicle Vehicle { get; private set; }
+        public VehicleViewModel Vehicle { get; private set; }
 
         public NewVehicleDialog()
         {
@@ -29,7 +30,7 @@ namespace SRVehicleDesigner.Views
 
         private void btnDialogOk_Click(object sender, RoutedEventArgs e)
         {
-            Vehicle = new Vehicle((Chassis)chassisBox.SelectedItem, (PowerPlant)powerPlantBox.SelectedItem, droneCheck.IsChecked == true);
+            Vehicle = new VehicleViewModel((Chassis)chassisBox.SelectedItem, (PowerPlant)powerPlantBox.SelectedItem, droneCheck.IsChecked == true);
             if (nameBox.Text != string.Empty)
             {
                 Vehicle.Name = nameBox.Text;

@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using SRVehicleDesigner.DAL;
+using SRVehicleDesigner.ViewModels;
 using SRVehicleDesigner.BLL;
 
 namespace SRVehicleDesigner.Views
@@ -22,8 +22,8 @@ namespace SRVehicleDesigner.Views
     /// </summary>
     public partial class VehicleDetailView : UserControl
     {
-        public Vehicle Vehicle { get; }
-        public VehicleDetailView(Vehicle vehicle)
+        public VehicleViewModel Vehicle { get; }
+        public VehicleDetailView(VehicleViewModel vehicle)
         {
             InitializeComponent();
             Vehicle = vehicle;
@@ -77,21 +77,21 @@ namespace SRVehicleDesigner.Views
 
         private void comboBox_Component_SelectionChanged(AdjustmentType type, ComboBox comboBox)
         {
-            var vehicle = DataContext as Vehicle;
+            var vehicle = DataContext as VehicleViewModel;
             int oldValue = (int)vehicle.GetType().GetProperty(type.ToString()).GetValue(vehicle);
             if (comboBox.SelectedIndex != oldValue)
             {
-                var adjustment = new Adjustment(vehicle, type, oldValue, comboBox.SelectedIndex);
+                var adjustment = new Adjustment(type, vehicle.BaseChassis, vehicle.BasePowerPlant, oldValue, comboBox.SelectedIndex);
                 vehicle.Apply(adjustment);
             }
         }
         private void comboBox_int_SelectionChanged(AdjustmentType type, ComboBox comboBox)
         {
-            var vehicle = DataContext as Vehicle;
+            var vehicle = DataContext as VehicleViewModel;
             var oldValue = vehicle.GetType().GetProperty(type.ToString()).GetValue(vehicle);
             if (comboBox.SelectedValue != null && comboBox.SelectedValue != oldValue)
             {
-                var adjustment = new Adjustment(vehicle, type, oldValue, comboBox.SelectedValue);
+                var adjustment = new Adjustment(type, vehicle.BaseChassis, vehicle.BasePowerPlant, oldValue, comboBox.SelectedValue);
                 vehicle.Apply(adjustment);
             }
         }

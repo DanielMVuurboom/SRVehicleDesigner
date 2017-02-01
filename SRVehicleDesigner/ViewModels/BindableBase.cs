@@ -5,8 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Runtime.Serialization;
 
-namespace SRVehicleDesigner.DAL
+namespace SRVehicleDesigner.ViewModels
 {
     public class BindableBase : INotifyPropertyChanged
     {

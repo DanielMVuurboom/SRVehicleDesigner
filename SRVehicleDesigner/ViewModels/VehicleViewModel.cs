@@ -1,0 +1,128 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using SRVehicleDesigner.BLL;
+using SRVehicleDesigner.DAL;
+using System.Reflection;
+using System.ComponentModel;
+
+namespace SRVehicleDesigner.ViewModels
+{
+    public class VehicleViewModel : BindableBase
+    {
+        public Chassis BaseChassis { get; private set; }
+        public PowerPlant BasePowerPlant { get; private set; }
+
+        public ChassisGroup ChassisGroup => BaseChassis.ChassisGroup;
+        public string Chassis => BaseChassis.Name;
+        public PowerPlantType PowerPlant => BasePowerPlant.Type;
+        public bool Drone { get; private set; }
+        public string Name { get { return _name; } set { SetProperty(ref _name, value); } }
+        private string _name;
+
+        public int Body { get; private set; }
+        public int Armor { get; private set; }
+        public decimal CargoFactor { get; private set; }
+        public decimal CargoFactorFree { get { return _cargoFactorFree; } private set { SetProperty(ref _cargoFactorFree, value); } }
+        private decimal _cargoFactorFree;
+        public decimal Load { get; private set; }
+        public decimal LoadFree { get { return _loadFree; } private set { SetProperty(ref _loadFree, value); } }
+        private decimal _loadFree;
+
+        public int RoadHandling { get; private set; }
+        public int OffRoadHandling { get; private set; }
+        public int Speed { get; private set; }
+        public int Accel { get; private set; }
+        public decimal Economy { get; private set; }
+        public string EconomyUnit => BasePowerPlant.EconomyUnit;
+        public int FuelSize { get; private set; }
+        public string FuelSizeUnit => BasePowerPlant.FuelSizeUnit;
+
+        public int AutoNav { get; private set; }
+        public int Pilot { get; private set; }
+        public int Sensor { get; private set; }
+        public int Sig { get; private set; }
+        public int Ecm { get; private set; }
+        public int Eccm { get; private set; }
+        public int Ed { get; private set; }
+        public int Ecd { get; private set; }
+
+        public int SetupTime { get; private set; }
+        public TakeOffProfile TakeOffProfile => BaseChassis.TakeOffProfile;
+
+        public List<Seating> SeatingList { get; private set; }
+        public List<EntryPoint> EntryPointList { get; private set; }
+        public List<Accessory> AccessoryList { get; private set; }
+
+        public int DesignPoints { get { return _designPoints; } private set { SetProperty(ref _designPoints, value); OnPropertyChanged("Cost"); } }
+        private int _designPoints;
+        public double DesignMultiplier { get { return _designMultiplier; } private set { SetProperty(ref _designMultiplier, value); OnPropertyChanged("Cost"); } }
+        private double _designMultiplier;
+        public int Cost => Convert.ToInt32(Math.Round(DesignMultiplier * DesignPoints * 100));
+
+        public VehicleViewModel(Chassis chassis, PowerPlant powerPlant, bool drone)
+        {
+            BaseChassis = chassis;
+            BasePowerPlant = powerPlant;
+            Drone = drone;
+
+            Name = "Unnamed " + Chassis;
+
+            Body = BaseChassis.Body;
+            Armor = BaseChassis.Armor;
+            CargoFactor = BaseChassis.CargoFactorBase;
+            CargoFactorFree = CargoFactor;
+            Load = BasePowerPlant.LoadBase;
+            LoadFree = Load;
+
+            RoadHandling = BaseChassis.RoadHandling;
+            OffRoadHandling = BaseChassis.OffRoadHandling;
+            Speed = BasePowerPlant.SpeedBase;
+            Accel = BasePowerPlant.AccelBase;
+            Economy = BasePowerPlant.EconomyBase;
+            FuelSize = BasePowerPlant.FuelSizeBase;
+
+            AutoNav = BaseChassis.AutoNav;
+            Pilot = BaseChassis.Pilot;
+            Sensor = BaseChassis.Sensor;
+            Sig = BasePowerPlant.Sig;
+
+            SetupTime = BaseChassis.SetupTime;
+
+            SeatingList = new List<Seating>(BaseChassis.SeatingList);
+            EntryPointList = new List<EntryPoint>(BaseChassis.EntryPointList);
+            AccessoryList = BaseChassis.AccessoryList.OrderBy(a => a.ToString()).ToList();
+
+            DesignPoints = BaseChassis.DesignPoints + BasePowerPlant.DesignPoints;
+            DesignMultiplier = CostCalculation.CalculateDesignMultiplier(ChassisGroup, Drone, AccessoryList);
+        }
+        
+        public VehicleViewModel() { }
+
+        internal void Apply(Adjustment adjustment)
+        {
+            if (adjustment.IsValid)
+            {
+                PropertyInfo prop = GetType().GetProperty(adjustment.AdjustmentType.ToString());
+                prop.SetValue(this, adjustment.NewValue, null);
+                DesignPoints += adjustment.DesignPointCost;
+                LoadFree -= adjustment.LoadReduction;
+                //NOTE: if Load/CF ajustment is invalid (because the *Max is exceed), their Apply will not be executed, resulting in negative *Free values.
+                if (LoadFree < 0)
+                {
+                    var moreLoad = new Adjustment(AdjustmentType.Load, BaseChassis, BasePowerPlant, Load, Load - LoadFree);
+                    Apply(moreLoad);
+                }
+                CargoFactorFree -= adjustment.CargoFactorReduction;
+                if (CargoFactorFree < 0)
+                {
+                    var moreCargo = new Adjustment(AdjustmentType.CargoFactor, BaseChassis, BasePowerPlant, CargoFactor, CargoFactor - CargoFactorFree);
+                    Apply(moreCargo);
+                }
+                AccessoryList = AccessoryList.Union(adjustment.AccessoriesToAdd).Except(adjustment.AccessoriesToRemove).OrderBy(a => a.ToString()).ToList();
+            }
+        }
+    }
+}

@@ -14,9 +14,10 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.Win32;
 using SRVehicleDesigner.DAL;
-using SRVehicleDesigner.BLL;
+using SRVehicleDesigner.ViewModels;
 using System.IO;
 using System.Reflection;
+using AutoMapper;
 
 namespace SRVehicleDesigner.Views
 {
@@ -68,14 +69,15 @@ namespace SRVehicleDesigner.Views
             if (openFileDialog.ShowDialog() == true)
             {
                 var vehicle = Vehicle.GetVehicle(openFileDialog.FileName);
-                var vehicleDetailView = new VehicleDetailView(vehicle);
+                var vehicleViewModel = Mapper.Map<VehicleViewModel>(vehicle);
+                var vehicleDetailView = new VehicleDetailView(vehicleViewModel);
                 VehicleDetails.Content = vehicleDetailView;
             }
         }
 
         private void SaveCommand_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
-            e.CanExecute = (DataContext is Vehicle);
+            e.CanExecute = (VehicleDetails.Content is VehicleDetailView);
         }
 
         private void SaveCommand_Executed(object sender, ExecutedRoutedEventArgs e)
@@ -83,10 +85,12 @@ namespace SRVehicleDesigner.Views
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.Filter = "XML File (*.xml)|*.xml";
             saveFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            saveFileDialog.FileName = $"{((Vehicle)DataContext).Name}.xml";
+            var vehicleViewModel = (VehicleViewModel)((VehicleDetailView)VehicleDetails.Content).DataContext;
+            saveFileDialog.FileName = $"{vehicleViewModel.Name}.xml";
             if (saveFileDialog.ShowDialog() == true)
             {
-                ((Vehicle)DataContext).StoreVehicle(saveFileDialog.FileName);
+                var vehicle = Mapper.Map<Vehicle>(vehicleViewModel);
+                vehicle.StoreVehicle(saveFileDialog.FileName);
             }
         }
     }
