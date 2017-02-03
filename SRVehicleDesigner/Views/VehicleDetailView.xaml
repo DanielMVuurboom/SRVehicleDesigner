@@ -43,7 +43,7 @@
             </StackPanel>
             <StackPanel Grid.Column="2" Grid.Row="1" VerticalAlignment="Center">
                 <Label Content="Cargo Factor"/>
-                <TextBox x:Name="cargoFactorBox" Style="{StaticResource inputBox}" Text="{Binding CargoFactor}"/>
+                <TextBox x:Name="cargoFactorBox" Style="{StaticResource inputBox}" Text="{Binding CargoFactor, ValidatesOnNotifyDataErrors=True}"/>
             </StackPanel>
             <StackPanel Grid.Column="3" Grid.Row="1" VerticalAlignment="Center">
                 <Label Content="CF Free"/>
@@ -51,7 +51,7 @@
             </StackPanel>
             <StackPanel Grid.Column="4" Grid.Row="1" VerticalAlignment="Center">
                 <Label Content="Load"/>
-                <TextBox x:Name="loadBox" Style="{StaticResource inputBox}" Text="{Binding Load}"/>
+                <TextBox x:Name="loadBox" Style="{StaticResource inputBox}" Text="{Binding Load, ValidatesOnNotifyDataErrors=True}"/>
             </StackPanel>
             <StackPanel Grid.Column="5" Grid.Row="1" VerticalAlignment="Center">
                 <Label Content="Load Free"/>
@@ -67,23 +67,23 @@
             </StackPanel>
             <StackPanel Grid.Column="2" Grid.Row="3" VerticalAlignment="Center">
                 <Label Content="Speed"/>
-                <TextBox x:Name="speedBox" Style="{StaticResource inputBox}" Text="{Binding Speed}" />
+                <TextBox x:Name="speedBox" Style="{StaticResource inputBox}" Text="{Binding Speed, ValidatesOnNotifyDataErrors=True}" />
             </StackPanel>
             <StackPanel Grid.Column="3" Grid.Row="3" VerticalAlignment="Center">
                 <Label Content="Accel"/>
-                <TextBox x:Name="accelBox" Style="{StaticResource inputBox}" Text="{Binding Accel}" />
+                <TextBox x:Name="accelBox" Style="{StaticResource inputBox}" Text="{Binding Accel, ValidatesOnNotifyDataErrors=True}" />
             </StackPanel>
             <StackPanel Grid.Column="4" Grid.Row="3" VerticalAlignment="Center">
                 <Label>
                     <TextBox Text="{Binding EconomyUnit, Mode=OneWay,StringFormat=Econ. ({0})}" Style="{StaticResource displayBox}"/>
                 </Label>
-                <TextBox x:Name="economyBox" Style="{StaticResource inputBox}" Text="{Binding Economy}"/>
+                <TextBox x:Name="economyBox" Style="{StaticResource inputBox}" Text="{Binding Economy, ValidatesOnNotifyDataErrors=True}"/>
             </StackPanel>
             <StackPanel Grid.Column="5" Grid.Row="3" VerticalAlignment="Center">
                 <Label>
                     <TextBox Text="{Binding FuelSizeUnit, Mode=OneWay,StringFormat=Fuel ({0})}" Margin="0" BorderThickness="0"/>
                 </Label>
-                <TextBox x:Name="fuelSizeBox" Style="{StaticResource inputBox}" Text="{Binding FuelSize}"  />
+                <TextBox x:Name="fuelSizeBox" Style="{StaticResource inputBox}" Text="{Binding FuelSize, ValidatesOnNotifyDataErrors=True}"  />
             </StackPanel>
             <StackPanel Grid.Column="0" Grid.Row="5" VerticalAlignment="Center">
                 <Label Content="AutoNav"/>

@@ -8,10 +8,11 @@ using SRVehicleDesigner.DAL;
 using System.Reflection;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Collections;
 
 namespace SRVehicleDesigner.ViewModels
 {
-    public class VehicleViewModel : INotifyPropertyChanged
+    public class VehicleViewModel : INotifyPropertyChanged, INotifyDataErrorInfo
     {
         public Chassis BaseChassis { get; private set; }
         public PowerPlant BasePowerPlant { get; private set; }
@@ -78,6 +79,9 @@ namespace SRVehicleDesigner.ViewModels
         public double DesignMultiplier { get { return _designMultiplier; } private set { SetProperty(ref _designMultiplier, value); OnPropertyChanged("Cost"); } }
         private double _designMultiplier;
         public int Cost => Convert.ToInt32(Math.Round(DesignMultiplier * DesignPoints * 100));
+
+        public bool HasErrors { get { return _validationErrors.Count > 0; } }
+        private Dictionary<string, ICollection<string>> _validationErrors = new Dictionary<string, ICollection<string>>();
 
         public bool InitializationComplete = false;
 
@@ -151,6 +155,19 @@ namespace SRVehicleDesigner.ViewModels
                     Apply(adjustment);
                     member = val;
                     PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+                    if (_validationErrors.ContainsKey(propertyName))
+                    {
+                        _validationErrors.Remove(propertyName);
+                    }
+                }
+                else
+                {
+                    if (!_validationErrors.ContainsKey(propertyName))
+                    {
+                        _validationErrors.Add(propertyName, new List<string>());
+                    }
+                    _validationErrors[propertyName].Add(adjustment.GetValidationMessage());
+                    RaiseErrorsChanged(propertyName);
                 }
             }
             else
@@ -165,6 +182,21 @@ namespace SRVehicleDesigner.ViewModels
             PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
 
+        public IEnumerable GetErrors(string propertyName)
+        {
+            if (string.IsNullOrEmpty(propertyName)
+            || !_validationErrors.ContainsKey(propertyName))
+                return null;
+
+            return _validationErrors[propertyName];
+        }
+
+        private void RaiseErrorsChanged(string propertyName)
+        {
+            ErrorsChanged?.Invoke(this, new DataErrorsChangedEventArgs(propertyName));
+        }
+
         public event PropertyChangedEventHandler PropertyChanged = delegate { };
+        public event EventHandler<DataErrorsChangedEventArgs> ErrorsChanged;
     }
 }

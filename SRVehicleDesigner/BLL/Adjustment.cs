@@ -198,7 +198,7 @@ namespace SRVehicleDesigner.BLL
                     message = $"Fuel should be a positive integer";
                     break;
                 case "CargoFactor":
-                    message = $"Load should be between {_chassis.CargoFactorBase} and {_chassis.CargoFactorMax}";
+                    message = $"CargoFactor should be between {_chassis.CargoFactorBase} and {_chassis.CargoFactorMax}";
                     break;
                 case "Load":
                     message = $"Load should be between {_powerPlant.LoadBase} and {_powerPlant.LoadMax}";
