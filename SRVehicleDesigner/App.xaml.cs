@@ -24,7 +24,11 @@ namespace SRVehicleDesigner
 
         private void InitializeAutoMapper()
         {
-            Mapper.Initialize(cfg => { cfg.CreateMap<Vehicle, VehicleViewModel>(); cfg.CreateMap<VehicleViewModel, Vehicle>(); });
+            Mapper.Initialize(cfg => 
+            {
+                cfg.CreateMap<Vehicle, VehicleViewModel>().ForMember(dest => dest.InitializationComplete, opt => opt.Ignore());
+                cfg.CreateMap<VehicleViewModel, Vehicle>();
+            });
             Mapper.AssertConfigurationIsValid();
         }
     }

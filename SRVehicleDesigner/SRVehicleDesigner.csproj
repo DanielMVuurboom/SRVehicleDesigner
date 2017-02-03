@@ -116,7 +116,6 @@
     <Compile Include="BLL\EngineRules.cs" />
     <Compile Include="ViewModels\CustomCommands.cs" />
     <Compile Include="DAL\Accessory.cs" />
-    <Compile Include="ViewModels\BindableBase.cs" />
     <Compile Include="DAL\Chassis.cs" />
     <Compile Include="DAL\DataStore.cs" />
     <Compile Include="DAL\Electronics.cs" />
