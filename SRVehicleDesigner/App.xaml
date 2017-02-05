@@ -33,6 +33,23 @@
         </Style>
         <Style TargetType="ComboBox">
             <Setter Property="Margin" Value="5,0,5,0"/>
+            <Setter Property="Validation.ErrorTemplate">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <StackPanel>
+                            <!-- Placeholder for the ComboBox itself -->
+                            <AdornedElementPlaceholder />
+                            <ItemsControl ItemsSource="{Binding}">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding ErrorContent}" Foreground="Red"/>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </StackPanel>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
         </Style>
         <x:Static x:Key="dataStore" Member="dal:DataStore.DataStoreSingleton"/>
     </Application.Resources>

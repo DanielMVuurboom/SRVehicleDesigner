@@ -17,7 +17,7 @@ namespace SRVehicleDesigner.BLL
         private Electronics _electronics;
 
         public string AdjustmentType { get; private set; }
-        public bool IsValid { get; private set; }
+        public bool IsValid => Validation.Validate(_target, AdjustmentType, _chassis, _powerPlant);
         public int DesignPointCost { get; private set; }
         public decimal CargoFactorReduction { get; private set; }
         public decimal LoadReduction { get; private set; }
@@ -35,7 +35,6 @@ namespace SRVehicleDesigner.BLL
             _target = target;
             AccessoriesToAdd = new List<Accessory>();
             AccessoriesToRemove = new List<Accessory>();
-            Validate();
             Calculate();
         }
 
@@ -95,77 +94,9 @@ namespace SRVehicleDesigner.BLL
                     AccessoriesToAdd = targetComponent.AccessoryList.Except(currentComponent.AccessoryList).ToList();
                     AccessoriesToRemove = currentComponent.AccessoryList.Except(targetComponent.AccessoryList).ToList();
                     break;
-                case "Name":
-                case "LoadFree":
-                case "CargoFactorFree":
-                case "DesignPoints":
-                case "DesignMultiplier":
-                    DesignPointCost = 0;
-                    CargoFactorReduction = 0;
-                    break;
                 default:
                     throw new NotImplementedException();
             }
-        }
-
-        private void Validate()
-        {
-            switch (AdjustmentType)
-            {
-                case "RoadHandling":
-                    IsValid = (_current is int && _target is int && EngineRules.GetValidHandlingOptions(_chassis.RoadHandling).Contains((int)_target));
-                    break;
-                case "OffRoadHandling":
-                    IsValid = (_current is int && _target is int && EngineRules.GetValidHandlingOptions(_chassis.OffRoadHandling).Contains((int)_target));
-                    break;
-                case "AutoNav":
-                case "Pilot":
-                case "Sensor":
-                case "Ecm":
-                case "Eccm":
-                case "Ed":
-                case "Ecd":
-                    var componentlist = (List<Component>)_electronics.GetType().GetProperty($"{AdjustmentType}List").GetValue(_electronics);
-                    IsValid = (_current is int && _target is int && componentlist.Any(c => c.Level == (int)_target));
-                    break;
-                case "Speed":
-                    IsValid = (_current is int && _target is int && ValidateBetween(_powerPlant.SpeedBase, _powerPlant.SpeedMax));
-                    break;
-                case "Accel":
-                    IsValid = (_current is int && _target is int && ValidateBetween(_powerPlant.AccelBase, _powerPlant.AccelMax));
-                    break;
-                case "Economy":
-                    IsValid = (_current is decimal && _target is decimal && ValidateBetween(_powerPlant.EconomyBase, _powerPlant.EconomyMax));
-                    break;
-                case "FuelSize":
-                    IsValid = (_current is int && _target is int && (int)_target >= 0);
-                    break;
-                case "CargoFactor":
-                    IsValid = (_current is decimal && _target is decimal && ValidateBetween(_chassis.CargoFactorBase, _chassis.CargoFactorMax));
-                    break;
-                case "Load":
-                    IsValid = (_current is decimal && _target is decimal && ValidateBetween(_powerPlant.LoadBase, _powerPlant.LoadMax));
-                    break;
-                case "Name":
-                case "LoadFree":
-                case "CargoFactorFree":
-                case "DesignPoints":
-                case "DesignMultiplier":
-                    IsValid = true;
-                    break;
-                default:
-                    throw new NotImplementedException();
-            }
-        }
-
-        private bool ValidateBetween(int min, int max)
-        {
-            return min <= (int)_target && (int)_target <= max;
-        }
-
-        private bool ValidateBetween(decimal min, decimal max)
-        {
-            return min <= (decimal)_target && (decimal)_target <= max;
         }
 
         public string GetValidationMessage()

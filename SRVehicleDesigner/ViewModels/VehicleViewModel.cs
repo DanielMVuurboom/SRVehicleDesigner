@@ -21,21 +21,21 @@ namespace SRVehicleDesigner.ViewModels
         public string Chassis => BaseChassis.Name;
         public PowerPlantType PowerPlant => BasePowerPlant.Type;
         public bool Drone { get; private set; }
-        public string Name { get { return _name; } set { SetProperty(ref _name, value); } }
+        public string Name { get { return _name; } set { SetProperty(ref _name, value, false); } }
         private string _name;
         public string NameToolTip => Validation.ValidityDescriptor("Name", BaseChassis, BasePowerPlant);
 
         public int Body { get; private set; }
         public int Armor { get; private set; }
-        public decimal CargoFactor { get { return _cargoFactor; } set { SetProperty(ref _cargoFactor, value); } } 
+        public decimal CargoFactor { get { return _cargoFactor; } set { SetProperty(ref _cargoFactor, value); } }
         private decimal _cargoFactor;
         public string CargoFactorToolTip => Validation.ValidityDescriptor("CargoFactor", BaseChassis, BasePowerPlant);
-        public decimal CargoFactorFree { get { return _cargoFactorFree; } private set { SetProperty(ref _cargoFactorFree, value); } }
+        public decimal CargoFactorFree { get { return _cargoFactorFree; } private set { SetProperty(ref _cargoFactorFree, value, false); } }
         private decimal _cargoFactorFree;
         public decimal Load { get { return _load; } set { SetProperty(ref _load, value); } }
         private decimal _load;
         public string LoadToolTip => Validation.ValidityDescriptor("Load", BaseChassis, BasePowerPlant);
-        public decimal LoadFree { get { return _loadFree; } private set { SetProperty(ref _loadFree, value); } }
+        public decimal LoadFree { get { return _loadFree; } private set { SetProperty(ref _loadFree, value, false); } }
         private decimal _loadFree;
 
         public int RoadHandling { get { return _roadHandling; } set { SetProperty(ref _roadHandling, value); } }
@@ -57,19 +57,19 @@ namespace SRVehicleDesigner.ViewModels
         public string FuelSizeToolTip => Validation.ValidityDescriptor("FuelSize", BaseChassis, BasePowerPlant);
         public string FuelSizeUnit => BasePowerPlant.FuelSizeUnit;
 
-        public int AutoNav{ get { return _autoNav; } set { SetProperty(ref _autoNav, value); } }
+        public int AutoNav { get { return _autoNav; } set { SetProperty(ref _autoNav, value); } }
         private int _autoNav;
-        public int Pilot  { get { return _pilot; } set { SetProperty(ref _pilot, value); } }
+        public int Pilot { get { return _pilot; } set { SetProperty(ref _pilot, value); } }
         private int _pilot;
         public int Sensor { get { return _sensor; } set { SetProperty(ref _sensor, value); } }
         private int _sensor;
-        public int Sig    { get { return _sig; } set { SetProperty(ref _sig, value); } }
+        public int Sig { get { return _sig; } set { SetProperty(ref _sig, value); } }
         private int _sig;
-        public int Ecm    { get { return _ecm; } set { SetProperty(ref _ecm, value); } }
+        public int Ecm { get { return _ecm; } set { SetProperty(ref _ecm, value); } }
         private int _ecm;
-        public int Eccm   { get { return _eccm; } set { SetProperty(ref _eccm, value); } }
+        public int Eccm { get { return _eccm; } set { SetProperty(ref _eccm, value); } }
         private int _eccm;
-        public int Ed    { get { return _ed; } set { SetProperty(ref _ed, value); } }
+        public int Ed { get { return _ed; } set { SetProperty(ref _ed, value); } }
         private int _ed;
         public int Ecd { get { return _ecd; } set { SetProperty(ref _ecd, value); } }
         private int _ecd;
@@ -81,9 +81,9 @@ namespace SRVehicleDesigner.ViewModels
         public List<EntryPoint> EntryPointList { get; private set; }
         public List<Accessory> AccessoryList { get; private set; }
 
-        public int DesignPoints { get { return _designPoints; } private set { SetProperty(ref _designPoints, value); OnPropertyChanged("Cost"); } }
+        public int DesignPoints { get { return _designPoints; } private set { SetProperty(ref _designPoints, value, false); OnPropertyChanged("Cost"); } }
         private int _designPoints;
-        public double DesignMultiplier { get { return _designMultiplier; } private set { SetProperty(ref _designMultiplier, value); OnPropertyChanged("Cost"); } }
+        public double DesignMultiplier { get { return _designMultiplier; } private set { SetProperty(ref _designMultiplier, value, false); OnPropertyChanged("Cost"); } }
         private double _designMultiplier;
         public int Cost => Convert.ToInt32(Math.Round(DesignMultiplier * DesignPoints * 100));
 
@@ -128,7 +128,7 @@ namespace SRVehicleDesigner.ViewModels
             DesignPoints = BaseChassis.DesignPoints + BasePowerPlant.DesignPoints;
             DesignMultiplier = CostCalculation.CalculateDesignMultiplier(ChassisGroup, Drone, AccessoryList);
         }
-        
+
         public VehicleViewModel() { }
 
         internal void Apply(Adjustment adjustment)
@@ -137,35 +137,59 @@ namespace SRVehicleDesigner.ViewModels
             {
                 DesignPoints += adjustment.DesignPointCost;
                 LoadFree -= adjustment.LoadReduction;
-                //NOTE: Invalid automatic Load/CF updates result in strange validation messages
                 if (LoadFree < 0)
                 {
-                    Load -= LoadFree;
+                    if (Validation.Validate(Load - LoadFree, "Load", BaseChassis, BasePowerPlant))
+                    {
+                        Load -= LoadFree;
+                    }
+                    else
+                    {
+                        if (!_validationErrors.ContainsKey(adjustment.AdjustmentType))
+                        {
+                            _validationErrors.Add(adjustment.AdjustmentType, new List<string>());
+                        }
+                        _validationErrors[adjustment.AdjustmentType].Add($"Adding enough Load ({adjustment.LoadReduction}) for this adjustment does not fit.");
+                        RaiseErrorsChanged(adjustment.AdjustmentType);
+                    }
                 }
                 CargoFactorFree -= adjustment.CargoFactorReduction;
                 if (CargoFactorFree < 0)
                 {
-                    CargoFactor -= CargoFactorFree;
+                    if (Validation.Validate(CargoFactor - _cargoFactorFree, "CargoFactor", BaseChassis, BasePowerPlant))
+                    {
+                        CargoFactor -= CargoFactorFree;
+                    }
+                    else
+                    {
+                        if (!_validationErrors.ContainsKey(adjustment.AdjustmentType))
+                        {
+                            _validationErrors.Add(adjustment.AdjustmentType, new List<string>());
+                        }
+                        _validationErrors[adjustment.AdjustmentType].Add($"Adding enough CargoFactor ({adjustment.CargoFactorReduction}) for this adjustment does not fit.");
+                        RaiseErrorsChanged(adjustment.AdjustmentType);
+                    }
                 }
                 AccessoryList = AccessoryList.Union(adjustment.AccessoriesToAdd).Except(adjustment.AccessoriesToRemove).OrderBy(a => a.ToString()).ToList();
             }
         }
 
-        protected void SetProperty<T>(ref T member, T val, [CallerMemberName] string propertyName = null)
+        protected void SetProperty<T>(ref T member, T val, bool useAdjustment = true, [CallerMemberName] string propertyName = null)
         {
             if (object.Equals(member, val)) return;
-            if (InitializationComplete)
+            if (InitializationComplete && useAdjustment)
             {
                 var adjustment = new Adjustment(propertyName, BaseChassis, BasePowerPlant, member, val);
                 if (adjustment.IsValid)
                 {
-                    Apply(adjustment);
-                    member = val;
-                    PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
                     if (_validationErrors.ContainsKey(propertyName))
                     {
                         _validationErrors.Remove(propertyName);
+                        RaiseErrorsChanged(propertyName);
                     }
+                    Apply(adjustment);
+                    member = val;
+                    PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
                 }
                 else
                 {

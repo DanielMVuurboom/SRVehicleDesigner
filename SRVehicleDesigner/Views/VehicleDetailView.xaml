@@ -59,11 +59,11 @@
             </StackPanel>
             <StackPanel Grid.Column="0" Grid.Row="3" VerticalAlignment="Center">
                 <Label Content="Handling"/>
-                <ComboBox x:Name="roadHandlingBox" ItemsSource="{Binding Path=BaseChassis.AllowedRoadHandlingValues}" SelectedValue="{Binding RoadHandling}"/>
+                <ComboBox x:Name="roadHandlingBox" ItemsSource="{Binding Path=BaseChassis.AllowedRoadHandlingValues}" SelectedValue="{Binding RoadHandling, ValidatesOnNotifyDataErrors=True}"/>
             </StackPanel>
             <StackPanel Grid.Column="1" Grid.Row="3" VerticalAlignment="Center">
                 <Label Content="Off-Road"/>
-                <ComboBox x:Name="offRoadHandlingBox" ItemsSource="{Binding Path=BaseChassis.AllowedOffRoadHandlingValues}" SelectedValue="{Binding OffRoadHandling}"/>
+                <ComboBox x:Name="offRoadHandlingBox" ItemsSource="{Binding Path=BaseChassis.AllowedOffRoadHandlingValues}" SelectedValue="{Binding OffRoadHandling, ValidatesOnNotifyDataErrors=True}"/>
             </StackPanel>
             <StackPanel Grid.Column="2" Grid.Row="3" VerticalAlignment="Center">
                 <Label Content="Speed"/>
@@ -87,27 +87,27 @@
             </StackPanel>
             <StackPanel Grid.Column="0" Grid.Row="5" VerticalAlignment="Center">
                 <Label Content="AutoNav"/>
-                <ComboBox x:Name="autoNavBox" ItemsSource="{Binding Source={StaticResource dataStore}, Path=Electronics.AutoNavList}" SelectedIndex="{Binding AutoNav}"/>
+                <ComboBox x:Name="autoNavBox" ItemsSource="{Binding Source={StaticResource dataStore}, Path=Electronics.AutoNavList}" SelectedIndex="{Binding AutoNav, ValidatesOnNotifyDataErrors=True}"/>
                 <Label Content="ECM"/>
-                <ComboBox x:Name="ecmBox" ItemsSource="{Binding Source={StaticResource dataStore}, Path=Electronics.EcmList}" SelectedIndex="{Binding Ecm}"/>
+                <ComboBox x:Name="ecmBox" ItemsSource="{Binding Source={StaticResource dataStore}, Path=Electronics.EcmList}" SelectedIndex="{Binding Ecm, ValidatesOnNotifyDataErrors=True}"/>
             </StackPanel>
             <StackPanel Grid.Column="1" Grid.Row="5" VerticalAlignment="Center">
                 <Label Content="Pilot"/>
-                <ComboBox x:Name="pilotBox" ItemsSource="{Binding Source={StaticResource dataStore}, Path=Electronics.PilotList}" SelectedIndex="{Binding Pilot}" />
+                <ComboBox x:Name="pilotBox" ItemsSource="{Binding Source={StaticResource dataStore}, Path=Electronics.PilotList}" SelectedIndex="{Binding Pilot, ValidatesOnNotifyDataErrors=True}" />
                 <Label Content="ECCM"/>
-                <ComboBox x:Name="eccmBox" ItemsSource="{Binding Source={StaticResource dataStore}, Path=Electronics.EccmList}" SelectedIndex="{Binding Eccm}" />
+                <ComboBox x:Name="eccmBox" ItemsSource="{Binding Source={StaticResource dataStore}, Path=Electronics.EccmList}" SelectedIndex="{Binding Eccm, ValidatesOnNotifyDataErrors=True}" />
             </StackPanel>
             <StackPanel Grid.Column="2" Grid.Row="5" VerticalAlignment="Center">
                 <Label Content="Signature"/>
                 <TextBox x:Name="signatureBox" Style="{StaticResource inputBox}" IsReadOnly="True" Text="{Binding Sig, Mode=OneWay}" />
                 <Label Content="ED"/>
-                <ComboBox x:Name="edBox" ItemsSource="{Binding Source={StaticResource dataStore}, Path=Electronics.EdList}" SelectedIndex="{Binding Ed}" />
+                <ComboBox x:Name="edBox" ItemsSource="{Binding Source={StaticResource dataStore}, Path=Electronics.EdList}" SelectedIndex="{Binding Ed, ValidatesOnNotifyDataErrors=True}" />
             </StackPanel>
             <StackPanel Grid.Column="3" Grid.Row="5" VerticalAlignment="Center">
                 <Label Content="Sensors"/>
-                <ComboBox x:Name="sensorBox" ItemsSource="{Binding Source={StaticResource dataStore}, Path=Electronics.SensorList}" SelectedIndex="{Binding Sensor}" />
+                <ComboBox x:Name="sensorBox" ItemsSource="{Binding Source={StaticResource dataStore}, Path=Electronics.SensorList}" SelectedIndex="{Binding Sensor, ValidatesOnNotifyDataErrors=True}" />
                 <Label Content="ECD"/>
-                <ComboBox x:Name="ecdBox" ItemsSource="{Binding Source={StaticResource dataStore}, Path=Electronics.EcdList}" SelectedIndex="{Binding Ecd}" />
+                <ComboBox x:Name="ecdBox" ItemsSource="{Binding Source={StaticResource dataStore}, Path=Electronics.EcdList}" SelectedIndex="{Binding Ecd, ValidatesOnNotifyDataErrors=True}" />
             </StackPanel>
         </Grid>
     </StackPanel>
