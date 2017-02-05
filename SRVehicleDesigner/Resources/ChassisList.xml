@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <ArrayOfChassis>
   <Chassis>
     <ChassisGroup>Bikes</ChassisGroup>
@@ -562,10 +562,8 @@
     <AutoNav>0</AutoNav>
     <Pilot>1</Pilot>
     <Sensor>1</Sensor>
-    <SeatingList>
-    </SeatingList>
-    <EntryPointList>
-    </EntryPointList>
+    <SeatingList></SeatingList>
+    <EntryPointList></EntryPointList>
     <SetupTime>0</SetupTime>
     <TakeOffProfile>NotApplicable</TakeOffProfile>
     <DesignPoints>220</DesignPoints>
@@ -586,10 +584,8 @@
     <AutoNav>0</AutoNav>
     <Pilot>1</Pilot>
     <Sensor>1</Sensor>
-    <SeatingList>
-    </SeatingList>
-    <EntryPointList>
-    </EntryPointList>
+    <SeatingList></SeatingList>
+    <EntryPointList></EntryPointList>
     <SetupTime>3</SetupTime>
     <TakeOffProfile>NotApplicable</TakeOffProfile>
     <DesignPoints>115</DesignPoints>
@@ -610,10 +606,8 @@
     <AutoNav>0</AutoNav>
     <Pilot>1</Pilot>
     <Sensor>1</Sensor>
-    <SeatingList>
-    </SeatingList>
-    <EntryPointList>
-    </EntryPointList>
+    <SeatingList></SeatingList>
+    <EntryPointList></EntryPointList>
     <SetupTime>3</SetupTime>
     <TakeOffProfile>NotApplicable</TakeOffProfile>
     <DesignPoints>115</DesignPoints>
@@ -634,10 +628,8 @@
     <AutoNav>0</AutoNav>
     <Pilot>1</Pilot>
     <Sensor>1</Sensor>
-    <SeatingList>
-    </SeatingList>
-    <EntryPointList>
-    </EntryPointList>
+    <SeatingList></SeatingList>
+    <EntryPointList></EntryPointList>
     <SetupTime>5</SetupTime>
     <TakeOffProfile>NotApplicable</TakeOffProfile>
     <DesignPoints>215</DesignPoints>
@@ -658,10 +650,8 @@
     <AutoNav>0</AutoNav>
     <Pilot>1</Pilot>
     <Sensor>1</Sensor>
-    <SeatingList>
-    </SeatingList>
-    <EntryPointList>
-    </EntryPointList>
+    <SeatingList></SeatingList>
+    <EntryPointList></EntryPointList>
     <SetupTime>5</SetupTime>
     <TakeOffProfile>NotApplicable</TakeOffProfile>
     <DesignPoints>215</DesignPoints>
@@ -682,16 +672,161 @@
     <AutoNav>0</AutoNav>
     <Pilot>2</Pilot>
     <Sensor>1</Sensor>
-    <SeatingList>
-    </SeatingList>
-    <EntryPointList>
-    </EntryPointList>
+    <SeatingList></SeatingList>
+    <EntryPointList></EntryPointList>
     <SetupTime>0</SetupTime>
     <TakeOffProfile>NotApplicable</TakeOffProfile>
     <DesignPoints>215</DesignPoints>
     <AccessoryList>
       <Accessory>RemoteControlInterface</Accessory>
       <Accessory>RiggerAdaptation</Accessory>
+    </AccessoryList>
+  </Chassis>
+  <Chassis>
+    <ChassisGroup>Hovercraft</ChassisGroup>
+    <Name>Small Hovercraft</Name>
+    <RoadHandling>3</RoadHandling>
+    <OffRoadHandling>3</OffRoadHandling>
+    <Body>3</Body>
+    <Armor>0</Armor>
+    <CargoFactorBase>12</CargoFactorBase>
+    <CargoFactorMax>30</CargoFactorMax>
+    <AutoNav>0</AutoNav>
+    <Pilot>0</Pilot>
+    <Sensor>0</Sensor>
+    <SeatingList>
+      <Seating>
+        <SeatingType>Bucket</SeatingType>
+        <SeatingCount>2</SeatingCount>
+      </Seating>
+    </SeatingList>
+    <EntryPointList>
+      <EntryPoint>
+        <EntryPointType>Door</EntryPointType>
+        <EntryPointCount>2</EntryPointCount>
+      </EntryPoint>
+      <EntryPoint>
+        <EntryPointType>TrunkDoor</EntryPointType>
+        <EntryPointCount>1</EntryPointCount>
+      </EntryPoint>
+    </EntryPointList>
+    <SetupTime>0</SetupTime>
+    <TakeOffProfile>NotApplicable</TakeOffProfile>
+    <DesignPoints>70</DesignPoints>
+    <AccessoryList></AccessoryList>
+  </Chassis>
+  <Chassis>
+    <ChassisGroup>Hovercraft</ChassisGroup>
+    <Name>Medium Hovercraft</Name>
+    <RoadHandling>4</RoadHandling>
+    <OffRoadHandling>4</OffRoadHandling>
+    <Body>4</Body>
+    <Armor>0</Armor>
+    <CargoFactorBase>60</CargoFactorBase>
+    <CargoFactorMax>240</CargoFactorMax>
+    <AutoNav>0</AutoNav>
+    <Pilot>0</Pilot>
+    <Sensor>0</Sensor>
+    <SeatingList>
+      <Seating>
+        <SeatingType>Bucket</SeatingType>
+        <SeatingCount>2</SeatingCount>
+      </Seating>
+    </SeatingList>
+    <EntryPointList>
+      <EntryPoint>
+        <EntryPointType>Door</EntryPointType>
+        <EntryPointCount>2</EntryPointCount>
+      </EntryPoint>
+      <EntryPoint>
+        <EntryPointType>DoubleTrunkDoor</EntryPointType>
+        <EntryPointCount>1</EntryPointCount>
+      </EntryPoint>
+    </EntryPointList>
+    <SetupTime>0</SetupTime>
+    <TakeOffProfile>NotApplicable</TakeOffProfile>
+    <DesignPoints>100</DesignPoints>
+    <AccessoryList></AccessoryList>
+  </Chassis>
+  <Chassis>
+    <ChassisGroup>Hovercraft</ChassisGroup>
+    <Name>Large Hovercraft</Name>
+    <RoadHandling>5</RoadHandling>
+    <OffRoadHandling>5</OffRoadHandling>
+    <Body>5</Body>
+    <Armor>0</Armor>
+    <CargoFactorBase>100</CargoFactorBase>
+    <CargoFactorMax>480</CargoFactorMax>
+    <AutoNav>0</AutoNav>
+    <Pilot>0</Pilot>
+    <Sensor>0</Sensor>
+    <SeatingList>
+      <Seating>
+        <SeatingType>Bucket</SeatingType>
+        <SeatingCount>2</SeatingCount>
+      </Seating>
+    </SeatingList>
+    <EntryPointList>
+      <EntryPoint>
+        <EntryPointType>Door</EntryPointType>
+        <EntryPointCount>2</EntryPointCount>
+      </EntryPoint>
+      <EntryPoint>
+        <EntryPointType>DoubleTrunkDoor</EntryPointType>
+        <EntryPointCount>1</EntryPointCount>
+      </EntryPoint>
+    </EntryPointList>
+    <SetupTime>0</SetupTime>
+    <TakeOffProfile>NotApplicable</TakeOffProfile>
+    <DesignPoints>250</DesignPoints>
+    <AccessoryList></AccessoryList>
+  </Chassis>
+  <Chassis>
+    <ChassisGroup>Hovercraft</ChassisGroup>
+    <Name>Small Skimmer</Name>
+    <RoadHandling>3</RoadHandling>
+    <OffRoadHandling>3</OffRoadHandling>
+    <Body>1</Body>
+    <Armor>0</Armor>
+    <CargoFactorBase>0</CargoFactorBase>
+    <CargoFactorMax>0</CargoFactorMax>
+    <AutoNav>0</AutoNav>
+    <Pilot>1</Pilot>
+    <Sensor>1</Sensor>
+    <SeatingList></SeatingList>
+    <EntryPointList></EntryPointList>
+    <SetupTime>0</SetupTime>
+    <TakeOffProfile>NotApplicable</TakeOffProfile>
+    <DesignPoints>250</DesignPoints>
+    <AccessoryList>
+      <AccessoryList>
+        <Accessory>RemoteControlInterface</Accessory>
+        <Accessory>RiggerAdaptation</Accessory>
+      </AccessoryList>
+    </AccessoryList>
+  </Chassis>
+  <Chassis>
+    <ChassisGroup>Hovercraft</ChassisGroup>
+    <Name>Large Skimmer</Name>
+    <RoadHandling>3</RoadHandling>
+    <OffRoadHandling>3</OffRoadHandling>
+    <Body>2</Body>
+    <Armor>0</Armor>
+    <CargoFactorBase>0</CargoFactorBase>
+    <CargoFactorMax>8</CargoFactorMax>
+    <AutoNav>0</AutoNav>
+    <Pilot>1</Pilot>
+    <Sensor>1</Sensor>
+    <SeatingList></SeatingList>
+    <EntryPointList></EntryPointList>
+    <SetupTime>0</SetupTime>
+    <TakeOffProfile>NotApplicable</TakeOffProfile>
+    <DesignPoints>350</DesignPoints>
+    <AccessoryList>
+      <AccessoryList>
+        <Accessory>RemoteControlInterface</Accessory>
+        <Accessory>RiggerAdaptation</Accessory>
+      </AccessoryList>
     </AccessoryList>
   </Chassis>
 </ArrayOfChassis>
