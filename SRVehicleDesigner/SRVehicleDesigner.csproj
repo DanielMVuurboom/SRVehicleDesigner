@@ -95,6 +95,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="BLL\Validation.cs" />
     <Compile Include="DAL\Vehicle.cs" />
     <Compile Include="Views\VehicleDetailView.xaml.cs">
       <DependentUpon>VehicleDetailView.xaml</DependentUpon>

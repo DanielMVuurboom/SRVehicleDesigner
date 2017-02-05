@@ -23,15 +23,18 @@ namespace SRVehicleDesigner.ViewModels
         public bool Drone { get; private set; }
         public string Name { get { return _name; } set { SetProperty(ref _name, value); } }
         private string _name;
+        public string NameToolTip => Validation.ValidityDescriptor("Name", BaseChassis, BasePowerPlant);
 
         public int Body { get; private set; }
         public int Armor { get; private set; }
         public decimal CargoFactor { get { return _cargoFactor; } set { SetProperty(ref _cargoFactor, value); } } 
         private decimal _cargoFactor;
+        public string CargoFactorToolTip => Validation.ValidityDescriptor("CargoFactor", BaseChassis, BasePowerPlant);
         public decimal CargoFactorFree { get { return _cargoFactorFree; } private set { SetProperty(ref _cargoFactorFree, value); } }
         private decimal _cargoFactorFree;
         public decimal Load { get { return _load; } set { SetProperty(ref _load, value); } }
         private decimal _load;
+        public string LoadToolTip => Validation.ValidityDescriptor("Load", BaseChassis, BasePowerPlant);
         public decimal LoadFree { get { return _loadFree; } private set { SetProperty(ref _loadFree, value); } }
         private decimal _loadFree;
 
@@ -41,13 +44,17 @@ namespace SRVehicleDesigner.ViewModels
         private int _offRoadHandling;
         public int Speed { get { return _speed; } set { SetProperty(ref _speed, value); } }
         private int _speed;
+        public string SpeedToolTip => Validation.ValidityDescriptor("Speed", BaseChassis, BasePowerPlant);
         public int Accel { get { return _accel; } set { SetProperty(ref _accel, value); } }
         private int _accel;
+        public string AccelToolTip => Validation.ValidityDescriptor("Accel", BaseChassis, BasePowerPlant);
         public decimal Economy { get { return _economy; } set { SetProperty(ref _economy, value); } }
         private decimal _economy;
+        public string EconomyToolTip => Validation.ValidityDescriptor("Economy", BaseChassis, BasePowerPlant);
         public string EconomyUnit => BasePowerPlant.EconomyUnit;
         public int FuelSize { get { return _fuelSize; } set { SetProperty(ref _fuelSize, value); } }
         private int _fuelSize;
+        public string FuelSizeToolTip => Validation.ValidityDescriptor("FuelSize", BaseChassis, BasePowerPlant);
         public string FuelSizeUnit => BasePowerPlant.FuelSizeUnit;
 
         public int AutoNav{ get { return _autoNav; } set { SetProperty(ref _autoNav, value); } }
@@ -130,7 +137,7 @@ namespace SRVehicleDesigner.ViewModels
             {
                 DesignPoints += adjustment.DesignPointCost;
                 LoadFree -= adjustment.LoadReduction;
-                //NOTE: if Load/CF ajustment is invalid (because the *Max is exceed), their Apply will not be executed, resulting in negative *Free values.
+                //NOTE: Invalid automatic Load/CF updates result in strange validation messages
                 if (LoadFree < 0)
                 {
                     Load -= LoadFree;

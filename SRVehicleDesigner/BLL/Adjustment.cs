@@ -186,22 +186,12 @@ namespace SRVehicleDesigner.BLL
                     message = $"Error in dropdownlist generation for {AdjustmentType}";
                     break;
                 case "Speed":
-                    message = $"Speed should be between {_powerPlant.SpeedBase} and {_powerPlant.SpeedMax}";
-                    break;
                 case "Accel":
-                    message = $"Accel should be between {_powerPlant.AccelBase} and {_powerPlant.AccelMax}";
-                    break;
                 case "Economy":
-                    message = $"Economy should be between {_powerPlant.EconomyBase} and {_powerPlant.EconomyMax}";
-                    break;
                 case "FuelSize":
-                    message = $"Fuel should be a positive integer";
-                    break;
                 case "CargoFactor":
-                    message = $"CargoFactor should be between {_chassis.CargoFactorBase} and {_chassis.CargoFactorMax}";
-                    break;
                 case "Load":
-                    message = $"Load should be between {_powerPlant.LoadBase} and {_powerPlant.LoadMax}";
+                    message = Validation.ValidityDescriptor(AdjustmentType, _chassis, _powerPlant);
                     break;
                 case "Name":
                     message = $"Name can only be anything - no idea how you managed to get here";
