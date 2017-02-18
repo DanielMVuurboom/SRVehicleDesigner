@@ -7,9 +7,10 @@
         <Style TargetType="TextBox" x:Key="displayBox">
             <Setter Property="Margin" Value="0" />
             <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="HorizontalAlignment" Value="Left" />
         </Style>
         <Style TargetType="TextBox"  x:Key="inputBox">
-            <Setter Property="Margin" Value="5,0,5,0" />
+            <Setter Property="Margin" Value="5,5,5,5" />
             <Setter Property="Validation.ErrorTemplate">
                 <Setter.Value>
                     <ControlTemplate>
@@ -35,7 +36,7 @@
             <Setter Property="Margin" Value="5,5,5,5"/>
         </Style>
         <Style TargetType="ComboBox">
-            <Setter Property="Margin" Value="5,0,5,0"/>
+            <Setter Property="Margin" Value="5,0,5,5"/>
             <Setter Property="Validation.ErrorTemplate">
                 <Setter.Value>
                     <ControlTemplate>

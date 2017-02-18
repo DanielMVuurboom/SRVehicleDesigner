@@ -65,6 +65,8 @@
           <a:Value>75000</a:Value>
         </a:KeyValueOfstringstring>
       </DataDictionary>
+      <RuleExplanation>The vehicle Body determines the maximum Load capacity of the winch.</RuleExplanation>
     </MaximumRule>
+    <ModificationType>Numeric</ModificationType>
   </Modification>
 </ArrayOfModification>

@@ -35,77 +35,77 @@
                     <TextBox Grid.Row="0" Text="Physical" Margin="0,10,0,0" FontWeight="DemiBold" Style="{StaticResource displayBox}"/>
                     <TextBox Grid.Row="2" Text="Driving" Margin="0,10,0,0" FontWeight="DemiBold" Style="{StaticResource displayBox}"/>
                     <TextBox Grid.Row="4" Text="Electronics" Margin="0,10,0,0" FontWeight="DemiBold" Style="{StaticResource displayBox}"/>
-                    <StackPanel Grid.Column="0" Grid.Row="1" VerticalAlignment="Center">
+                    <StackPanel Grid.Column="0" Grid.Row="1" VerticalAlignment="Bottom">
                         <Label Content="Body"/>
                         <TextBox x:Name="bodyBox" Style="{StaticResource inputBox}" Text="{Binding Body, Mode=OneWay}" IsReadOnly="True"/>
                     </StackPanel>
-                    <StackPanel Grid.Column="1" Grid.Row="1" VerticalAlignment="Center">
+                    <StackPanel Grid.Column="1" Grid.Row="1" VerticalAlignment="Bottom">
                         <Label Content="Armor"/>
                         <TextBox x:Name="armorBox" Style="{StaticResource inputBox}" Text="{Binding Armor, Mode=OneWay}" IsReadOnly="True"/>
                     </StackPanel>
-                    <StackPanel Grid.Column="2" Grid.Row="1" VerticalAlignment="Center">
+                    <StackPanel Grid.Column="2" Grid.Row="1" VerticalAlignment="Bottom">
                         <Label Content="Cargo Factor"/>
                         <TextBox x:Name="cargoFactorBox" Style="{StaticResource inputBox}" Text="{Binding CargoFactor, ValidatesOnNotifyDataErrors=True}" ToolTip="{Binding CargoFactorToolTip}"/>
                     </StackPanel>
-                    <StackPanel Grid.Column="3" Grid.Row="1" VerticalAlignment="Center">
+                    <StackPanel Grid.Column="3" Grid.Row="1" VerticalAlignment="Bottom">
                         <Label Content="CF Free"/>
                         <TextBox x:Name="cargoFactorFreeBox" Style="{StaticResource inputBox}" Text="{Binding CargoFactorFree, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
                     </StackPanel>
-                    <StackPanel Grid.Column="4" Grid.Row="1" VerticalAlignment="Center">
+                    <StackPanel Grid.Column="4" Grid.Row="1" VerticalAlignment="Bottom">
                         <Label Content="Load"/>
                         <TextBox x:Name="loadBox" Style="{StaticResource inputBox}" Text="{Binding Load, ValidatesOnNotifyDataErrors=True}" ToolTip="{Binding LoadToolTip}"/>
                     </StackPanel>
-                    <StackPanel Grid.Column="5" Grid.Row="1" VerticalAlignment="Center">
+                    <StackPanel Grid.Column="5" Grid.Row="1" VerticalAlignment="Bottom">
                         <Label Content="Load Free"/>
                         <TextBox x:Name="loadFreeBox" Style="{StaticResource inputBox}" Text="{Binding LoadFree, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
                     </StackPanel>
-                    <StackPanel Grid.Column="0" Grid.Row="3" VerticalAlignment="Center">
+                    <StackPanel Grid.Column="0" Grid.Row="3" VerticalAlignment="Bottom">
                         <Label Content="Handling"/>
                         <ComboBox x:Name="roadHandlingBox" ItemsSource="{Binding Path=BaseChassis.AllowedRoadHandlingValues}" SelectedValue="{Binding RoadHandling, ValidatesOnNotifyDataErrors=True}"/>
                     </StackPanel>
-                    <StackPanel Grid.Column="1" Grid.Row="3" VerticalAlignment="Center">
+                    <StackPanel Grid.Column="1" Grid.Row="3" VerticalAlignment="Bottom">
                         <Label Content="Off-Road"/>
                         <ComboBox x:Name="offRoadHandlingBox" ItemsSource="{Binding Path=BaseChassis.AllowedOffRoadHandlingValues}" SelectedValue="{Binding OffRoadHandling, ValidatesOnNotifyDataErrors=True}"/>
                     </StackPanel>
-                    <StackPanel Grid.Column="2" Grid.Row="3" VerticalAlignment="Center">
+                    <StackPanel Grid.Column="2" Grid.Row="3" VerticalAlignment="Bottom">
                         <Label Content="Speed"/>
                         <TextBox x:Name="speedBox" Style="{StaticResource inputBox}" Text="{Binding Speed, ValidatesOnNotifyDataErrors=True}" ToolTip="{Binding SpeedToolTip}"/>
                     </StackPanel>
-                    <StackPanel Grid.Column="3" Grid.Row="3" VerticalAlignment="Center">
+                    <StackPanel Grid.Column="3" Grid.Row="3" VerticalAlignment="Bottom">
                         <Label Content="Accel"/>
                         <TextBox x:Name="accelBox" Style="{StaticResource inputBox}" Text="{Binding Accel, ValidatesOnNotifyDataErrors=True}" ToolTip="{Binding AccelToolTip}"/>
                     </StackPanel>
                     <StackPanel Grid.Column="4" Grid.Row="3" VerticalAlignment="Center">
                         <Label>
-                            <TextBox Text="{Binding EconomyUnit, Mode=OneWay,StringFormat=Econ. ({0})}" Style="{StaticResource displayBox}"/>
+                            <TextBox Text="{Binding EconomyUnit, Mode=OneWay, StringFormat=Econ. ({0})}" Style="{StaticResource displayBox}"/>
                         </Label>
                         <TextBox x:Name="economyBox" Style="{StaticResource inputBox}" Text="{Binding Economy, ValidatesOnNotifyDataErrors=True}" ToolTip="{Binding EconomyToolTip}"/>
                     </StackPanel>
-                    <StackPanel Grid.Column="5" Grid.Row="3" VerticalAlignment="Center">
+                    <StackPanel Grid.Column="5" Grid.Row="3" VerticalAlignment="Bottom">
                         <Label>
                             <TextBox Text="{Binding FuelSizeUnit, Mode=OneWay,StringFormat=Fuel ({0})}" Margin="0" BorderThickness="0"/>
                         </Label>
                         <TextBox x:Name="fuelSizeBox" Style="{StaticResource inputBox}" Text="{Binding FuelSize, ValidatesOnNotifyDataErrors=True}" ToolTip="{Binding FuelSizeToolTip}" />
                     </StackPanel>
-                    <StackPanel Grid.Column="0" Grid.Row="5" VerticalAlignment="Center">
+                    <StackPanel Grid.Column="0" Grid.Row="5" VerticalAlignment="Bottom">
                         <Label Content="AutoNav"/>
                         <ComboBox x:Name="autoNavBox" ItemsSource="{Binding Source={StaticResource dataStore}, Path=Electronics.AutoNavList}" SelectedIndex="{Binding AutoNav, ValidatesOnNotifyDataErrors=True}"/>
                         <Label Content="ECM"/>
                         <ComboBox x:Name="ecmBox" ItemsSource="{Binding Source={StaticResource dataStore}, Path=Electronics.EcmList}" SelectedIndex="{Binding Ecm, ValidatesOnNotifyDataErrors=True}"/>
                     </StackPanel>
-                    <StackPanel Grid.Column="1" Grid.Row="5" VerticalAlignment="Center">
+                    <StackPanel Grid.Column="1" Grid.Row="5" VerticalAlignment="Bottom">
                         <Label Content="Pilot"/>
                         <ComboBox x:Name="pilotBox" ItemsSource="{Binding Source={StaticResource dataStore}, Path=Electronics.PilotList}" SelectedIndex="{Binding Pilot, ValidatesOnNotifyDataErrors=True}" />
                         <Label Content="ECCM"/>
                         <ComboBox x:Name="eccmBox" ItemsSource="{Binding Source={StaticResource dataStore}, Path=Electronics.EccmList}" SelectedIndex="{Binding Eccm, ValidatesOnNotifyDataErrors=True}" />
                     </StackPanel>
-                    <StackPanel Grid.Column="2" Grid.Row="5" VerticalAlignment="Center">
+                    <StackPanel Grid.Column="2" Grid.Row="5" VerticalAlignment="Bottom">
                         <Label Content="Signature"/>
                         <TextBox x:Name="signatureBox" Style="{StaticResource inputBox}" IsReadOnly="True" Text="{Binding Sig, Mode=OneWay}" />
                         <Label Content="ED"/>
                         <ComboBox x:Name="edBox" ItemsSource="{Binding Source={StaticResource dataStore}, Path=Electronics.EdList}" SelectedIndex="{Binding Ed, ValidatesOnNotifyDataErrors=True}" />
                     </StackPanel>
-                    <StackPanel Grid.Column="3" Grid.Row="5" VerticalAlignment="Center">
+                    <StackPanel Grid.Column="3" Grid.Row="5" VerticalAlignment="Bottom">
                         <Label Content="Sensors"/>
                         <ComboBox x:Name="sensorBox" ItemsSource="{Binding Source={StaticResource dataStore}, Path=Electronics.SensorList}" SelectedIndex="{Binding Sensor, ValidatesOnNotifyDataErrors=True}" />
                         <Label Content="ECD"/>

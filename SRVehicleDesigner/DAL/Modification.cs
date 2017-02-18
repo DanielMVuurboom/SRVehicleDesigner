@@ -25,6 +25,8 @@ namespace SRVehicleDesigner.DAL
         public double Constant { get; private set; }
         [DataMember(Order = 3)]
         public Dictionary<string, string> DataDictionary { get; private set; }
+        [DataMember(Order = 4)]
+        public string RuleExplanation { get; private set; }
     }
 
     [DataContract(Namespace = "")]

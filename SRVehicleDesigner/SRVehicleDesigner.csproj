@@ -99,13 +99,21 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="BLL\ModificationRuleLogic.cs" />
     <Compile Include="BLL\Validation.cs" />
     <Compile Include="DAL\Component.cs" />
     <Compile Include="DAL\Modification.cs" />
     <Compile Include="DAL\Vehicle.cs" />
+    <Compile Include="Views\SelectModificationAmountDialog.xaml.cs">
+      <DependentUpon>SelectModificationAmountDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\VehicleDetailView.xaml.cs">
       <DependentUpon>VehicleDetailView.xaml</DependentUpon>
     </Compile>
+    <Page Include="Views\SelectModificationAmountDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\NewVehicleDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

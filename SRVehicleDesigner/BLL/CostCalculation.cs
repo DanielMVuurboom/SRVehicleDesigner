@@ -21,8 +21,9 @@ namespace SRVehicleDesigner.BLL
                 case ChassisGroup.Cars:
                     designMultiplier = 1;
                     break;
+                case ChassisGroup.Hovercraft:
                 default:
-                    designMultiplier = 0;
+                    designMultiplier = 2.5;
                     break;
             }
 

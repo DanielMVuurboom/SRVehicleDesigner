@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using SRVehicleDesigner.ViewModels;
 using SRVehicleDesigner.BLL;
+using SRVehicleDesigner.DAL;
 
 namespace SRVehicleDesigner.Views
 {
@@ -33,7 +34,15 @@ namespace SRVehicleDesigner.Views
 
         private void AddModificationButton_Click(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            var mod = (Modification)AvailableModifications.SelectedItem;
+            switch (mod.ModificationType)
+            {
+                case ModificationType.Numeric:
+                    var max = mod.MaximumRule.CalculateFor(Vehicle);
+                    var dialog = new SelectModificationAmountDialog(mod.MaximumRule);
+                    if (dialog.ShowDialog() == true) { }
+                    break;
+            }
         }
 
         private void RemoveModificationButton_Click(object sender, RoutedEventArgs e)
