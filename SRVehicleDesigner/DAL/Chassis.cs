@@ -9,7 +9,7 @@ using SRVehicleDesigner.BLL;
 namespace SRVehicleDesigner.DAL
 {
     [DataContract(Namespace = "")]
-    public enum ChassisGroup {[EnumMember]Bikes, [EnumMember]Cars }
+    public enum ChassisGroup {[EnumMember]Bikes, [EnumMember]Cars, [EnumMember]Hovercraft }
 
     [DataContract(Namespace = "")]
     public enum SeatingType {[EnumMember]Bench, [EnumMember]Bucket, [EnumMember]Ejection }

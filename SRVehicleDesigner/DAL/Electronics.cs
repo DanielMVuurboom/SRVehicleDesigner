@@ -7,26 +7,6 @@ using System.Runtime.Serialization;
 
 namespace SRVehicleDesigner.DAL
 {
-    [DataContract(Namespace = "")]
-    public class Component
-    {
-        [DataMember(Order = 0)]
-        public int Level { get; private set; }
-        [DataMember(Order = 1)]
-        public List<Accessory> AccessoryList { get; private set; }
-        [DataMember(Order = 2)]
-        public int CargoFactor { get; private set; }
-        [DataMember(Order = 3)]
-        public int DesignPoints { get; private set; }
-        [DataMember(Order = 4)]
-        public int Load { get; private set; }
-
-        public override string ToString()
-        {
-            return Level.ToString();
-        }
-    }
-
     public class Electronics
     {
         public List<Component> AutoNavList { get; private set; }

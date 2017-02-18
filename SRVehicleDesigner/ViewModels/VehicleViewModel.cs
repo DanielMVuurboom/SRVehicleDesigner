@@ -9,6 +9,7 @@ using System.Reflection;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Collections;
+using System.Collections.ObjectModel;
 
 namespace SRVehicleDesigner.ViewModels
 {
@@ -77,9 +78,9 @@ namespace SRVehicleDesigner.ViewModels
         public int SetupTime { get; private set; }
         public TakeOffProfile TakeOffProfile => BaseChassis.TakeOffProfile;
 
-        public List<Seating> SeatingList { get; private set; }
-        public List<EntryPoint> EntryPointList { get; private set; }
-        public List<Accessory> AccessoryList { get; private set; }
+        public ObservableCollection<Seating> SeatingList { get; private set; }
+        public ObservableCollection<EntryPoint> EntryPointList { get; private set; }
+        public ObservableCollection<Accessory> AccessoryList { get; private set; }
 
         public int DesignPoints { get { return _designPoints; } private set { SetProperty(ref _designPoints, value, false); OnPropertyChanged("Cost"); } }
         private int _designPoints;
@@ -121,9 +122,9 @@ namespace SRVehicleDesigner.ViewModels
 
             SetupTime = BaseChassis.SetupTime;
 
-            SeatingList = new List<Seating>(BaseChassis.SeatingList);
-            EntryPointList = new List<EntryPoint>(BaseChassis.EntryPointList);
-            AccessoryList = BaseChassis.AccessoryList.OrderBy(a => a.ToString()).ToList();
+            SeatingList = new ObservableCollection<Seating>(BaseChassis.SeatingList);
+            EntryPointList = new ObservableCollection<EntryPoint>(BaseChassis.EntryPointList);
+            AccessoryList = new ObservableCollection<Accessory>(BaseChassis.AccessoryList);
 
             DesignPoints = BaseChassis.DesignPoints + BasePowerPlant.DesignPoints;
             DesignMultiplier = CostCalculation.CalculateDesignMultiplier(ChassisGroup, Drone, AccessoryList);
@@ -170,7 +171,7 @@ namespace SRVehicleDesigner.ViewModels
                         RaiseErrorsChanged(adjustment.AdjustmentType);
                     }
                 }
-                AccessoryList = AccessoryList.Union(adjustment.AccessoriesToAdd).Except(adjustment.AccessoriesToRemove).OrderBy(a => a.ToString()).ToList();
+                AccessoryList = new ObservableCollection<Accessory>(AccessoryList.Union(adjustment.AccessoriesToAdd).Except(adjustment.AccessoriesToRemove));
             }
         }
 

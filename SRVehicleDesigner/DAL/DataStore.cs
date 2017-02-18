@@ -13,6 +13,7 @@ namespace SRVehicleDesigner.DAL
         public List<PowerPlant> PowerPlantList { get; private set; }
         public List<bool> BooleanList { get; private set; }
         public Electronics Electronics { get; private set; }
+        public List<Modification> Modifications { get; private set; }
 
         private static DataStore _defaultDataStore;
 
@@ -33,6 +34,7 @@ namespace SRVehicleDesigner.DAL
 
                 _defaultDataStore.ChassisList = FileAccessHelper.LoadListFromXmlFile<Chassis>("Resources\\ChassisList.xml");
                 _defaultDataStore.PowerPlantList = FileAccessHelper.LoadListFromXmlFile<PowerPlant>("Resources\\PowerPlantList.xml");
+                _defaultDataStore.Modifications = FileAccessHelper.LoadListFromXmlFile<Modification>("Resources\\ModificationList.xml");
             }
             return _defaultDataStore;
         }

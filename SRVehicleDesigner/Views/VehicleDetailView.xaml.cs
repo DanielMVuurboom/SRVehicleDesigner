@@ -30,5 +30,16 @@ namespace SRVehicleDesigner.Views
             DataContext = vehicle;
             Vehicle.InitializationComplete = true;
         }
+
+        private void AddModificationButton_Click(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void RemoveModificationButton_Click(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
     }
 }
