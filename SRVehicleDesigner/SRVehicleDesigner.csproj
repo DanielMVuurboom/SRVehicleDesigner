@@ -104,13 +104,14 @@
     <Compile Include="DAL\Component.cs" />
     <Compile Include="DAL\Modification.cs" />
     <Compile Include="DAL\Vehicle.cs" />
-    <Compile Include="Views\SelectModificationAmountDialog.xaml.cs">
-      <DependentUpon>SelectModificationAmountDialog.xaml</DependentUpon>
+    <Compile Include="ViewModels\ModificationSelectorModel.cs" />
+    <Compile Include="Views\SelectModificationDialog.xaml.cs">
+      <DependentUpon>SelectModificationDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\VehicleDetailView.xaml.cs">
       <DependentUpon>VehicleDetailView.xaml</DependentUpon>
     </Compile>
-    <Page Include="Views\SelectModificationAmountDialog.xaml">
+    <Page Include="Views\SelectModificationDialog.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

@@ -17,18 +17,18 @@ using SRVehicleDesigner.ViewModels;
 namespace SRVehicleDesigner.Views
 {
     /// <summary>
-    /// Interaction logic for SelectModificationAmountDialog.xaml
+    /// Interaction logic for SelectModificationDialog.xaml
     /// </summary>
-    public partial class SelectModificationAmountDialog : Window
+    public partial class SelectModificationDialog : Window
     {
-        public Rule Rule { get; private set; }
+        public ModificationSelectorModel SelectorModel { get; private set; }
         public int SelectedAmount { get { return _selectedAmount; } }
         private int _selectedAmount;
 
-        public SelectModificationAmountDialog(Rule rule)
+        public SelectModificationDialog(Modification modification, VehicleViewModel vehicle)
         {
-            Rule = rule;
-            DataContext = Rule;
+            SelectorModel = new ModificationSelectorModel(modification, vehicle);
+            DataContext = SelectorModel;
             InitializeComponent();
         }
 

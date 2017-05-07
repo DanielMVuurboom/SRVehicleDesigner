@@ -35,14 +35,8 @@ namespace SRVehicleDesigner.Views
         private void AddModificationButton_Click(object sender, RoutedEventArgs e)
         {
             var mod = (Modification)AvailableModifications.SelectedItem;
-            switch (mod.ModificationType)
-            {
-                case ModificationType.Numeric:
-                    var max = mod.MaximumRule.CalculateFor(Vehicle);
-                    var dialog = new SelectModificationAmountDialog(mod.MaximumRule);
-                    if (dialog.ShowDialog() == true) { }
-                    break;
-            }
+            var dialog = new SelectModificationDialog(mod, Vehicle);
+            if (dialog.ShowDialog() == true) { }
         }
 
         private void RemoveModificationButton_Click(object sender, RoutedEventArgs e)

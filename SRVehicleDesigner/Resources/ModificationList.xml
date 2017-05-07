@@ -16,6 +16,10 @@
       <Base>Body</Base>
       <Constant>2.5</Constant>
     </LoadRule>
+    <MinimumRule>
+      <RuleType>Constant</RuleType>
+      <Constant>0</Constant>
+    </MinimumRule>
     <MaximumRule>
       <RuleType>Dictionary</RuleType>
       <Base>Body</Base>
@@ -65,8 +69,8 @@
           <a:Value>75000</a:Value>
         </a:KeyValueOfstringstring>
       </DataDictionary>
-      <RuleExplanation>The vehicle Body determines the maximum Load capacity of the winch.</RuleExplanation>
     </MaximumRule>
     <ModificationType>Numeric</ModificationType>
+    <AllowedRangeExplanation>The vehicle Body determines the maximum Load capacity of the winch.</AllowedRangeExplanation>
   </Modification>
 </ArrayOfModification>

@@ -25,8 +25,6 @@ namespace SRVehicleDesigner.DAL
         public double Constant { get; private set; }
         [DataMember(Order = 3)]
         public Dictionary<string, string> DataDictionary { get; private set; }
-        [DataMember(Order = 4)]
-        public string RuleExplanation { get; private set; }
     }
 
     [DataContract(Namespace = "")]
@@ -45,9 +43,13 @@ namespace SRVehicleDesigner.DAL
         [DataMember(Order = 5)]
         public Rule LoadRule { get; private set; }
         [DataMember(Order = 6)]
-        public Rule MaximumRule { get; private set; }
+        public Rule MinimumRule { get; private set; }
         [DataMember(Order = 7)]
+        public Rule MaximumRule { get; private set; }
+        [DataMember(Order = 8)]
         public ModificationType ModificationType { get; private set; }
+        [DataMember(Order = 9)]
+        public string AllowedRangeExplanation { get; private set; }
 
 
         public override string ToString()
